@@ -1056,17 +1056,6 @@
     line-height: 1.65;
   }
   .hero-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 0; }
-  .hero-pill,
-  .hero h1,
-  .hero p,
-  .hero-btns,
-  .hero-btns > *,
-  .stage,
-  .card,
-  .card-rain,
-  .orb {
-    will-change: transform, opacity;
-  }
   .btn-primary {
     background: var(--pink);
     color: #fff;
@@ -1420,9 +1409,11 @@
   <ul class="nav-links">
     <li><a href="#">Couples</a></li>
     <li><a href="#">Vendors</a></li>
+    <li><a href="#">Trust</a></li>
     <li><a href="#">FAQ</a></li>
   </ul>
   <div class="nav-right">
+    <button class="btn-outline-sm">Log In</button>
     <button class="btn-fill-sm">Sign Up</button>
   </div>
 </nav>
@@ -2828,55 +2819,6 @@
       if (target) {
         lenis.scrollTo(target);
       }
-    }
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const heroTimeline = gsap.timeline({
-        defaults: {
-          ease: 'power3.out'
-        }
-      });
-
-      gsap.set(['.hero-pill', '.hero h1', '.hero p', '.hero-btns > *'], {
-        autoAlpha: 0,
-        y: 28
-      });
-      gsap.set(['.orb-top-left', '.orb-bottom-right'], {
-        autoAlpha: 0,
-        scale: 0.5
-      });
-
-      heroTimeline
-        .to('.hero-pill', { autoAlpha: 1, y: 0, duration: 0.55 })
-        .to('.hero h1', { autoAlpha: 1, y: 0, duration: 0.8 }, '-=0.22')
-        .to('.hero p', { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.45')
-        .to('.hero-btns > *', {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1
-        }, '-=0.3')
-        .to('.orb-top-left', { autoAlpha: 1, scale: 1, duration: 0.45 }, '-=0.42')
-        .to('.orb-bottom-right', { autoAlpha: 1, scale: 1, duration: 0.45 }, '-=0.28');
-
-      gsap.to('.orb-top-left', {
-        y: -16,
-        x: 10,
-        duration: 4.8,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-
-      gsap.to('.orb-bottom-right', {
-        y: 14,
-        x: -8,
-        rotation: 10,
-        duration: 5.4,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
     }
 
     // How It Works sticky reveal animation

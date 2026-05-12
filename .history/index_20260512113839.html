@@ -1420,9 +1420,11 @@
   <ul class="nav-links">
     <li><a href="#">Couples</a></li>
     <li><a href="#">Vendors</a></li>
+    <li><a href="#">Trust</a></li>
     <li><a href="#">FAQ</a></li>
   </ul>
   <div class="nav-right">
+    <button class="btn-outline-sm">Log In</button>
     <button class="btn-fill-sm">Sign Up</button>
   </div>
 </nav>
@@ -2841,9 +2843,18 @@
         autoAlpha: 0,
         y: 28
       });
+      gsap.set('.stage', { autoAlpha: 0, y: 24, scale: 0.985 });
       gsap.set(['.orb-top-left', '.orb-bottom-right'], {
         autoAlpha: 0,
         scale: 0.5
+      });
+      gsap.set(['.card-audio', '.card-mood', '.card-chat', '.card-phone', '.card-review', '.card-checklist', '.card-rain'], {
+        autoAlpha: 0,
+        y: 42
+      });
+      gsap.set('.hero-chat-bubble', {
+        autoAlpha: 0,
+        x: -18
       });
 
       heroTimeline
@@ -2856,8 +2867,28 @@
           duration: 0.5,
           stagger: 0.1
         }, '-=0.3')
+        .to('.stage', { autoAlpha: 1, y: 0, scale: 1, duration: 0.8 }, '-=0.18')
         .to('.orb-top-left', { autoAlpha: 1, scale: 1, duration: 0.45 }, '-=0.42')
-        .to('.orb-bottom-right', { autoAlpha: 1, scale: 1, duration: 0.45 }, '-=0.28');
+        .to('.orb-bottom-right', { autoAlpha: 1, scale: 1, duration: 0.45 }, '-=0.28')
+        .to('.card-phone', { autoAlpha: 1, y: 0, duration: 0.75 }, '-=0.35')
+        .to(['.card-audio', '.card-mood'], {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.12
+        }, '-=0.48')
+        .to(['.card-chat', '.card-review', '.card-checklist', '.card-rain'], {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1
+        }, '-=0.38')
+        .to('.hero-chat-bubble', {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.38,
+          stagger: 0.08
+        }, '-=0.18');
 
       gsap.to('.orb-top-left', {
         y: -16,
@@ -2877,7 +2908,33 @@
         yoyo: true,
         ease: 'sine.inOut'
       });
-    }
+
+      gsap.to('.card-phone', {
+        y: '-=14',
+        duration: 3.4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      [
+        ['.card-audio', 4.2, -12],
+        ['.card-mood', 4.8, -10],
+        ['.card-chat', 5.1, -16],
+        ['.card-review', 3.8, -9],
+        ['.card-checklist', 4.6, -12],
+        ['.card-rain', 4.4, -10]
+      ].forEach(([selector, duration, distance], index) => {
+        gsap.to(selector, {
+          y: `-=${Math.abs(distance)}`,
+          rotation: index % 2 === 0 ? -1.2 : 1.2,
+          duration,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 0.2 * index
+        });
+      });    }
 
     // How It Works sticky reveal animation
     const stepIds = ["intro", 1, 2, 3, 4, 5];
