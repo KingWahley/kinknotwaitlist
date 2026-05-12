@@ -805,6 +805,7 @@
     .process-section {
       padding: 140px 40px;
       background: var(--white);
+      background-image: none;
     }
 
     .process-grid {
@@ -818,6 +819,7 @@
 
     .process-card {
       background: var(--bg-sand);
+      background-image: none;
       border-radius: var(--radius-lg);
       padding: 48px 40px;
       position: relative;
@@ -831,6 +833,7 @@
     .process-card:hover {
       transform: translateY(-8px);
       background: var(--white);
+      background-image: none;
       box-shadow: 0 30px 60px rgba(15, 78, 167, 0.08);
       border-color: rgba(15, 78, 167, 0.1);
     }
@@ -884,7 +887,7 @@
 
      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
+  /* :root {
     --pink: #d94f8a;
     --pink-light: #f2a0c4;
     --pink-pale: #fce8f3;
@@ -898,7 +901,7 @@
     --white: #ffffff;
     --card-bg: rgba(255,255,255,0.82);
     --blur: blur(14px);
-  }
+  } */
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -1860,712 +1863,68 @@
  
 
   <!-- MISTAKES SECTION -->
-  <section
-    style="
-      position: relative;
-      overflow: hidden;
-      padding: 140px 24px;
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 35%),
-        #0d0d12;
-      color: #f5f1eb;
-      font-family: Inter, sans-serif;
-    "
-  >
-    <div
-      style="
-        position: absolute;
-        top: -120px;
-        right: -100px;
-        width: 500px;
-        height: 500px;
-        background: rgba(255, 205, 178, 0.08);
-        filter: blur(120px);
-        border-radius: 50%;
-        z-index: 0;
-      "
-    ></div>
+  <section class="mistakes-section">
+    <div class="section-header">
+      <h2 class="section-title">Mistakes Couples Shouldn’t Have To Make Anymore.</h2>
+      <p style="margin-top:20px; color:var(--text-muted); font-size:18px;">
+        We built KinKnot to solve the most painful parts of wedding planning.
+      </p>
+    </div>
 
-    <div
-      style="
-        max-width: 1320px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-      "
-    >
-      <div
-        style="
-          max-width: 860px;
-          margin: 0 auto 110px;
-          text-align: center;
-        "
-      >
-        <p
-          style="
-            font-size: 13px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
-            margin-bottom: 22px;
-          "
-        >
-          Modern Wedding Planning
-        </p>
-
-        <h2
-          style="
-            font-size: clamp(42px, 7vw, 84px);
-            line-height: 1.04;
-            letter-spacing: -0.05em;
-            font-weight: 600;
-            margin: 0 0 34px;
-            font-family: 'Playfair Display', serif;
-          "
-        >
-          Mistakes Couples Shouldn&rsquo;t Have To Make Anymore
-        </h2>
-
-        <p
-          style="
-            font-size: 20px;
-            line-height: 1.9;
-            color: rgba(255,255,255,0.68);
-            max-width: 760px;
-            margin: 0 auto;
-            font-weight: 400;
-          "
-        >
-          Too many couples still learn wedding planning lessons the hard
-          way. The process should feel exciting, not overwhelming. There
-          should already be a smarter system for this.
-        </p>
+    <div class="mistakes-grid">
+      <!-- Card 1: The Ghost Vendor (Large) -->
+      <div class="mistake-card large">
+        <div>
+          <div class="mistake-label">The Risk</div>
+          <div class="mistake-icon"><i class="fa-solid fa-user-slash"></i></div>
+          <h3 class="mistake-title">The "Ghost" Vendor.</h3>
+          <p style="color: var(--text-muted); font-size: 16px; line-height: 1.6;">
+            Losing deposits to vendors who disappear or under-deliver on the big day. It's the #1 fear for Nigerian couples.
+          </p>
+        </div>
+        <div class="mistake-solution">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Verified Profiles & Escrow</span>
+        </div>
       </div>
 
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 70px;
-          margin-bottom: 140px;
-        "
-      >
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 10px;
-              padding: 10px 18px;
-              border-radius: 999px;
-              background: rgba(255,255,255,0.06);
-              border: 1px solid rgba(255,255,255,0.08);
-              margin-bottom: 28px;
-              backdrop-filter: blur(12px);
-            "
-          >
-            <div
-              style="
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #ffc9a8;
-              "
-            ></div>
-            <span
-              style="
-                font-size: 12px;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                color: rgba(255,255,255,0.65);
-              "
-            >
-              Mistake 01
-            </span>
-          </div>
-
-          <h3
-            style="
-              font-size: clamp(34px, 5vw, 56px);
-              line-height: 1.08;
-              margin: 0 0 26px;
-              letter-spacing: -0.04em;
-              font-weight: 600;
-            "
-          >
-            Paying Vendors You Barely Know
-          </h3>
-
-          <p
-            style="
-              font-size: 19px;
-              line-height: 1.9;
-              color: rgba(255,255,255,0.72);
-              margin-bottom: 34px;
-            "
-          >
-            Couples shouldn&rsquo;t have to rely on guesswork, screenshots, or
-            blind trust when making important wedding decisions.
-          </p>
-
-          <div
-            style="
-              padding-left: 22px;
-              border-left: 2px solid rgba(255,255,255,0.12);
-            "
-          >
-            <p
-              style="
-                font-size: 16px;
-                line-height: 1.8;
-                color: rgba(255,255,255,0.5);
-                margin: 0;
-              "
-            >
-              Modern couples deserve secure systems, verified profiles,
-              transparent communication, and confidence before making
-              commitments.
+      <!-- Card 2: Communication Chaos (Wide) -->
+      <div class="mistake-card wide">
+        <div style="display: flex; gap: 40px; align-items: center;">
+          <div style="flex: 1;">
+            <div class="mistake-label">The Chaos</div>
+            <h3 class="mistake-title">Communication Overload.</h3>
+            <p style="color: var(--text-muted); font-size: 16px; line-height: 1.6;">
+              Managing contracts and details across WhatsApp, Email, and Instagram DMs is a recipe for missed details.
             </p>
           </div>
+          <div class="mistake-icon" style="font-size: 60px; opacity: 0.2; margin: 0;"><i class="fa-solid fa-comments"></i></div>
         </div>
-
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              position: relative;
-              padding: 34px;
-              border-radius: 34px;
-              background: rgba(255,255,255,0.05);
-              border: 1px solid rgba(255,255,255,0.08);
-              backdrop-filter: blur(20px);
-              box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-            "
-          >
-            <div
-              style="
-                background: rgba(255,255,255,0.04);
-                border-radius: 22px;
-                padding: 24px;
-                margin-bottom: 20px;
-                border: 1px solid rgba(255,255,255,0.06);
-              "
-            >
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 18px;
-                "
-              >
-                <div>
-                  <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px;">Vendor check</div>
-                  <div style="font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.92);">Unverified inquiry</div>
-                </div>
-
-                <div style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; background: rgba(255,120,120,0.16); color: #ffd3d3; font-size: 11px; font-weight: 600; border: 1px solid rgba(255,120,120,0.18);">
-                  <span style="width: 6px; height: 6px; border-radius: 50%; background: #ff9c9c;"></span>
-                  Pending
-                </div>
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,0.04); margin-bottom: 12px;">
-                <div style="display: flex; align-items: center; gap: 12px">
-                  <div style="width: 34px; height: 34px; border-radius: 12px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-size: 14px;">
-                    <i class="fa-regular fa-user"></i>
-                  </div>
-                  <div>
-                    <div style="font-size: 13px; color: rgba(255,255,255,0.86); font-weight: 600; margin-bottom: 4px;">Profile completion</div>
-                    <div style="font-size: 11px; color: rgba(255,255,255,0.48);">No business docs uploaded</div>
-                  </div>
-                </div>
-                <div style="font-size: 12px; color: rgba(255,201,168,0.82); font-weight: 600;">48%</div>
-              </div>
-
-              <div style="margin-bottom: 12px;">
-                <div style="height: 7px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; margin-bottom: 12px;">
-                  <div style="width: 48%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, rgba(255,201,168,0.9), rgba(255,136,136,0.75));"></div>
-                </div>
-                <div style="display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: rgba(255,255,255,0.46);">
-                  <span>Response time: 2-3 days</span>
-                  <span>2 reviews</span>
-                </div>
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
-                <div style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.54); font-size: 11px;">
-                  <i class="fa-regular fa-clock"></i>
-                  Last active 19h ago
-                </div>
-                <div style="display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.68); font-size: 11px;">
-                  <i class="fa-regular fa-message"></i>
-                  No reply yet
-                </div>
-              </div>
-            </div>
-
-            <div
-              style="
-                display: flex;
-                justify-content: center;
-                margin: 20px 0;
-              "
-            >
-            </div>
-
-           
-          </div>
+        <div class="mistake-solution" style="width: fit-content;">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Centralized Messaging Hub</span>
         </div>
       </div>
 
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap-reverse;
-          align-items: center;
-          gap: 70px;
-          margin-bottom: 140px;
-        "
-      >
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              position: relative;
-              padding: 34px;
-              border-radius: 34px;
-              background: rgba(255,255,255,0.05);
-              border: 1px solid rgba(255,255,255,0.08);
-              backdrop-filter: blur(20px);
-              box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-            "
-          >
-            
-
-            <div
-              style="
-                padding: 28px;
-                border-radius: 28px;
-                background: linear-gradient(
-                  145deg,
-                  rgba(255,255,255,0.08),
-                  rgba(255,255,255,0.03)
-                );
-                border: 1px solid rgba(255,255,255,0.08);
-              "
-            >
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 22px;
-                "
-              >
-                <div>
-                  <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.44); margin-bottom: 7px;">Planning hub</div>
-                  <div style="font-size: 17px; color: rgba(255,255,255,0.94); font-weight: 600;">Everything in one place</div>
-                </div>
-
-                <div style="display: inline-flex; gap: 6px; padding: 5px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05);">
-                  <span style="padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); font-size: 11px; font-weight: 600;">Home</span>
-                  <span style="padding: 7px 12px; border-radius: 999px; color: rgba(255,255,255,0.48); font-size: 11px;">Vendors</span>
-                  <span style="padding: 7px 12px; border-radius: 999px; color: rgba(255,255,255,0.48); font-size: 11px;">Budget</span>
-                </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 14px; padding: 16px 18px; border-radius: 22px; background: rgba(255,255,255,0.06); margin-bottom: 16px;">
-                <div>
-                  <div style="font-size: 12px; color: rgba(255,255,255,0.82); font-weight: 600; margin-bottom: 8px;">Today's timeline</div>
-                  <div style="display: flex; flex-direction: column; gap: 7px;">
-                    <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.52);">
-                      <span style="width: 7px; height: 7px; border-radius: 50%; background: #ffc9a8;"></span>
-                      Florist call at 2:00 PM
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.52);">
-                      <span style="width: 7px; height: 7px; border-radius: 50%; background: #7ff2b1;"></span>
-                      Venue payment clears today
-                    </div>
-                  </div>
-                </div>
-                <div style="display: flex; align-items: flex-end; justify-content: flex-end; gap: 4px;">
-                  <span style="width: 10px; height: 24px; border-radius: 999px; background: rgba(255,255,255,0.18);"></span>
-                  <span style="width: 10px; height: 34px; border-radius: 999px; background: rgba(255,201,168,0.5);"></span>
-                  <span style="width: 10px; height: 44px; border-radius: 999px; background: rgba(94,255,174,0.5);"></span>
-                  <span style="width: 10px; height: 30px; border-radius: 999px; background: rgba(255,255,255,0.22);"></span>
-                </div>
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 18px; border-radius: 22px; background: rgba(255,255,255,0.06);">
-                <div>
-                  <div style="font-size: 12px; color: rgba(255,255,255,0.82); font-weight: 600; margin-bottom: 6px;">Centralized notifications</div>
-                  <div style="font-size: 11px; color: rgba(255,255,255,0.5);">3 updates, 2 confirmations, 1 payment reminder</div>
-                </div>
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 16px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.78); font-size: 11px;">
-                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #7ff2b1;"></span>
-                  All synced
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 10px;
-              padding: 10px 18px;
-              border-radius: 999px;
-              background: rgba(255,255,255,0.06);
-              border: 1px solid rgba(255,255,255,0.08);
-              margin-bottom: 28px;
-              backdrop-filter: blur(12px);
-            "
-          >
-            <div
-              style="
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #ffc9a8;
-              "
-            ></div>
-
-            <span
-              style="
-                font-size: 12px;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                color: rgba(255,255,255,0.65);
-              "
-            >
-              Mistake 02
-            </span>
-          </div>
-
-          <h3
-            style="
-              font-size: clamp(34px, 5vw, 56px);
-              line-height: 1.08;
-              margin: 0 0 26px;
-              letter-spacing: -0.04em;
-              font-weight: 600;
-            "
-          >
-            Managing Everything Across Too Many Apps
-          </h3>
-
-          <p
-            style="
-              font-size: 19px;
-              line-height: 1.9;
-              color: rgba(255,255,255,0.72);
-              margin-bottom: 34px;
-            "
-          >
-            Wedding planning becomes exhausting when timelines,
-            conversations, payments, and bookings are scattered
-            everywhere.
+      <!-- Card 3: The Budget Leak (Standard) -->
+      <div class="mistake-card standard">
+        <div>
+          <div class="mistake-label">The Cost</div>
+          <h3 class="mistake-title">The Budget Leak.</h3>
+          <p style="color: var(--text-muted); font-size: 15px; line-height: 1.5;">
+            Unexpected costs and manual tracking that lead to stress and overspending.
           </p>
-
-          <div
-            style="
-              padding-left: 22px;
-              border-left: 2px solid rgba(255,255,255,0.12);
-            "
-          >
-            <p
-              style="
-                font-size: 16px;
-                line-height: 1.8;
-                color: rgba(255,255,255,0.5);
-                margin: 0;
-              "
-            >
-              Planning should feel unified, calm, and beautifully
-              organized. Not fragmented across endless tabs and apps.
-            </p>
-          </div>
         </div>
-      </div>
-
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 70px;
-          margin-bottom: 140px;
-        "
-      >
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 10px;
-              padding: 10px 18px;
-              border-radius: 999px;
-              background: rgba(255,255,255,0.06);
-              border: 1px solid rgba(255,255,255,0.08);
-              margin-bottom: 28px;
-              backdrop-filter: blur(12px);
-            "
-          >
-            <div
-              style="
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #ffc9a8;
-              "
-            ></div>
-
-            <span
-              style="
-                font-size: 12px;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                color: rgba(255,255,255,0.65);
-              "
-            >
-              Mistake 03
-            </span>
-          </div>
-
-          <h3
-            style="
-              font-size: clamp(34px, 5vw, 56px);
-              line-height: 1.08;
-              margin: 0 0 26px;
-              letter-spacing: -0.04em;
-              font-weight: 600;
-            "
-          >
-            Losing Track Of Payments & Bookings
-          </h3>
-
-          <p
-            style="
-              font-size: 19px;
-              line-height: 1.9;
-              color: rgba(255,255,255,0.72);
-              margin-bottom: 34px;
-            "
-          >
-            Important moments shouldn&rsquo;t depend on screenshots, reminders,
-            and hoping nothing gets missed.
-          </p>
-
-          <div
-            style="
-              padding-left: 22px;
-              border-left: 2px solid rgba(255,255,255,0.12);
-            "
-          >
-            <p
-              style="
-                font-size: 16px;
-                line-height: 1.8;
-                color: rgba(255,255,255,0.5);
-                margin: 0;
-              "
-            >
-              Secure tracking, organized confirmations, and clear payment
-              visibility create peace of mind throughout the planning
-              journey.
-            </p>
-          </div>
-        </div>
-
-        <div style="flex: 1; min-width: 320px">
-          <div
-            style="
-              position: relative;
-              padding: 34px;
-              border-radius: 34px;
-              background: rgba(255,255,255,0.05);
-              border: 1px solid rgba(255,255,255,0.08);
-              backdrop-filter: blur(20px);
-              box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-            "
-          >
-            <div
-              style="
-                background: rgba(255,255,255,0.04);
-                border-radius: 26px;
-                padding: 28px;
-                border: 1px solid rgba(255,255,255,0.06);
-              "
-            >
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 26px;
-                "
-              >
-                <div>
-                  <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.44); margin-bottom: 8px;">Payment center</div>
-                  <div style="font-size: 16px; color: rgba(255,255,255,0.92); font-weight: 600;">Booking confirmations</div>
-                </div>
-
-                <div style="width: 40px; height: 40px; border-radius: 14px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.78); font-size: 15px;">
-                  <i class="fa-solid fa-wallet"></i>
-                </div>
-              </div>
-
-              <div
-                style="
-                  padding: 18px;
-                  border-radius: 18px;
-                  background: rgba(255,255,255,0.05);
-                  margin-bottom: 16px;
-                "
-              >
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                  <div>
-                    <div style="font-size: 12px; color: rgba(255,255,255,0.84); font-weight: 600; margin-bottom: 5px;">Invoice INV-2048</div>
-                    <div style="font-size: 11px; color: rgba(255,255,255,0.48);">Decorator booking • Ref BK-71A</div>
-                  </div>
-                  <div style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border-radius: 999px; background: rgba(255,201,168,0.12); color: #ffd9c1; font-size: 11px; border: 1px solid rgba(255,201,168,0.14);">
-                    <i class="fa-regular fa-bell"></i>
-                    Due today
-                  </div>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <span style="font-size: 11px; color: rgba(255,255,255,0.44);">Transfer protected by escrow</span>
-                  <span style="font-size: 11px; color: rgba(255,255,255,0.62);">11:42 AM</span>
-                </div>
-
-                <div style="height: 7px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden;">
-                  <div style="width: 72%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, rgba(255,201,168,0.9), rgba(255,255,255,0.82));"></div>
-                </div>
-              </div>
-
-              <div
-                style="
-                  padding: 18px;
-                  border-radius: 18px;
-                  background: rgba(94,255,174,0.08);
-                  border: 1px solid rgba(94,255,174,0.14);
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                  "
-                >
-                  <div>
-                    <div style="font-size: 12px; color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 6px;">Payment confirmed</div>
-                    <div style="font-size: 11px; color: rgba(255,255,255,0.54); margin-bottom: 9px;">Receipt issued • May 12, 2026 at 11:47 AM</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); font-size: 10px;">TXN 8KQ2A9</span>
-                      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); font-size: 10px;"><i class="fa-solid fa-lock"></i> Secure release</span>
-                    </div>
-                  </div>
-
-                  <div
-                    style="
-                      width: 54px;
-                      height: 54px;
-                      border-radius: 18px;
-                      background: rgba(94,255,174,0.18);
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: #b4ffd7;
-                      font-size: 18px;
-                    "
-                  >
-                    ✓
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        style="
-          position: relative;
-          text-align: center;
-          padding: 110px 40px;
-          border-radius: 42px;
-          overflow: hidden;
-          background: linear-gradient(
-            145deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.03)
-          );
-          border: 1px solid rgba(255,255,255,0.08);
-          backdrop-filter: blur(20px);
-        "
-      >
-        <div
-          style="
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 500px;
-            background: rgba(255,205,178,0.08);
-            border-radius: 50%;
-            filter: blur(120px);
-          "
-        ></div>
-
-        <div style="position: relative; z-index: 2">
-          <p
-            style="
-              font-size: 13px;
-              letter-spacing: 0.22em;
-              text-transform: uppercase;
-              color: rgba(255,255,255,0.5);
-              margin-bottom: 22px;
-            "
-          >
-            A Better Way Forward
-          </p>
-
-          <h3
-            style="
-              font-size: clamp(42px, 7vw, 86px);
-              line-height: 1;
-              margin: 0 0 30px;
-              letter-spacing: -0.05em;
-              font-family: 'Playfair Display', serif;
-              font-weight: 600;
-            "
-          >
-            KinKnot Was Built To Fix This.
-          </h3>
-
-          <p
-            style="
-              max-width: 760px;
-              margin: 0 auto;
-              font-size: 20px;
-              line-height: 1.9;
-              color: rgba(255,255,255,0.68);
-            "
-          >
-            One trusted platform for modern wedding planning. Everything
-            finally working together in one place. Designed to bring
-            clarity, confidence, and peace of mind into the wedding
-            journey.
-          </p>
+        <div class="mistake-solution">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Transparent Payment Hub</span>
         </div>
       </div>
     </div>
+
+    <!-- <div style="text-align: center; margin-top: 80px;">
+      <h3 style="font-size: 40px; font-weight: 800; color: var(--primary);">KinKnot was built to fix this.</h3>
+    </div> -->
   </section>
 
   

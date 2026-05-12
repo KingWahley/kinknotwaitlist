@@ -2112,6 +2112,22 @@
                 margin: 20px 0;
               "
             >
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg,#ffc9a8,#ffffff);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #111;
+                  font-size: 20px;
+                  box-shadow: 0 14px 28px rgba(255,201,168,0.18);
+                "
+              >
+                ✓
+              </div>
             </div>
 
            
@@ -2140,7 +2156,74 @@
               box-shadow: 0 30px 80px rgba(0,0,0,0.35);
             "
           >
-            
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 16px;
+                margin-bottom: 28px;
+              "
+            >
+              <div style="height: 120px; border-radius: 22px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.46);">Overview</span>
+                  <i class="fa-solid fa-sparkles" style="font-size: 12px; color: rgba(255,201,168,0.72);"></i>
+                </div>
+                <div>
+                  <div style="font-size: 26px; color: rgba(255,255,255,0.94); font-weight: 600; line-height: 1;">12</div>
+                  <div style="font-size: 11px; color: rgba(255,255,255,0.52); margin-top: 6px;">active bookings</div>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <span style="flex: 1; height: 6px; border-radius: 999px; background: rgba(94,255,174,0.72);"></span>
+                  <span style="flex: 1; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"></span>
+                  <span style="flex: 1; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);"></span>
+                </div>
+              </div>
+
+              <div style="height: 120px; border-radius: 22px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.46);">Calendar</span>
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #7ff2b1;"></span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,201,168,0.22);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(94,255,174,0.18);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                  <span style="height: 20px; border-radius: 8px; background: rgba(255,255,255,0.08);"></span>
+                </div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.52);">Synced with timeline</div>
+              </div>
+
+              <div style="height: 120px; border-radius: 22px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.46);">Payments</span>
+                  <i class="fa-regular fa-credit-card" style="font-size: 12px; color: rgba(255,255,255,0.62);"></i>
+                </div>
+                <div>
+                  <div style="font-size: 20px; color: rgba(255,255,255,0.92); font-weight: 600;">₦2.4M</div>
+                  <div style="font-size: 11px; color: rgba(255,255,255,0.52); margin-top: 5px;">86% already scheduled</div>
+                </div>
+                <div style="height: 7px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden;">
+                  <div style="width: 86%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, rgba(255,201,168,0.9), rgba(255,255,255,0.82));"></div>
+                </div>
+              </div>
+
+              <div style="height: 120px; border-radius: 22px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.46);">Inbox</span>
+                  <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: rgba(255,120,120,0.18); color: #ffd8d8; font-size: 10px; font-weight: 700;">3</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 7px;">
+                  <div style="height: 10px; width: 85%; border-radius: 999px; background: rgba(255,255,255,0.11);"></div>
+                  <div style="height: 10px; width: 65%; border-radius: 999px; background: rgba(255,255,255,0.08);"></div>
+                </div>
+                <div style="font-size: 11px; color: rgba(255,255,255,0.52);">All vendors in one thread</div>
+              </div>
+            </div>
 
             <div
               style="
