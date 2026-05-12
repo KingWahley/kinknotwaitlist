@@ -559,6 +559,59 @@
       color: white;
     }
 
+    .inline-email-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      max-width: 680px;
+      margin: 38px auto 0;
+      flex-wrap: wrap;
+    }
+
+    .inline-email-input {
+      flex: 1 1 360px;
+      min-width: 260px;
+      padding: 18px 24px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+
+    .inline-email-input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .inline-email-input:focus {
+      border-color: rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .inline-email-button {
+      padding: 18px 30px;
+      border: none;
+      border-radius: var(--radius-full);
+      background: var(--white);
+      color: var(--primary-dark);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+    }
+
+    .inline-email-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+    }
+
 
     @media (max-width: 768px) {
       .hero-title { font-size: 48px; }
@@ -605,6 +658,15 @@
       .faq-grid {
         grid-template-columns: 1fr !important;
         gap: 40px !important;
+      }
+
+      .inline-email-form {
+        flex-direction: column;
+      }
+
+      .inline-email-input,
+      .inline-email-button {
+        width: 100%;
       }
     }
 
@@ -2563,6 +2625,17 @@
             clarity, confidence, and peace of mind into the wedding
             journey.
           </p>
+
+          <form class="inline-email-form">
+            <input
+              type="email"
+              class="inline-email-input"
+              placeholder="Enter your email address"
+              aria-label="Email address"
+              required
+            >
+            <button type="submit" class="inline-email-button">Join The Waitlist</button>
+          </form>
         </div>
       </div>
     </div>
