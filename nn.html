@@ -625,6 +625,7 @@
       align-items: center;
       justify-content: center;
       background: var(--bg-sand);
+      transition: background-color 0.3s ease;
     }
 
     .how-works-content {
@@ -637,6 +638,7 @@
       justify-content: center;
       gap: 60px;
       padding: 0 60px;
+      z-index: 2;
     }
 
     .how-works-text-side {
@@ -651,6 +653,7 @@
       opacity: 0;
       visibility: hidden;
       width: 100%;
+      will-change: transform, opacity, clip-path;
     }
 
     .step-content.active {
@@ -678,6 +681,7 @@
       opacity: 0;
       transform: scale(0.95);
       pointer-events: none;
+      will-change: transform, opacity, clip-path;
     }
 
     .visual-layer.active {
@@ -784,6 +788,17 @@
       line-height: 1.6;
       color: var(--text-muted);
       max-width: 480px;
+    }
+
+    .how-works-step-shell {
+      position: absolute;
+      inset: 32px;
+      border-radius: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(20, 24, 40, 0.14);
+      pointer-events: none;
     }
 
     /* Process Section */
@@ -1622,8 +1637,9 @@
 
   <!-- SOLUTIONS SECTION (CINEMATIC WALKTHROUGH) -->
   <section class="how-works-outer">
-    <div id="how-works-trigger" style="height: 350vh;">
+    <div id="how-works-trigger" style="height: 600vh;">
       <div class="how-works-sticky">
+        <div class="how-works-step-shell"></div>
         <!-- Intro Step -->
         <div class="step-content" id="step-intro-text" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 900px; text-align: center; z-index: 100;">
           <!-- <h2 class="section-title" style="font-size: 72px;">The Solution to Planning Stress.</h2> -->
@@ -2062,9 +2078,18 @@
       }
     }
 
-    // How It Works Animation Logic
-    const steps = [1, 2, 3, 4, 5];
-    const tl = gsap.timeline({
+    // How It Works sticky reveal animation
+    const stepIds = ["intro", 1, 2, 3, 4, 5];
+    const stepThemes = {
+      intro: "#efe5dc",
+      1: "#dce9ff",
+      2: "#dff2eb",
+      3: "#f7e7d7",
+      4: "#eadff7",
+      5: "#f9dfdf"
+    };
+
+    const howWorksTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#how-works-trigger",
         start: "top top",
@@ -2074,33 +2099,89 @@
       }
     });
 
-    // Setup initial states
-    gsap.set(".step-content", { opacity: 0, yPercent: -50, y: 30, visibility: "hidden" });
-    gsap.set("#step-intro-text", { opacity: 1, xPercent: -50, yPercent: -50, y: 0, visibility: "visible" }); // Make intro visible immediately
-    gsap.set(".visual-layer", { opacity: 0, scale: 0.95, pointerEvents: "none" });
+    gsap.set(".how-works-outer, .how-works-sticky", { backgroundColor: stepThemes.intro });
+    gsap.set(".step-content", {
+      yPercent: -50,
+      y: 120,
+      autoAlpha: 0,
+      visibility: "hidden",
+      clipPath: "inset(100% 0% 0% 0%)"
+    });
+    gsap.set("#step-intro-text", {
+      xPercent: -50,
+      yPercent: -50,
+      y: 0,
+      autoAlpha: 1,
+      visibility: "visible",
+      clipPath: "inset(0% 0% 0% 0%)"
+    });
+    gsap.set(".visual-layer", {
+      y: 120,
+      scale: 0.96,
+      autoAlpha: 0,
+      visibility: "hidden",
+      clipPath: "inset(100% 0% 0% 0%)",
+      pointerEvents: "none"
+    });
 
-    // Transition from Intro to Step 1
-    tl.to("#step-intro-text", { opacity: 0, y: -30, visibility: "hidden", duration: 0.5 }, 0.5);
-    tl.to("#step-1-text", { opacity: 1, y: 0, visibility: "visible", duration: 0.5 }, 1);
-    tl.to("#step-1-visual", { opacity: 1, scale: 1, pointerEvents: "auto", duration: 0.5 }, 1);
+    function revealStep(target, position, extraProps = {}, duration = 0.65) {
+      howWorksTimeline.fromTo(target,
+        {
+          y: 120,
+          autoAlpha: 0,
+          clipPath: "inset(100% 0% 0% 0%)"
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration,
+          ease: "power3.out",
+          ...extraProps,
+          onStart: () => gsap.set(target, { visibility: "visible" }),
+          onReverseComplete: () => gsap.set(target, { visibility: "hidden", pointerEvents: "none" })
+        },
+        position
+      );
+    }
 
-    // Transitions for steps 2 through 5
-    steps.forEach((step, index) => {
-      if (index === 0) return; 
+    function hideStep(target, position, distance = 70, duration = 0.45) {
+      howWorksTimeline.to(target, {
+        y: -distance,
+        autoAlpha: 0,
+        clipPath: "inset(0% 0% 100% 0%)",
+        duration,
+        ease: "power2.inOut",
+        onComplete: () => gsap.set(target, { visibility: "hidden", pointerEvents: "none" }),
+        onReverseComplete: () => gsap.set(target, { visibility: "visible" })
+      }, position);
+    }
 
-      const prevStep = steps[index - 1];
-      const startTime = (index * 1.5); // Much tighter pacing
+    function changeTheme(themeKey, position) {
+      howWorksTimeline.to(".how-works-outer, .how-works-sticky", {
+        backgroundColor: stepThemes[themeKey],
+        duration: 0.45,
+        ease: "power1.inOut"
+      }, position);
+    }
 
-      // Fade out previous
-      tl.to(`#step-${prevStep}-text`, { opacity: 0, y: -20, visibility: "hidden", duration: 0.4 }, startTime);
-      tl.to(`#step-${prevStep}-visual`, { opacity: 0, scale: 1.02, duration: 0.4 }, startTime);
+    changeTheme("intro", 0);
+    hideStep("#step-intro-text", 0.75, 90, 0.4);
 
-      // Fade in current
-      tl.to(`#step-${step}-text`, { opacity: 1, y: 0, visibility: "visible", duration: 0.4 }, startTime + 0.4);
-      tl.to(`#step-${step}-visual`, { opacity: 1, scale: 1, pointerEvents: "auto", duration: 0.4 }, startTime + 0.4);
-      
-      // Short hold state
-      tl.to({}, { duration: 0.6 }); 
+    stepIds.slice(1).forEach((step, index) => {
+      const prev = index === 0 ? "intro" : stepIds[index];
+      const start = 0.9 + (index * 1.5);
+
+      changeTheme(step, start - 0.15);
+
+      if (prev !== "intro") {
+        hideStep(`#step-${prev}-text`, start - 0.15, 80, 0.4);
+        hideStep(`#step-${prev}-visual`, start - 0.15, 110, 0.4);
+      }
+
+      revealStep(`#step-${step}-text`, start);
+      revealStep(`#step-${step}-visual`, start + 0.08, { scale: 1, pointerEvents: "auto" }, 0.7);
+      howWorksTimeline.to({}, { duration: 0.55 });
     });
 
     // Editorial Parallax
