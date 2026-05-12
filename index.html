@@ -814,6 +814,107 @@
       color: #991b1b;
     }
 
+    .success-popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(23, 13, 7, 0.62);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 2100;
+    }
+
+    .success-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .success-popup-card {
+      width: min(100%, 480px);
+      background: linear-gradient(180deg, #fffaf6 0%, #ffffff 100%);
+      border-radius: 30px;
+      padding: 30px 28px 26px;
+      border: 1px solid rgba(201, 144, 58, 0.14);
+      box-shadow: 0 28px 90px rgba(61, 43, 31, 0.24);
+      position: relative;
+      text-align: center;
+    }
+
+    .success-popup-close {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(201, 144, 58, 0.1);
+      color: var(--text-main);
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .success-popup-close:hover {
+      background: rgba(201, 144, 58, 0.18);
+      transform: rotate(90deg);
+    }
+
+    .success-popup-icon {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(47, 111, 97, 0.12);
+      color: #215347;
+      font-size: 28px;
+    }
+
+    .success-popup-title {
+      font-size: 34px;
+      line-height: 1.02;
+      color: var(--text-main);
+    }
+
+    .success-popup-copy {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .success-popup-actions {
+      margin-top: 22px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .success-popup-secondary {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(140, 110, 90, 0.16);
+      background: #fff;
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .success-popup-secondary:hover {
+      background: #faf6f0;
+    }
+
 
     @media (max-width: 768px) {
       .hero-title { font-size: 48px; }
@@ -3012,18 +3113,35 @@
         <button class="btn-primary early-access-submit" type="submit">Submit</button>
       </form>
 
-      <a
-        class="whatsapp-community"
-        href="https://wa.me/?text=Hi%20KinKnot%2C%20I%20would%20love%20to%20join%20the%20community."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <i class="fa-brands fa-whatsapp"></i>
-        Join WhatsApp Community
-      </a>
-
       <div class="early-access-success" id="early-access-success">
         Thanks. Your early access interest has been captured.
+      </div>
+    </div>
+  </div>
+
+  <div class="success-popup" id="waitlist-success-popup" aria-hidden="true">
+    <div class="success-popup-card" role="dialog" aria-modal="true" aria-labelledby="waitlist-success-title">
+      <button class="success-popup-close" type="button" aria-label="Close success popup" data-close-success-popup>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="success-popup-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2 class="success-popup-title" id="waitlist-success-title">You are in.</h2>
+      <p class="success-popup-copy">
+        Your waitlist submission was successful. Join the WhatsApp community to get updates, early access news, and launch announcements first.
+      </p>
+      <div class="success-popup-actions">
+        <a
+          class="whatsapp-community"
+          href="https://wa.me/?text=Hi%20KinKnot%2C%20I%20would%20love%20to%20join%20the%20community."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          Join WhatsApp Community
+        </a>
+        <button class="success-popup-secondary" type="button" data-close-success-popup>Close</button>
       </div>
     </div>
   </div>
@@ -3032,7 +3150,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics, isSupported as isAnalyticsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    import { addDoc, collection, getFirestore, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { doc, getFirestore, serverTimestamp, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const { Lenis, gsap, ScrollTrigger } = window;
 
@@ -3112,6 +3230,7 @@
     const earlyAccessRole = document.getElementById('early-access-role');
     const earlyAccessSuccess = document.getElementById('early-access-success');
     const earlyAccessSubmit = earlyAccessForm?.querySelector('.early-access-submit');
+    const waitlistSuccessPopup = document.getElementById('waitlist-success-popup');
     const inlineWaitlistForm = document.querySelector('.inline-email-form');
     const inlineWaitlistEmail = document.getElementById('inline-waitlist-email');
 
@@ -3166,6 +3285,10 @@
       return `Unable to save your details right now${errorCode ? ` (${errorCode})` : ''}.`;
     }
 
+    function getWaitlistDocumentId(email) {
+      return email.trim().toLowerCase();
+    }
+
     function openEarlyAccessModal(defaultEmail = '', defaultRole = '', entryPoint = 'modal') {
       if (!earlyAccessModal || !earlyAccessForm || !earlyAccessEmail || !earlyAccessRole) {
         return;
@@ -3209,6 +3332,28 @@
       lenis.start();
     }
 
+    function openWaitlistSuccessPopup() {
+      if (!waitlistSuccessPopup) {
+        return;
+      }
+
+      waitlistSuccessPopup.classList.add('is-open');
+      waitlistSuccessPopup.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      lenis.stop();
+    }
+
+    function closeWaitlistSuccessPopup() {
+      if (!waitlistSuccessPopup) {
+        return;
+      }
+
+      waitlistSuccessPopup.classList.remove('is-open');
+      waitlistSuccessPopup.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      lenis.start();
+    }
+
     document.addEventListener('click', (event) => {
       const openTrigger = event.target.closest('[data-open-early-access]');
       if (openTrigger) {
@@ -3219,6 +3364,12 @@
       const closeTrigger = event.target.closest('[data-close-early-access]');
       if (closeTrigger) {
         closeEarlyAccessModal();
+        return;
+      }
+
+      const successCloseTrigger = event.target.closest('[data-close-success-popup]');
+      if (successCloseTrigger) {
+        closeWaitlistSuccessPopup();
       }
     });
 
@@ -3228,8 +3379,23 @@
       }
     });
 
+    waitlistSuccessPopup?.addEventListener('click', (event) => {
+      if (event.target === waitlistSuccessPopup) {
+        closeWaitlistSuccessPopup();
+      }
+    });
+
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && earlyAccessModal?.classList.contains('is-open')) {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      if (waitlistSuccessPopup?.classList.contains('is-open')) {
+        closeWaitlistSuccessPopup();
+        return;
+      }
+
+      if (earlyAccessModal?.classList.contains('is-open')) {
         closeEarlyAccessModal();
       }
     });
@@ -3245,11 +3411,13 @@
       setEarlyAccessSubmittingState(true);
 
       const email = earlyAccessEmail?.value.trim() || '';
+      const emailLowercase = getWaitlistDocumentId(email);
       const role = earlyAccessRole?.value || '';
 
       try {
-        await addDoc(collection(db, 'waitlist'), {
+        await setDoc(doc(db, 'waitlist', emailLowercase), {
           email,
+          emailLowercase,
           role,
           entryPoint: earlyAccessForm.dataset.entryPoint || 'modal',
           pagePath: window.location.pathname,
@@ -3260,8 +3428,14 @@
 
         setEarlyAccessMessage('Thanks. Your early access interest has been captured.');
         earlyAccessForm.reset();
+        closeEarlyAccessModal();
+        openWaitlistSuccessPopup();
       } catch (error) {
         console.error('Failed to save waitlist submission:', error);
+        if (error?.code === 'permission-denied') {
+          setEarlyAccessMessage('This email is already on the waitlist. One email can only be submitted once, regardless of role or entry point.', 'error');
+          return;
+        }
         setEarlyAccessMessage(getWaitlistErrorMessage(error), 'error');
       } finally {
         setEarlyAccessSubmittingState(false);

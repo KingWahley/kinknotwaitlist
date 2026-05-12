@@ -579,6 +579,62 @@
       background: var(--panel-soft);
     }
 
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .pagination-bar[hidden] {
+      display: none;
+    }
+
+    .pagination-copy {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .pagination-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pagination-btn {
+      min-width: 108px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 26, 21, 0.1);
+      background: #fff;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .pagination-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: rgba(21, 108, 67, 0.22);
+    }
+
+    .pagination-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .pagination-page {
+      min-width: 96px;
+      text-align: center;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -931,6 +987,14 @@
         </div>
 
         <div class="table-wrap" id="table-wrap"></div>
+        <div class="pagination-bar" id="pagination-bar">
+          <div class="pagination-copy" id="pagination-copy">Showing 0 to 0 of 0 entries</div>
+          <div class="pagination-actions">
+            <button class="pagination-btn" type="button" id="pagination-prev">Previous</button>
+            <div class="pagination-page" id="pagination-page">Page 1 of 1</div>
+            <button class="pagination-btn" type="button" id="pagination-next">Next</button>
+          </div>
+        </div>
       </section>
 
       <section class="analytics-panel hero-lower" id="analytics-panel" hidden>
@@ -1037,6 +1101,11 @@
     const tableWrap = document.getElementById("table-wrap");
     const tablePanel = document.getElementById("table-panel");
     const analyticsPanel = document.getElementById("analytics-panel");
+    const paginationBar = document.getElementById("pagination-bar");
+    const paginationCopy = document.getElementById("pagination-copy");
+    const paginationPrev = document.getElementById("pagination-prev");
+    const paginationNext = document.getElementById("pagination-next");
+    const paginationPage = document.getElementById("pagination-page");
     const searchInput = document.getElementById("table-search");
     const clearSearchButton = document.getElementById("clear-search");
     const navButtons = Array.from(document.querySelectorAll(".nav-btn[data-view]"));
@@ -1101,6 +1170,8 @@
     let allRows = [];
     let currentView = "all";
     let currentSearch = "";
+    let currentPage = 1;
+    const ROWS_PER_PAGE = 20;
 
     function normalizeRole(role) {
       if (role === "event-planner") {
@@ -1222,6 +1293,38 @@
       });
     }
 
+    function getTotalPages(totalRows) {
+      return Math.max(1, Math.ceil(totalRows / ROWS_PER_PAGE));
+    }
+
+    function getPaginatedRows(rows) {
+      const totalPages = getTotalPages(rows.length);
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+
+      const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
+      return rows.slice(startIndex, startIndex + ROWS_PER_PAGE);
+    }
+
+    function updatePagination(rows) {
+      const totalRows = rows.length;
+      const totalPages = getTotalPages(totalRows);
+
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+
+      const startIndex = totalRows === 0 ? 0 : ((currentPage - 1) * ROWS_PER_PAGE) + 1;
+      const endIndex = Math.min(currentPage * ROWS_PER_PAGE, totalRows);
+
+      paginationBar.hidden = false;
+      paginationCopy.textContent = `Showing ${startIndex} to ${endIndex} of ${totalRows} entries`;
+      paginationPage.textContent = `Page ${currentPage} of ${totalPages}`;
+      paginationPrev.disabled = currentPage <= 1;
+      paginationNext.disabled = currentPage >= totalPages;
+    }
+
     function buildEmptyState(message) {
       return `<div class="empty-state">${escapeHtml(message)}</div>`;
     }
@@ -1289,6 +1392,7 @@
       const meta = viewMeta[currentView];
       const viewRows = getRowsForView(currentView);
       const visibleRows = getVisibleRows();
+      const paginatedRows = getPaginatedRows(visibleRows);
       const isAnalyticsView = currentView === "analytics";
 
       quickFilterLabel.textContent = meta.label;
@@ -1302,6 +1406,7 @@
       tablePanel.hidden = isAnalyticsView;
       searchInput.disabled = isAnalyticsView;
       clearSearchButton.disabled = isAnalyticsView;
+      paginationBar.hidden = isAnalyticsView;
 
       if (isAnalyticsView) {
         searchInput.value = "";
@@ -1314,7 +1419,8 @@
 
       tableHeading.textContent = meta.tableHeading;
       tableDescription.textContent = meta.tableDescription;
-      tableWrap.innerHTML = buildTable(visibleRows);
+      tableWrap.innerHTML = buildTable(paginatedRows);
+      updatePagination(visibleRows);
     }
 
     async function loadWaitlistData() {
@@ -1344,6 +1450,7 @@
           };
         }).sort((left, right) => right.submittedAtMillis - left.submittedAtMillis);
 
+        currentPage = 1;
         renderCurrentView();
 
         const refreshedAt = new Intl.DateTimeFormat("en-NG", {
@@ -1496,12 +1603,14 @@
     navButtons.forEach((button) => {
       button.addEventListener("click", () => {
         currentView = button.dataset.view;
+        currentPage = 1;
         renderCurrentView();
       });
     });
 
     searchInput.addEventListener("input", () => {
       currentSearch = searchInput.value;
+      currentPage = 1;
       renderCurrentView();
     });
 
@@ -1515,6 +1624,26 @@
     clearSearchButton.addEventListener("click", () => {
       searchInput.value = "";
       currentSearch = "";
+      currentPage = 1;
+      renderCurrentView();
+    });
+
+    paginationPrev.addEventListener("click", () => {
+      if (currentPage <= 1) {
+        return;
+      }
+
+      currentPage -= 1;
+      renderCurrentView();
+    });
+
+    paginationNext.addEventListener("click", () => {
+      const totalPages = getTotalPages(getVisibleRows().length);
+      if (currentPage >= totalPages) {
+        return;
+      }
+
+      currentPage += 1;
       renderCurrentView();
     });
 

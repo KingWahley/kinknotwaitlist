@@ -21,6 +21,7 @@ Thumbs.db
 Desktop.ini
 .vscode/
 .idea/
+.history/
 
 # Build output
 dist/
