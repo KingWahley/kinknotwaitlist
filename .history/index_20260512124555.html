@@ -4,63 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KinKnot - Nigeria's #1 Wedding Planning Platform</title>
-  <meta
-    name="description"
-    content="KinKnot is Nigeria's first all-in-one wedding platform. Find verified vendors, plan your wedding, sign digital contracts, and make secure payments with confidence."
-  />
-  <meta
-    name="keywords"
-    content="wedding vendors Nigeria, wedding planning Lagos, Nigerian wedding platform, book wedding vendors, wedding photographer Lagos, wedding caterer Nigeria, secure wedding payments"
-  />
-  <meta name="author" content="KinKnot" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.kinknot.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.kinknot.com" />
-  <meta property="og:title" content="KinKnot - Where Families Tie the Knot" />
-  <meta
-    property="og:description"
-    content="Nigeria's first all-in-one wedding platform. Find verified vendors, plan your wedding, and make secure payments with confidence."
-  />
-  <meta property="og:image" content="https://www.kinknot.com/og-image.jpg" />
-  <meta property="og:site_name" content="KinKnot" />
-  <meta property="og:locale" content="en_NG" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KinKnot - Where Families Tie the Knot" />
-  <meta
-    name="twitter:description"
-    content="Nigeria's first all-in-one wedding platform for verified vendors, secure payments, and stress-free wedding planning."
-  />
-  <meta name="twitter:image" content="https://www.kinknot.com/og-image.jpg" />
-  <meta name="geo.region" content="NG" />
-  <meta name="geo.placename" content="Lagos, Nigeria" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "KinKnot",
-      "url": "https://www.kinknot.com",
-      "description": "Nigeria's first all-in-one wedding platform.",
-      "email": "hello@kinknot.com",
-      "foundingLocation": "Lagos, Nigeria",
-      "areaServed": "Nigeria"
-    }
-  </script>
-  <meta name="geo.region" content="NG" />
-  <meta name="geo.placename" content="Lagos, Nigeria" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "KinKnot",
-      "url": "https://www.kinknot.com",
-      "description": "Nigeria's first all-in-one wedding platform.",
-      "email": "hello@kinknot.com",
-      "foundingLocation": "Lagos, Nigeria",
-      "areaServed": "Nigeria"
-    }
-  </script>
+  <title>KinKnot | Smarter Wedding Planning</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -70,12 +14,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --primary: #c9903a;
-      --primary-dark: #b8822a;
-      --bg-sand: #faf6f0;
-      --bg-light: #f2eae0;
-      --text-main: #3d2b1f;
-      --text-muted: #8c6e5a;
+      --primary: #0f4ea7;
+      --primary-dark: #08357f;
+      --bg-sand: #f3efeb;
+      --bg-light: #ece7e1;
+      --text-main: #2f1d12;
+      --text-muted: #7a6a5f;
       --white: #ffffff;
       --radius-full: 999px;
       --radius-lg: 34px;
@@ -194,15 +138,69 @@
       font-size: 15px;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(201, 144, 58, 0.22);
+      box-shadow: 0 4px 14px rgba(15, 78, 167, 0.2);
     }
 
     .btn-primary:hover {
       background: var(--primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(201, 144, 58, 0.34);
+      box-shadow: 0 6px 20px rgba(15, 78, 167, 0.3);
     }
 
+
+
+    .faq-item {
+      background: #f7f3ee;
+      border-radius: 20px;
+      padding: 24px 32px;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .faq-item:hover {
+      background: #eeeae4;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 700;
+      padding-right: 40px; /* Space for the icon */
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      margin-top: 16px;
+    }
+
+    .faq-item::after {
+      content: '\f067'; /* FontAwesome Plus */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 32px;
+      top: 26px;
+      font-size: 18px;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active::after {
+      content: '\f068'; /* FontAwesome Minus */
+      transform: rotate(180deg);
+    }
 
 
 
@@ -293,7 +291,7 @@
     .mock-header { height: 28px; width: 60%; background: #f0f0f0; border-radius: 6px; margin-bottom: 24px; }
     .mock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
     .mock-box { height: 60px; background: #f8f8f8; border-radius: 12px; }
-    .mock-chart { height: 180px; background: linear-gradient(135deg, var(--primary), #e8b86d); border-radius: 20px; margin-bottom: 24px; }
+    .mock-chart { height: 180px; background: linear-gradient(135deg, var(--primary), #4facfe); border-radius: 20px; margin-bottom: 24px; }
     .mock-item { height: 80px; background: #f8f8f8; border-radius: 16px; margin-bottom: 12px; }
 
     /* Features Grid */
@@ -693,7 +691,10 @@
         grid-row: auto;
       }
 
-      
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
 
       .inline-email-form {
         flex-direction: column;
@@ -928,15 +929,15 @@
     .process-card:hover {
       transform: translateY(-8px);
       background: var(--white);
-      box-shadow: 0 30px 60px rgba(201, 144, 58, 0.12);
-      border-color: rgba(201, 144, 58, 0.12);
+      box-shadow: 0 30px 60px rgba(15, 78, 167, 0.08);
+      border-color: rgba(15, 78, 167, 0.1);
     }
 
     .process-number {
       font-size: 14px;
       font-weight: 800;
       color: var(--primary);
-      background: rgba(201, 144, 58, 0.12);
+      background: rgba(15, 78, 167, 0.1);
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -974,7 +975,7 @@
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
-      box-shadow: 0 20px 40px rgba(201, 144, 58, 0.22);
+      box-shadow: 0 20px 40px rgba(15, 78, 167, 0.2);
     }
 
 
@@ -1407,18 +1408,34 @@
 </head>
 <body>
 
- 
+  <!-- NAVBAR -->
+  <!-- <nav class="navbar">
+    <div class="logo">KinKnot</div>
+
+    <div class="nav-links">
+      <div>Couples</div>
+      <div>Vendors</div>
+      <div>Trust</div>
+      <div>Our Story</div>
+      <div>FAQ</div>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Log In</a>
+      <button class="btn-primary">Join Waitlist</button>
+    </div>
+  </nav> -->
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">KinKnot</div>
   <ul class="nav-links">
-    <li><a href="#join-waitlist">Couples</a></li>
-    <li><a href="#vendors">Vendors</a></li>
-    <li><a href="#event-planners">Event Planners</a></li>
+    <li><a href="#">Couples</a></li>
+    <li><a href="#">Vendors</a></li>
+    <li><a href="#">FAQ</a></li>
   </ul>
   <div class="nav-right">
-    <button class="btn-fill-sm">Join Early Access</button>
+    <button class="btn-fill-sm">Sign Up</button>
   </div>
 </nav>
 
@@ -1430,10 +1447,10 @@
 
 <!-- HERO TEXT -->
 <div class="hero">
-  <div class="hero-pill">Limited Early Access - Lagos, Nigeria</div>
-  <h1>Where Families Tie The Knot
+  <div class="hero-pill">Wedding Planning but better</div>
+  <h1>Where Families Tie The knot
   </h1>
-  <p>Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, book with confidence, and pay securely with your money protected until your vendor delivers.</p>
+  <p>Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, book with confidence and pay securely — with your money protected until your vendor delivers.</p>
   <div class="hero-btns">
     <button class="btn-primary">Get Early Access</button>
     <button class="btn-secondary">For Vendors</button>
@@ -1659,25 +1676,25 @@
     <div class="phone-container">
       <div class="phone-text">
         <h2 class="section-title">
-          Wedding planning in Nigeria is broken.
+          Wedding Planning Shouldn’t Be Hard.
         </h2>
         <p style="margin-top:24px; font-size:18px; line-height:1.8; color:var(--text-muted);">
-          Couples still juggle Instagram DMs, WhatsApp chats, spreadsheets, and risky deposits just to plan one special day.
+          Too many couples spend their engagement stressed about missed details, vendor drama, and things slipping through the cracks. 
         </p>
        
         <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 16px;">
-           <p style="font-weight:bold;">It doesn't have to stay this chaotic.</p>
+           <p style="font-weight:bold;">This doesn't have to be your story.</p>
           <div style="display: flex; gap: 12px; align-items: center;">
             <div style="width: 24px; height: 24px; border-radius: 50%; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fa-solid fa-xmark"></i></div>
-            <span style="font-weight: 600;">No more unverified vendors taking risky deposits</span>
+            <span style="font-weight: 600;">No more unverified vendor risks</span>
           </div>
           <div style="display: flex; gap: 12px; align-items: center;">
             <div style="width: 24px; height: 24px; border-radius: 50%; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 14px;"><i class="fa-solid fa-xmark"></i></div>
-            <span style="font-weight: 600;">No more budget chaos across multiple vendors</span>
+            <span style="font-weight: 600;">No more scattered payment tracking</span>
           </div>
           <div style="display: flex; gap: 12px; align-items: center;">
             <div style="width: 24px; height: 24px; border-radius: 50%; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 14px;">✕</div>
-            <span style="font-weight: 600;">No more planning across scattered apps and messages</span>
+            <span style="font-weight: 600;">No more communication chaos</span>
           </div>
         </div>
       </div>
@@ -1742,7 +1759,7 @@
         <!-- Intro Step -->
         <div class="step-content" id="step-intro-text" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 900px; text-align: center; z-index: 100;">
           <!-- <h2 class="section-title" style="font-size: 72px;">The Solution to Planning Stress.</h2> -->
-          <p style="margin-top:24px; font-size:56px; font-weight: 800; color:var(--text-main); font-family: var(--font-serif); max-width: 800px; line-height: 1.1; margin-left: auto; margin-right: auto;">Everything you need for wedding planning, finally working together in one trusted place.</p>
+          <p style="margin-top:24px; font-size:56px; font-weight: 800; color:var(--text-main); font-family: var(--font-serif); max-width: 800px; line-height: 1.1; margin-left: auto; margin-right: auto;">We've Redesigned The Wedding Experience To Eliminate Chaos And Replace It With Clarity.</p>
         </div>
         <div class="how-works-content">
           
@@ -1759,7 +1776,7 @@
                 <span style="opacity: 0.3;">●</span>
               </div>
               <h2 class="walkthrough-title">Vetted Professionals.</h2>
-              <p class="walkthrough-text">End the fear of vendor fraud. Connect with professionals who have been screened for identity, credibility, and delivery quality before you ever book.</p>
+              <p class="walkthrough-text">End the fear of vendor ghosting. Connect with pros who have passed our 5-point verification standard, ensuring reliability and quality for every single detail.</p>
             </div>
 
             <!-- Step 2 Text -->
@@ -1772,7 +1789,7 @@
                 <span style="opacity: 0.3;">●</span>
               </div>
               <h2 class="walkthrough-title">Escrow Protection.</h2>
-              <p class="walkthrough-text">Pay with confidence. KinKnot holds deposits securely and releases funds in milestones only when agreed services are delivered.</p>
+              <p class="walkthrough-text">Stop worrying about your money. Our secure escrow system holds your deposits safely and only releases them when the service is delivered as promised.</p>
             </div>
 
             <!-- Step 3 Text -->
@@ -1785,7 +1802,7 @@
                 <span style="opacity: 0.3;">●</span>
               </div>
               <h2 class="walkthrough-title">Unified Dashboard.</h2>
-              <p class="walkthrough-text">Track tasks, vendors, guests, and budgets in one elegant dashboard built to keep your entire wedding journey organized.</p>
+              <p class="walkthrough-text">Eliminate manual tracking. Your timeline, guests, and budgets are synchronized in one elegant dashboard that keeps everyone on the same page.</p>
             </div>
 
             <!-- Step 4 Text -->
@@ -1798,7 +1815,7 @@
                 <span style="opacity: 0.3;">●</span>
               </div>
               <h2 class="walkthrough-title">Centralized Messaging.</h2>
-              <p class="walkthrough-text">Keep every vendor conversation in one place. No more switching between chats, DMs, and voice notes to find important details.</p>
+              <p class="walkthrough-text">End the WhatsApp chaos. Our messaging hub keeps all vendor conversations organized, searchable, and separate from your personal life.</p>
             </div>
 
             <!-- Step 5 Text -->
@@ -1811,7 +1828,7 @@
                 <span style="opacity: 1;">●</span>
               </div>
               <h2 class="walkthrough-title">Total Peace of Mind.</h2>
-              <p class="walkthrough-text">From discovery to delivery, KinKnot replaces guesswork with clarity so you can focus on the joy of getting married.</p>
+              <p class="walkthrough-text">From the first draft to the final toast, KinKnot removes the stress so you can focus on what matters most: celebrating your union.</p>
             </div>
 
           </div>
@@ -1904,9 +1921,9 @@
    <!-- PROCESS SECTION -->
   <section class="process-section">
     <div class="section-header">
-      <h2 class="section-title">Your wedding journey, simplified</h2>
+      <h2 class="section-title">The Path to Perfection</h2>
       <p style="margin-top:20px; color:var(--text-muted); font-size:18px;">
-        A clearer path from discovery to delivery, built to help modern couples plan with confidence.
+        Our 4-step delivery framework ensures your wedding planning is as beautiful as the day itself.
       </p>
     </div>
     
@@ -1916,28 +1933,28 @@
         <div class="process-number">01</div>
         <div class="process-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
         <h3 class="process-card-title">Discovery</h3>
-        <p class="process-card-text">Set your date, location, and priorities, then start planning from a dashboard tailored to your wedding.</p>
+        <p class="process-card-text">Set your vision and explore our curated collection of verified wedding professionals.</p>
       </div>
       <!-- Step 2 -->
       <div class="process-card">
         <div class="process-number">02</div>
         <div class="process-icon"><i class="fa-solid fa-fingerprint"></i></div>
         <h3 class="process-card-title">Vetting</h3>
-        <p class="process-card-text">Compare verified vendors by category, price, reviews, and availability before making a commitment.</p>
+        <p class="process-card-text">Connect with vendors who have cleared our mandatory background and portfolio checks.</p>
       </div>
       <!-- Step 3 -->
       <div class="process-card">
         <div class="process-number">03</div>
         <div class="process-icon"><i class="fa-solid fa-shield-heart"></i></div>
         <h3 class="process-card-title">Escrow</h3>
-        <p class="process-card-text">Book with digital contracts and protected payments, with funds released only as work is delivered.</p>
+        <p class="process-card-text">Book with 100% confidence. Your payments are held securely until the vendor delivers.</p>
       </div>
       <!-- Step 4 -->
       <div class="process-card">
         <div class="process-number">04</div>
         <div class="process-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
         <h3 class="process-card-title">Delivery</h3>
-        <p class="process-card-text">Celebrate knowing every major detail has been tracked, protected, and kept on schedule.</p>
+        <p class="process-card-text">Walk down the aisle knowing every detail is coordinated and protected.</p>
       </div>
     </div>
 
@@ -2681,63 +2698,30 @@
   
 
   <!-- VENDOR SECTION -->
-  <section id="vendors" style="padding:140px 40px; background:var(--white); text-align:center;">
-    <h2 class="section-title" style="max-width:900px; margin:0 auto;">Grow your wedding business with serious, ready-to-book couples.</h2>
+  <section style="padding:140px 40px; background:var(--white); text-align:center;">
+    <h2 class="section-title" style="max-width:900px; margin:0 auto;">Professional vendors deserve professional systems.</h2>
     <p style="margin-top:24px; font-size:20px; color:var(--text-muted); max-width:700px; margin-left:auto; margin-right:auto;">
-      Stop chasing clients in scattered DMs. KinKnot gives verified vendors better visibility, protected payments, and a more professional booking flow.
+      Join the first wave of verified vendors and get noticed by modern couples looking for trust and quality.
     </p>
     <div style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1000px; margin-left: auto; margin-right: auto;">
       <div style="text-align: center;">
         <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-chart-line"></i></div>
         <h4 style="font-weight: 800; margin-bottom: 8px;">Direct Leads</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Reach couples who are actively planning and specifically looking for verified professionals.</p>
+        <p style="font-size: 14px; color: var(--text-muted);">Reach couples specifically looking for verified quality.</p>
       </div>
       <div style="text-align: center;">
         <div style="font-size: 40px; margin-bottom: 16px;">🛡️</div>
         <h4 style="font-weight: 800; margin-bottom: 8px;">Secure Payouts</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Stop chasing balances. Deposits are protected and payouts follow a clear delivery flow.</p>
+        <p style="font-size: 14px; color: var(--text-muted);">No more chasing invoices. Payments are guaranteed via escrow.</p>
       </div>
       <div style="text-align: center;">
         <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-gem"></i></div>
         <h4 style="font-weight: 800; margin-bottom: 8px;">Pro Profile</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Showcase your work, bookings, and credibility on a profile built to convert trust into enquiries.</p>
+        <p style="font-size: 14px; color: var(--text-muted);">Showcase your work on a premium, cinematic dashboard.</p>
       </div>
     </div>
     <div style="margin-top: 60px; display: flex; justify-content: center; gap: 20px;">
       <button class="btn-primary" style="padding:20px 44px; font-size:16px;" onclick="scrollToWaitlist()">Apply as Vendor</button>
-    </div>
-  </section>
-
-  <!-- EVENT PLANNERS SECTION -->
-  <section id="event-planners" style="padding:140px 40px; background:var(--bg-light); text-align:center;">
-    <h2 class="section-title" style="max-width:900px; margin:0 auto;">Event planners deserve a calmer, more coordinated way to deliver unforgettable weddings.</h2>
-    <p style="margin-top:24px; font-size:20px; color:var(--text-muted); max-width:760px; margin-left:auto; margin-right:auto;">
-      KinKnot helps planners manage clients, vendors, payments, and timelines from one place so every celebration feels more organized behind the scenes.
-    </p>
-    <div style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1080px; margin-left: auto; margin-right: auto;">
-      <div style="text-align: center;">
-        <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-calendar-check"></i></div>
-        <h4 style="font-weight: 800; margin-bottom: 8px;">Client Timelines</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Track milestones, due dates, and key planning moments without relying on scattered spreadsheets.</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-people-arrows"></i></div>
-        <h4 style="font-weight: 800; margin-bottom: 8px;">Vendor Coordination</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Keep every conversation, update, and approval in one place across multiple vendors and couples.</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-file-signature"></i></div>
-        <h4 style="font-weight: 800; margin-bottom: 8px;">Clear Workflows</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Move from enquiry to contract to delivery with cleaner handoffs and less manual follow-up.</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 40px; margin-bottom: 16px; color: var(--primary);"><i class="fa-solid fa-handshake-angle"></i></div>
-        <h4 style="font-weight: 800; margin-bottom: 8px;">Trusted Operations</h4>
-        <p style="font-size: 14px; color: var(--text-muted);">Work with verified professionals and protected payment flows that give clients extra confidence.</p>
-      </div>
-    </div>
-    <div style="margin-top: 60px; display: flex; justify-content: center; gap: 20px;">
-      <button class="btn-primary" style="padding:20px 44px; font-size:16px;" onclick="scrollToWaitlist()">Join as Event Planner</button>
     </div>
   </section>
 
@@ -2782,7 +2766,36 @@
     </div>
   </section> -->
 
- 
+  <!-- FAQ -->
+  <section style="padding:140px 40px; background:var(--white);">
+    <div class="faq-grid" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:start;">
+      <div>
+        <h2 class="section-title" style="text-align: left;">Frequently Asked Questions</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="faq-item">
+          <div class="faq-question">How does vendor verification work?</div>
+          <div class="faq-answer">We perform multi-step background checks, including identity verification, business registration audits, and mandatory review cycles from past couples to ensure every vendor is professional and reliable.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What is escrow payment protection?</div>
+          <div class="faq-answer">Your payments are held securely in a protected account and only released to the vendor after they fulfill their service, protecting you from no-shows and fraud.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">When will the full platform launch?</div>
+          <div class="faq-answer">We are currently in a private beta phase. By joining the waitlist, you'll be among the first to receive an invite as we roll out in late 2024.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How can I join as a vendor?</div>
+          <div class="faq-answer">Simply select "Wedding Vendor" in the waitlist form. We'll prioritize early-onboarding for vendors who join the waitlist now.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is KinKnot available in my city?</div>
+          <div class="faq-answer">We are launching initially in major urban hubs across Nigeria, including Lagos, Abuja, and Port Harcourt, with plans to expand rapidly in 2025.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     // Initialize Lenis Smooth Scroll
@@ -3013,7 +3026,12 @@
       }
     });
 
-  
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
 
 
   </script>
@@ -3027,11 +3045,11 @@
           <span style="background: rgba(255,255,255,0.15); color: white; padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-gem" style="font-size: 11px; opacity: 0.8;"></i> Founder Perks</span>
           <span style="background: rgba(255,255,255,0.15); color: white; padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-check-double" style="font-size: 11px; opacity: 0.8;"></i> Verified Status</span>
         </div>
-        <h2 class="cta-title">Ready to plan your perfect day?</h2>
+        <h2 class="cta-title">Your wedding sidekick is ready.</h2>
         <p style="margin-top:24px; font-size:19px; color:rgba(255,255,255,0.9);">
-          Join early access and be among the first couples and vendors to experience a smarter way to plan weddings in Nigeria.
+          Join the waitlist and plan your wedding with confidence.
         </p>
-        <button class="btn-white" style="color: var(--primary); margin-top: 32px;" onclick="scrollToWaitlist()">Claim Early Access</button>
+        <button class="btn-white" style="color: var(--primary); margin-top: 32px;" onclick="scrollToWaitlist()">Get Early Access Now</button>
       </div>
       <div class="footer-visual" style="opacity: 0.05;">KinKnot</div>
     </div>
@@ -3039,6 +3057,5 @@
 
 </body>
 </html>
-
 
 

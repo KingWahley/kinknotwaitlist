@@ -205,6 +205,60 @@
 
 
 
+    .faq-item {
+      background: #f7f3ee;
+      border-radius: 20px;
+      padding: 24px 32px;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .faq-item:hover {
+      background: #eeeae4;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 700;
+      padding-right: 40px; /* Space for the icon */
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      margin-top: 16px;
+    }
+
+    .faq-item::after {
+      content: '\f067'; /* FontAwesome Plus */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 32px;
+      top: 26px;
+      font-size: 18px;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active::after {
+      content: '\f068'; /* FontAwesome Minus */
+      transform: rotate(180deg);
+    }
+
+
 
     /* Phone Section */
     .phone-section {
@@ -693,7 +747,10 @@
         grid-row: auto;
       }
 
-      
+      .faq-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
 
       .inline-email-form {
         flex-direction: column;
@@ -1407,15 +1464,31 @@
 </head>
 <body>
 
- 
+  <!-- NAVBAR -->
+  <!-- <nav class="navbar">
+    <div class="logo">KinKnot</div>
+
+    <div class="nav-links">
+      <div>Couples</div>
+      <div>Vendors</div>
+      <div>Trust</div>
+      <div>Our Story</div>
+      <div>FAQ</div>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Log In</a>
+      <button class="btn-primary">Join Early Access</button>
+    </div>
+  </nav> -->
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">KinKnot</div>
   <ul class="nav-links">
-    <li><a href="#join-waitlist">Couples</a></li>
-    <li><a href="#vendors">Vendors</a></li>
-    <li><a href="#event-planners">Event Planners</a></li>
+    <li><a href="#">Couples</a></li>
+    <li><a href="#">Vendors</a></li>
+    <li><a href="#">FAQ</a></li>
   </ul>
   <div class="nav-right">
     <button class="btn-fill-sm">Join Early Access</button>
@@ -1947,7 +2020,7 @@
   <!-- EDITORIAL SHOWCASE -->
   <section style="padding: 0 40px 140px; background: var(--bg-light);">
     <div id="editorial-parallax" style="max-width: 1200px; margin: 0 auto; height: 600px; border-radius: 48px; background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80&fit=crop'); background-size: cover; background-position: center; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 60px;">
-      <div style="position: absolute; inset: 0; background: rgba(15, 78, 167, 0.4);"></div>
+      <div style="position: absolute; inset: 0; background: rgba(94, 65, 29, 0.34);"></div>
       <div style="position: relative; z-index: 2; color: white; max-width: 600px;">
         <div style="display:inline-block; padding: 6px 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(12px); border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);">The KinKnot Standard</div>
         <h2 style="font-size: 48px; font-weight: 800; line-height: 1.1;">Designed for the most intentional moments of your life.</h2>
@@ -2681,7 +2754,7 @@
   
 
   <!-- VENDOR SECTION -->
-  <section id="vendors" style="padding:140px 40px; background:var(--white); text-align:center;">
+  <section style="padding:140px 40px; background:var(--white); text-align:center;">
     <h2 class="section-title" style="max-width:900px; margin:0 auto;">Grow your wedding business with serious, ready-to-book couples.</h2>
     <p style="margin-top:24px; font-size:20px; color:var(--text-muted); max-width:700px; margin-left:auto; margin-right:auto;">
       Stop chasing clients in scattered DMs. KinKnot gives verified vendors better visibility, protected payments, and a more professional booking flow.
@@ -2709,7 +2782,7 @@
   </section>
 
   <!-- EVENT PLANNERS SECTION -->
-  <section id="event-planners" style="padding:140px 40px; background:var(--bg-light); text-align:center;">
+  <section style="padding:140px 40px; background:var(--bg-light); text-align:center;">
     <h2 class="section-title" style="max-width:900px; margin:0 auto;">Event planners deserve a calmer, more coordinated way to deliver unforgettable weddings.</h2>
     <p style="margin-top:24px; font-size:20px; color:var(--text-muted); max-width:760px; margin-left:auto; margin-right:auto;">
       KinKnot helps planners manage clients, vendors, payments, and timelines from one place so every celebration feels more organized behind the scenes.
@@ -2782,7 +2855,36 @@
     </div>
   </section> -->
 
- 
+  <!-- FAQ -->
+  <section style="padding:140px 40px; background:var(--white);">
+    <div class="faq-grid" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:start;">
+      <div>
+        <h2 class="section-title" style="text-align: left;">Frequently Asked Questions</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="faq-item">
+          <div class="faq-question">How does vendor verification work?</div>
+          <div class="faq-answer">We perform multi-step background checks, including identity verification, business registration audits, and mandatory review cycles from past couples to ensure every vendor is professional and reliable.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What is escrow payment protection?</div>
+          <div class="faq-answer">Your payments are held securely in a protected account and only released to the vendor after they fulfill their service, protecting you from no-shows and fraud.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">When will the full platform launch?</div>
+          <div class="faq-answer">We are currently onboarding early users in phases. By joining the waitlist, you will be among the first to receive access as we expand across Lagos and other key cities.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How can I join as a vendor?</div>
+          <div class="faq-answer">Simply select "Wedding Vendor" in the waitlist form. We'll prioritize early-onboarding for vendors who join the waitlist now.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is KinKnot available in my city?</div>
+          <div class="faq-answer">KinKnot is being introduced first for couples and vendors in Lagos, with broader expansion planned across major cities in Nigeria.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     // Initialize Lenis Smooth Scroll
@@ -2898,12 +3000,12 @@
     // How It Works sticky reveal animation
     const stepIds = ["intro", 1, 2, 3, 4, 5];
     const stepThemes = {
-      intro: "#efe5dc",
-      1: "#dce9ff",
-      2: "#dff2eb",
-      3: "#f7e7d7",
-      4: "#eadff7",
-      5: "#f9dfdf"
+      intro: "#f5ede3",
+      1: "#f7f0e5",
+      2: "#f3ead9",
+      3: "#efe0c8",
+      4: "#ead7b8",
+      5: "#e3c79c"
     };
 
     const howWorksTimeline = gsap.timeline({
@@ -3013,7 +3115,12 @@
       }
     });
 
-  
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
 
 
   </script>

@@ -1407,13 +1407,29 @@
 </head>
 <body>
 
- 
+  <!-- NAVBAR -->
+  <!-- <nav class="navbar">
+    <div class="logo">KinKnot</div>
+
+    <div class="nav-links">
+      <div>Couples</div>
+      <div>Vendors</div>
+      <div>Trust</div>
+      <div>Our Story</div>
+      <div>FAQ</div>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Log In</a>
+      <button class="btn-primary">Join Early Access</button>
+    </div>
+  </nav> -->
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">KinKnot</div>
   <ul class="nav-links">
-    <li><a href="#join-waitlist">Couples</a></li>
+    <li><a href="#">Couples</a></li>
     <li><a href="#vendors">Vendors</a></li>
     <li><a href="#event-planners">Event Planners</a></li>
   </ul>
@@ -3013,7 +3029,12 @@
       }
     });
 
-  
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
 
 
   </script>
