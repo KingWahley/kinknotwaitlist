@@ -885,11 +885,11 @@
      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --pink: #d94f8a;
-    --pink-light: #f2a0c4;
-    --pink-pale: #fce8f3;
-    --purple: #9b7bb8;
-    --purple-dark: #6b3f8a;
+    --pink: #b8956f;
+    --pink-light: #d8c0a5;
+    --pink-pale: #f5ede3;
+    --purple: #a78c70;
+    --purple-dark: #7c624a;
     --peach: #f7c5a0;
     --cream: #fef5f0;
     --text-dark: #2b1a2e;
@@ -908,7 +908,7 @@
   }
   
   .hero-bg {
-    background: linear-gradient(135deg, #fce4d6 0%, #f9d6ea 35%, #e8d5f5 65%, #d9dff7 100%);
+    background: linear-gradient(135deg, #fce4d6 0%, #eedfcf 35%, #e3d2bf 65%, #d8c7b4 100%);
   }
 
   /* ── NAV ── */
@@ -976,10 +976,10 @@
     font-size: .95rem; font-weight: 600;
     border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    box-shadow: 0 8px 28px rgba(217,79,138,.35);
+    box-shadow: 0 8px 28px rgba(184,149,111,.35);
     transition: transform .2s, box-shadow .2s;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(217,79,138,.45); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(184,149,111,.45); }
   .btn-secondary {
     background: rgba(255,255,255,0.72);
     backdrop-filter: var(--blur);
@@ -987,7 +987,7 @@
     padding: 14px 34px;
     border-radius: 50px;
     font-size: .95rem; font-weight: 600;
-    border: 1.5px solid rgba(217,79,138,.3);
+    border: 1.5px solid rgba(184,149,111,.3);
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     transition: transform .2s;
@@ -1012,15 +1012,15 @@
   }
   .orb-top-left {
     width: 68px; height: 68px;
-    background: radial-gradient(circle at 35% 35%, #e8a0d0, #c060a0);
+    background: radial-gradient(circle at 35% 35%, #e1c8ad, #ba9670);
     left: 24%; top: 10%;
-    box-shadow: 0 8px 24px rgba(180,80,150,.3);
+    box-shadow: 0 8px 24px rgba(170,130,95,.3);
   }
   .orb-bottom-right {
     width: 56px; height: 56px;
-    background: radial-gradient(circle at 35% 35%, #e080c0, #b04090);
+    background: radial-gradient(circle at 35% 35%, #d9bea0, #a98561);
     right: 7%; bottom: 14%;
-    box-shadow: 0 8px 24px rgba(160,60,130,.3);
+    box-shadow: 0 8px 24px rgba(150,110,75,.3);
     display: flex; align-items: center; justify-content: center;
   }
   .orb-bottom-right svg { width: 24px; height: 24px; fill: rgba(255,255,255,0.85); }
@@ -1031,7 +1031,7 @@
     backdrop-filter: var(--blur);
     border: 1px solid rgba(255,255,255,0.75);
     border-radius: 24px;
-    box-shadow: 0 16px 48px rgba(120,60,120,.12);
+    box-shadow: 0 16px 48px rgba(122,98,80,.12);
     position: absolute;
     overflow: hidden;
   }
@@ -1158,7 +1158,7 @@
   .phone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
   .phone-avatar {
     width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, #c080a0, #9050c0);
+    background: linear-gradient(135deg, #ccb194, #9c7f61);
     overflow: hidden; display: flex; align-items: center; justify-content: center;
   }
   .phone-avatar svg { width: 20px; height: 20px; fill: rgba(255,255,255,.8); }
@@ -1177,7 +1177,7 @@
   .phone-card {
     margin: 0 0 0;
     border-radius: 20px;
-    background: linear-gradient(135deg, #3a2a5a 0%, #5a3060 60%, #7a4060 100%);
+    background: linear-gradient(135deg, #5a4737 0%, #82624c 60%, #b08d6d 100%);
     height: 190px;
     position: relative;
     overflow: hidden;
@@ -1186,18 +1186,18 @@
   }
   .phone-card-img {
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(80,40,100,.5), rgba(120,60,80,.4));
+    background: linear-gradient(135deg, rgba(90,70,55,.5), rgba(176,141,109,.4));
     display: flex; align-items: center; justify-content: center;
   }
   .phone-card-person {
     position: absolute; right: 0; bottom: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(60,30,70,.7) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(70,50,35,.7) 0%, transparent 50%);
   }
   .phone-card-person-img {
     position: absolute; right: 10px; bottom: 0;
     width: 110px; height: 160px;
-    background: linear-gradient(135deg, #c090a0, #9060b0);
+    background: linear-gradient(135deg, #c7ab8f, #96785d);
     border-radius: 14px 14px 0 0;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
@@ -1257,7 +1257,7 @@
   .card-rain {
     width: 240px; height: 88px;
     right: 0%; bottom: 12%;
-    background: linear-gradient(135deg, #d94f8a, #c03070, #a02060);
+    background: linear-gradient(135deg, #b8956f, #b18860, #8f6d4f);
     border: none;
     border-radius: 20px 0 0 20px;
     display: flex; align-items: center; gap: 14px;
@@ -1279,8 +1279,8 @@
     pointer-events: none;
     z-index: 0;
   }
-  .blob-1 { width: 500px; height: 500px; background: rgba(240,160,200,.25); top: -100px; left: -100px; }
-  .blob-2 { width: 400px; height: 400px; background: rgba(200,160,240,.2); bottom: -80px; right: -80px; }
+  .blob-1 { width: 500px; height: 500px; background: rgba(216,192,165,.25); top: -100px; left: -100px; }
+  .blob-2 { width: 400px; height: 400px; background: rgba(188,162,132,.2); bottom: -80px; right: -80px; }
   .blob-3 { width: 300px; height: 300px; background: rgba(247,197,160,.2); top: 40%; left: 30%; }
   </style>
 </head>
@@ -1384,18 +1384,18 @@
     <div class="mood-content">
       <div class="mood-donut">
         <svg width="70" height="70" viewBox="0 0 70 70">
-          <circle cx="35" cy="35" r="28" fill="none" stroke="#f0e8f4" stroke-width="8"/>
-          <!-- Confirmed: pink 65% -->
-          <circle cx="35" cy="35" r="28" fill="none" stroke="#d94f8a" stroke-width="8"
+          <circle cx="35" cy="35" r="28" fill="none" stroke="#efe4d8" stroke-width="8"/>
+          <!-- Confirmed: beige 65% -->
+          <circle cx="35" cy="35" r="28" fill="none" stroke="#b8956f" stroke-width="8"
             stroke-dasharray="113.8 62"
             stroke-linecap="round"/>
-          <!-- Maybe: purple 20% -->
-          <circle cx="35" cy="35" r="28" fill="none" stroke="#9b7bb8" stroke-width="8"
+          <!-- Maybe: taupe 20% -->
+          <circle cx="35" cy="35" r="28" fill="none" stroke="#a78c70" stroke-width="8"
             stroke-dasharray="35 140.8"
             stroke-dashoffset="-113.8"
             stroke-linecap="round"/>
           <!-- Declined: peach 15% -->
-          <circle cx="35" cy="35" r="28" fill="none" stroke="#f7a070" stroke-width="8"
+          <circle cx="35" cy="35" r="28" fill="none" stroke="#d7b08b" stroke-width="8"
             stroke-dasharray="26.3 149.5"
             stroke-dashoffset="-148.8"
             stroke-linecap="round"/>
@@ -1406,9 +1406,9 @@
         </div>
       </div>
       <div class="mood-legend">
-        <div class="mood-legend-item"><div class="mood-dot" style="background:#d94f8a"></div>Confirmed</div>
-        <div class="mood-legend-item"><div class="mood-dot" style="background:#9b7bb8"></div>Pending</div>
-        <div class="mood-legend-item"><div class="mood-dot" style="background:#f7a070"></div>Declined</div>
+        <div class="mood-legend-item"><div class="mood-dot" style="background:#b8956f"></div>Confirmed</div>
+        <div class="mood-legend-item"><div class="mood-dot" style="background:#a78c70"></div>Pending</div>
+        <div class="mood-legend-item"><div class="mood-dot" style="background:#d7b08b"></div>Declined</div>
       </div>
     </div>
     <div class="mood-bottom">
@@ -1447,7 +1447,7 @@
         <!-- KinKnot Heart logo -->
         <div class="phone-logo">
           <svg viewBox="0 0 32 32" width="32" height="32">
-             <path d="M16 28 C16 28 4 20 4 10 A6 6 0 0 1 16 7 A6 6 0 0 1 28 10 C28 20 16 28 16 28Z" fill="none" stroke="#9b7bb8" stroke-width="1.5"/>
+             <path d="M16 28 C16 28 4 20 4 10 A6 6 0 0 1 16 7 A6 6 0 0 1 28 10 C28 20 16 28 16 28Z" fill="none" stroke="#a78c70" stroke-width="1.5"/>
           </svg>
         </div>
         <div class="phone-menu">
@@ -1466,11 +1466,11 @@
     <div style="padding: 0 20px;">
       <div class="phone-card">
         <div class="phone-card-person">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(50,20,60,.75) 0%, transparent 55%);"></div>
-          <div style="position:absolute;right:0;bottom:0;width:130px;height:185px;background:linear-gradient(160deg,#c090b0 0%,#7050a0 100%);border-radius:14px 0 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(68,49,34,.75) 0%, transparent 55%);"></div>
+          <div style="position:absolute;right:0;bottom:0;width:130px;height:185px;background:linear-gradient(160deg,#c090b0 0%,#8a6c4f 100%);border-radius:14px 0 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
             <svg viewBox="0 0 60 100" width="80" height="140">
               <ellipse cx="30" cy="18" rx="12" ry="14" fill="rgba(220,170,150,.9)"/>
-              <path d="M14 35 Q14 28 30 28 Q46 28 46 35 L50 95 Q40 100 30 100 Q20 100 10 95 Z" fill="rgba(180,130,180,.8)"/>
+              <path d="M14 35 Q14 28 30 28 Q46 28 46 35 L50 95 Q40 100 30 100 Q20 100 10 95 Z" fill="rgba(181,151,120,.8)"/>
             </svg>
           </div>
         </div>
@@ -2871,4 +2871,5 @@
 
 </body>
 </html>
+
 
