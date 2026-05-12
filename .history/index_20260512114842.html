@@ -24,7 +24,6 @@
       --radius-full: 999px;
       --radius-lg: 34px;
       --radius-md: 24px;
-      --nav-height: 88px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'DM Sans', -apple-system, sans-serif;
@@ -644,15 +643,6 @@
       .section-title { font-size: 44px; }
       .phone-title { font-size: 40px; }
       .navbar { padding: 20px; }
-      nav {
-        width: calc(100% - 20px);
-        padding: 18px 20px;
-      }
-      nav.scrolled {
-        top: 10px;
-        width: calc(100% - 20px);
-        padding: 14px 18px;
-      }
       .nav-links { display: none; }
       .cta-inner { padding: 40px; }
       .cta-title { font-size: 36px; }
@@ -924,13 +914,29 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      will-change: transform;
     }
 
     .process-card:hover {
       transform: translateY(-8px);
-      background: var(--white);
       box-shadow: 0 30px 60px rgba(15, 78, 167, 0.08);
       border-color: rgba(15, 78, 167, 0.1);
+    }
+
+    .process-card-1 {
+      background: #f0f7ff;
+    }
+
+    .process-card-2 {
+      background: #eef7f2;
+    }
+
+    .process-card-3 {
+      background: #fff3eb;
+    }
+
+    .process-card-4 {
+      background: #f8eefc;
     }
 
     .process-number {
@@ -1007,26 +1013,13 @@
   
   .hero-bg {
     background: linear-gradient(135deg, #fce4d6 0%, #f9d6ea 35%, #e8d5f5 65%, #d9dff7 100%);
-    padding-top: var(--nav-height);
   }
 
   /* ── NAV ── */
   nav {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 32px;
-    position: fixed; top: 0; left: 50%; width: min(1120px, calc(100% - 32px)); z-index: 1000;
-    transform: translateX(-50%);
-    background: transparent;
-    border-radius: 999px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, top 0.3s ease, padding 0.3s ease, width 0.3s ease;
-  }
-  nav.scrolled {
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(12px);
-    top: 14px;
-    width: min(960px, calc(100% - 32px));
-    padding: 14px 28px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 22px 60px;
+    position: relative; z-index: 10;
   }
   .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text-dark); letter-spacing: .02em; }
   .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -1426,6 +1419,17 @@
     </div>
   </nav> -->
 
+  
+
+
+
+
+<div class="hero-bg">
+<!-- background blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">KinKnot</div>
@@ -1438,12 +1442,6 @@
     <button class="btn-fill-sm">Sign Up</button>
   </div>
 </nav>
-
-<div class="hero-bg">
-<!-- background blobs -->
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
 
 <!-- HERO TEXT -->
 <div class="hero">
@@ -1928,28 +1926,28 @@
     
     <div class="process-grid">
       <!-- Step 1 -->
-      <div class="process-card">
+      <div class="process-card process-card-1">
         <div class="process-number">01</div>
         <div class="process-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
         <h3 class="process-card-title">Discovery</h3>
         <p class="process-card-text">Set your vision and explore our curated collection of verified wedding professionals.</p>
       </div>
       <!-- Step 2 -->
-      <div class="process-card">
+      <div class="process-card process-card-2">
         <div class="process-number">02</div>
         <div class="process-icon"><i class="fa-solid fa-fingerprint"></i></div>
         <h3 class="process-card-title">Vetting</h3>
         <p class="process-card-text">Connect with vendors who have cleared our mandatory background and portfolio checks.</p>
       </div>
       <!-- Step 3 -->
-      <div class="process-card">
+      <div class="process-card process-card-3">
         <div class="process-number">03</div>
         <div class="process-icon"><i class="fa-solid fa-shield-heart"></i></div>
         <h3 class="process-card-title">Escrow</h3>
         <p class="process-card-text">Book with 100% confidence. Your payments are held securely until the vendor delivers.</p>
       </div>
       <!-- Step 4 -->
-      <div class="process-card">
+      <div class="process-card process-card-4">
         <div class="process-number">04</div>
         <div class="process-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
         <h3 class="process-card-title">Delivery</h3>
@@ -2822,16 +2820,6 @@
 
     // Synchronize Lenis with ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
-
-    const nav = document.querySelector('nav');
-    if (nav) {
-      const updateNavOnScroll = ({ animatedScroll = window.scrollY } = {}) => {
-        nav.classList.toggle('scrolled', animatedScroll > 10);
-      };
-
-      updateNavOnScroll();
-      lenis.on('scroll', updateNavOnScroll);
-    }
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
