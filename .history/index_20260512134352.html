@@ -809,11 +809,6 @@
       display: block;
     }
 
-    .early-access-success[data-state="error"] {
-      background: rgba(185, 28, 28, 0.1);
-      color: #991b1b;
-    }
-
 
     @media (max-width: 768px) {
       .hero-title { font-size: 48px; }
@@ -1606,7 +1601,7 @@
     <li><a href="#event-planners">Event Planners</a></li>
   </ul>
   <div class="nav-right">
-    <button class="btn-fill-sm" type="button" data-open-early-access data-role="couple">Join Early Access</button>
+    <button class="btn-fill-sm" type="button" data-open-early-access>Join Early Access</button>
   </div>
 </nav>
 
@@ -1623,7 +1618,7 @@
   </h1>
   <p>Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, book with confidence, and pay securely with your money protected until your vendor delivers.</p>
   <div class="hero-btns">
-    <button class="btn-primary" type="button" data-open-early-access data-role="couple">Get Early Access</button>
+    <button class="btn-primary" type="button" data-open-early-access>Get Early Access</button>
     <button class="btn-secondary">For Vendors</button>
   </div>
 </div>
@@ -2893,7 +2888,7 @@
       </div>
     </div>
     <div style="margin-top: 60px; display: flex; justify-content: center; gap: 20px;">
-      <button class="btn-primary" style="padding:20px 44px; font-size:16px;" type="button" data-open-early-access data-role="vendor">Apply as Vendor</button>
+      <button class="btn-primary" style="padding:20px 44px; font-size:16px;" type="button" data-open-early-access>Apply as Vendor</button>
     </div>
   </section>
 
@@ -2926,7 +2921,7 @@
       </div>
     </div>
     <div style="margin-top: 60px; display: flex; justify-content: center; gap: 20px;">
-      <button class="btn-primary" style="padding:20px 44px; font-size:16px;" type="button" data-open-early-access data-role="event-planner">Join as Event Planner</button>
+      <button class="btn-primary" style="padding:20px 44px; font-size:16px;" type="button" data-open-early-access>Join as Event Planner</button>
     </div>
   </section>
 
@@ -3028,31 +3023,7 @@
     </div>
   </div>
 
-  <script src="./firebase-config.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAnalytics, isSupported as isAnalyticsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    import { addDoc, collection, getFirestore, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    const { Lenis, gsap, ScrollTrigger } = window;
-
-    const firebaseConfig = window.__FIREBASE_CONFIG__;
-
-    if (!firebaseConfig) {
-      throw new Error("Missing firebase-config.js. Copy firebase-config.example.js to firebase-config.js and fill in your local values.");
-    }
-
-    const firebaseApp = initializeApp(firebaseConfig);
-    const db = getFirestore(firebaseApp);
-
-    isAnalyticsSupported()
-      .then((supported) => {
-        if (supported) {
-          getAnalytics(firebaseApp);
-        }
-      })
-      .catch(() => null);
-
+  <script>
     // Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
       duration: 1.2,
@@ -3109,93 +3080,27 @@
     const earlyAccessModal = document.getElementById('early-access-modal');
     const earlyAccessForm = document.getElementById('early-access-form');
     const earlyAccessEmail = document.getElementById('early-access-email');
-    const earlyAccessRole = document.getElementById('early-access-role');
     const earlyAccessSuccess = document.getElementById('early-access-success');
-    const earlyAccessSubmit = earlyAccessForm?.querySelector('.early-access-submit');
     const inlineWaitlistForm = document.querySelector('.inline-email-form');
     const inlineWaitlistEmail = document.getElementById('inline-waitlist-email');
 
-    function setEarlyAccessMessage(message, state = 'success') {
-      if (!earlyAccessSuccess) {
-        return;
-      }
-
-      earlyAccessSuccess.textContent = message;
-      earlyAccessSuccess.dataset.state = state;
-      earlyAccessSuccess.classList.add('is-visible');
-    }
-
-    function clearEarlyAccessMessage() {
-      if (!earlyAccessSuccess) {
-        return;
-      }
-
-      earlyAccessSuccess.textContent = '';
-      earlyAccessSuccess.dataset.state = 'success';
-      earlyAccessSuccess.classList.remove('is-visible');
-    }
-
-    function setEarlyAccessSubmittingState(isSubmitting) {
-      if (!earlyAccessSubmit) {
-        return;
-      }
-
-      earlyAccessSubmit.disabled = isSubmitting;
-      earlyAccessSubmit.textContent = isSubmitting ? 'Submitting...' : 'Submit';
-    }
-
-    function getWaitlistErrorMessage(error) {
-      const errorCode = error?.code || '';
-
-      if (window.location.protocol === 'file:') {
-        return 'This page is running as a local file. Open it through a local web server before testing Firebase submissions.';
-      }
-
-      if (errorCode === 'permission-denied') {
-        return 'Firebase blocked this write. Update your Firestore rules to allow waitlist submissions.';
-      }
-
-      if (errorCode === 'failed-precondition') {
-        return 'Firestore is not fully set up for this project yet. Create the database in Firebase Console and try again.';
-      }
-
-      if (errorCode === 'unavailable') {
-        return 'Firebase is temporarily unavailable. Please try again in a moment.';
-      }
-
-      return `Unable to save your details right now${errorCode ? ` (${errorCode})` : ''}.`;
-    }
-
-    function openEarlyAccessModal(defaultEmail = '', defaultRole = '', entryPoint = 'modal') {
-      if (!earlyAccessModal || !earlyAccessForm || !earlyAccessEmail || !earlyAccessRole) {
+    function openEarlyAccessModal(defaultEmail = '') {
+      if (!earlyAccessModal || !earlyAccessForm || !earlyAccessEmail) {
         return;
       }
 
       earlyAccessForm.reset();
-      earlyAccessForm.dataset.entryPoint = entryPoint;
-      clearEarlyAccessMessage();
-      setEarlyAccessSubmittingState(false);
+      earlyAccessSuccess?.classList.remove('is-visible');
 
       if (defaultEmail) {
         earlyAccessEmail.value = defaultEmail;
-      }
-
-      if (defaultRole) {
-        earlyAccessRole.value = defaultRole;
       }
 
       earlyAccessModal.classList.add('is-open');
       earlyAccessModal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
       lenis.stop();
-      window.setTimeout(() => {
-        if (defaultEmail) {
-          earlyAccessRole.focus();
-          return;
-        }
-
-        earlyAccessEmail.focus();
-      }, 80);
+      window.setTimeout(() => earlyAccessEmail.focus(), 80);
     }
 
     function closeEarlyAccessModal() {
@@ -3209,17 +3114,12 @@
       lenis.start();
     }
 
-    document.addEventListener('click', (event) => {
-      const openTrigger = event.target.closest('[data-open-early-access]');
-      if (openTrigger) {
-        openEarlyAccessModal('', openTrigger.dataset.role || '', openTrigger.dataset.role || 'modal');
-        return;
-      }
+    document.querySelectorAll('[data-open-early-access]').forEach((trigger) => {
+      trigger.addEventListener('click', () => openEarlyAccessModal());
+    });
 
-      const closeTrigger = event.target.closest('[data-close-early-access]');
-      if (closeTrigger) {
-        closeEarlyAccessModal();
-      }
+    document.querySelectorAll('[data-close-early-access]').forEach((trigger) => {
+      trigger.addEventListener('click', closeEarlyAccessModal);
     });
 
     earlyAccessModal?.addEventListener('click', (event) => {
@@ -3236,36 +3136,13 @@
 
     inlineWaitlistForm?.addEventListener('submit', (event) => {
       event.preventDefault();
-      openEarlyAccessModal(inlineWaitlistEmail?.value.trim() || '', 'couple', 'inline-waitlist');
+      openEarlyAccessModal(inlineWaitlistEmail?.value.trim() || '');
     });
 
-    earlyAccessForm?.addEventListener('submit', async (event) => {
+    earlyAccessForm?.addEventListener('submit', (event) => {
       event.preventDefault();
-      clearEarlyAccessMessage();
-      setEarlyAccessSubmittingState(true);
-
-      const email = earlyAccessEmail?.value.trim() || '';
-      const role = earlyAccessRole?.value || '';
-
-      try {
-        await addDoc(collection(db, 'waitlist'), {
-          email,
-          role,
-          entryPoint: earlyAccessForm.dataset.entryPoint || 'modal',
-          pagePath: window.location.pathname,
-          submittedAt: serverTimestamp(),
-          submittedAtIso: new Date().toISOString(),
-          userAgent: navigator.userAgent
-        });
-
-        setEarlyAccessMessage('Thanks. Your early access interest has been captured.');
-        earlyAccessForm.reset();
-      } catch (error) {
-        console.error('Failed to save waitlist submission:', error);
-        setEarlyAccessMessage(getWaitlistErrorMessage(error), 'error');
-      } finally {
-        setEarlyAccessSubmittingState(false);
-      }
+      earlyAccessSuccess?.classList.add('is-visible');
+      earlyAccessForm.reset();
     });
 
     // Helper for button clicks
@@ -3461,7 +3338,7 @@
         <p style="margin-top:24px; font-size:19px; color:rgba(255,255,255,0.9);">
           Join early access and be among the first couples and vendors to experience a smarter way to plan weddings in Nigeria.
         </p>
-        <button class="btn-white" style="color: var(--primary); margin-top: 32px;" type="button" data-open-early-access data-role="couple">Claim Early Access</button>
+        <button class="btn-white" style="color: var(--primary); margin-top: 32px;" type="button" data-open-early-access>Claim Early Access</button>
       </div>
       <div class="footer-visual" style="opacity: 0.05;">KinKnot</div>
     </div>

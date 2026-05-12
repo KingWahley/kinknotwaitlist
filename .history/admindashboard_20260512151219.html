@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KinKnot Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --panel: #ffffff;
+      --panel-soft: #f7f5f1;
+      --panel-tint: #eef3ed;
+      --line: rgba(44, 37, 29, 0.08);
+      --text: #1f1a15;
+      --muted: #7f766d;
+      --brand: #156c43;
+      --brand-dark: #0f5232;
+      --brand-soft: #dcefe5;
+      --danger: #8d2c2c;
+      --danger-soft: #f8e5e5;
+      --shadow: 0 24px 60px rgba(49, 39, 28, 0.08);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(21, 108, 67, 0.08), transparent 30%),
+        radial-gradient(circle at right bottom, rgba(201, 144, 58, 0.1), transparent 26%),
+        linear-gradient(180deg, #faf7f3 0%, var(--bg) 100%);
+      padding: 20px;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .auth-shell {
+      min-height: calc(100vh - 40px);
+      display: grid;
+      place-items: center;
+    }
+
+    .auth-shell[hidden],
+    .app-shell[hidden] {
+      display: none;
+    }
+
+    .auth-card {
+      width: min(100%, 520px);
+      padding: 34px 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .auth-card h1 {
+      margin-top: 18px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .auth-copy {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .auth-form {
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-group label {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .field-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(31, 26, 21, 0.12);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field-group input:focus {
+      border-color: rgba(21, 108, 67, 0.45);
+      box-shadow: 0 0 0 4px rgba(21, 108, 67, 0.09);
+    }
+
+    .action-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .action-btn.primary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(21, 108, 67, 0.16);
+    }
+
+    .action-btn.secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid rgba(31, 26, 21, 0.1);
+    }
+
+    .auth-message,
+    .status-strip {
+      margin-top: 14px;
+      padding: 13px 15px;
+      border-radius: 16px;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .auth-message {
+      display: none;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .auth-message.is-visible {
+      display: block;
+    }
+
+    .auth-message.error,
+    .status-strip.error {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .app-shell {
+      max-width: 1480px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 18px;
+      min-height: calc(100vh - 40px);
+    }
+
+    .sidebar {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 8px 24px;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #e6f3ec, #f7fbf8);
+      color: var(--brand);
+    }
+
+    .brand-lockup h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+    }
+
+    .brand-lockup p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 3px;
+    }
+
+    .sidebar-label {
+      margin: 10px 8px 12px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      border-radius: 20px;
+      padding: 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(21, 108, 67, 0.06);
+      color: var(--text);
+      transform: translateX(2px);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, #156c43, #1f8656);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(21, 108, 67, 0.18);
+    }
+
+    .nav-btn-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+    }
+
+    .nav-text {
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .nav-count {
+      min-width: 34px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(21, 108, 67, 0.1);
+      color: var(--brand-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .nav-btn.active .nav-count {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    .workspace {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      min-height: 84px;
+      height: 84px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    .search-shell {
+      flex: 1 1 420px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 10px 16px;
+      border-radius: 18px;
+      background: var(--panel-soft);
+      color: var(--muted);
+    }
+
+    .search-shell input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: var(--text);
+    }
+
+    .shortcut-chip {
+      padding: 7px 10px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid rgba(31, 26, 21, 0.08);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 26, 21, 0.08);
+      background: #fff;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .profile-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 56px;
+      padding: 8px 14px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(31, 26, 21, 0.08);
+      min-width: 220px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f0cab6, #e39a88);
+      display: grid;
+      place-items: center;
+      font-size: 1.05rem;
+    }
+
+    .profile-chip strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .profile-chip span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .status-strip {
+      background: var(--panel-tint);
+      color: var(--brand-dark);
+      margin-top: 0;
+    }
+
+    .hero-lower {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(290px, 0.7fr);
+      gap: 16px;
+    }
+
+    .insight-card,
+    .side-card {
+      background: var(--panel-soft);
+      border: 1px solid rgba(31, 26, 21, 0.06);
+      border-radius: 26px;
+      padding: 22px;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .card-head h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .card-head span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .bar-chart {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: end;
+      min-height: 210px;
+      padding-top: 8px;
+    }
+
+    .bar-item {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+    }
+
+    .bar-track {
+      width: 100%;
+      max-width: 82px;
+      height: 170px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(31, 26, 21, 0.07) 0 5px,
+          transparent 5px 10px
+        );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #65c790 0%, #156c43 100%);
+    }
+
+    .bar-item.active .bar-fill {
+      background: linear-gradient(180deg, #105535 0%, #083720 100%);
+    }
+
+    .bar-label {
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .stat-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mini-stat {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(31, 26, 21, 0.08);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 8px;
+    }
+
+    .table-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .table-panel[hidden],
+    .analytics-panel[hidden] {
+      display: none;
+    }
+
+    .table-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .table-copy h2 {
+      font-size: 2rem;
+      font-family: "Playfair Display", serif;
+      line-height: 1;
+    }
+
+    .table-copy p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .table-tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .table-wrap {
+      overflow-x: hidden;
+      border: 1px solid rgba(31, 26, 21, 0.06);
+      border-radius: 24px;
+      background: var(--panel-soft);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(31, 26, 21, 0.06);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    td {
+      font-size: 0.95rem;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .email-link {
+      color: var(--brand-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .email-link:hover {
+      text-decoration: underline;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .role-couple {
+      background: rgba(201, 144, 58, 0.14);
+      color: #926019;
+    }
+
+    .role-vendor {
+      background: rgba(21, 108, 67, 0.12);
+      color: var(--brand-dark);
+    }
+
+    .role-event-planner {
+      background: rgba(46, 90, 183, 0.12);
+      color: #24459f;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .empty-state {
+      padding: 34px 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .legend {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+    @media (max-width: 1220px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        order: 2;
+      }
+
+      .workspace {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-lower {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 12px;
+      }
+
+      .workspace,
+      .sidebar,
+      .table-panel,
+      .topbar {
+        border-radius: 24px;
+      }
+
+      .topbar {
+        height: auto;
+        min-height: 0;
+        padding: 14px;
+        flex-wrap: wrap;
+      }
+
+      .profile-chip {
+        min-width: 100%;
+        height: auto;
+      }
+
+      .bar-chart {
+        gap: 10px;
+      }
+
+      .bar-track {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="auth-shell" id="auth-shell">
+    <div class="auth-card">
+      <div class="eyebrow">KinKnot Admin Access</div>
+      <h1>Sign in to view the waitlist dashboard.</h1>
+      
+
+      <form class="auth-form" id="admin-login-form" method="post" action="javascript:void(0);" novalidate>
+        <div class="field-group">
+          <label for="admin-email">Admin Email</label>
+          <input id="admin-email" name="email" type="email" autocomplete="email" placeholder="admin@example.com" required />
+        </div>
+
+        <div class="field-group">
+          <label for="admin-password">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+        </div>
+
+        <button class="action-btn primary" id="admin-login-button" type="submit">Sign In</button>
+      </form>
+
+      <div class="auth-message" id="auth-message"></div>
+    </div>
+  </section>
+
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M9.2 12.2c.7 1.7 2.8 2.4 4.4 1.6 1-.5 1.8-1.3 2-2.4"></path>
+            <path d="M8.5 7.9c.8-.7 2.1-.8 3-.2"></path>
+            <path d="M12.8 7.6c.9-.6 2.2-.5 3 .2"></path>
+          </svg>
+        </div>
+        <div>
+          <h2>KinKnot</h2>
+          <p>Admin dashboard</p>
+        </div>
+      </div>
+
+      <div class="sidebar-label">Menu</div>
+      <ul class="nav-list" id="nav-list">
+        <li>
+          <button class="nav-btn active" type="button" data-view="all">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+              </svg>
+              <span class="nav-text">All</span>
+            </span>
+            <span class="nav-count" id="nav-count-all">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" type="button" data-view="couple">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.8 4.6a4.8 4.8 0 0 0-6.7 0L12 6.7l-2.1-2.1a4.8 4.8 0 1 0-6.8 6.8l2.1 2.1L12 20.2l6.8-6.8 2.1-2.1a4.8 4.8 0 0 0-.1-6.7z"></path>
+              </svg>
+              <span class="nav-text">Couples</span>
+            </span>
+            <span class="nav-count" id="nav-count-couple">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" type="button" data-view="vendor">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8l2-4h12l2 4"></path>
+                <path d="M3 8h18v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"></path>
+                <path d="M7 14v6h10v-6"></path>
+              </svg>
+              <span class="nav-text">Vendors</span>
+            </span>
+            <span class="nav-count" id="nav-count-vendor">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" type="button" data-view="event-planner">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                <path d="M16 2v4"></path>
+                <path d="M8 2v4"></path>
+                <path d="M3 10h18"></path>
+              </svg>
+              <span class="nav-text">Event Planners</span>
+            </span>
+            <span class="nav-count" id="nav-count-event-planner">0</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" type="button" data-view="analytics">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 20h16"></path>
+                <path d="M7 16V8"></path>
+                <path d="M12 16V4"></path>
+                <path d="M17 16v-6"></path>
+              </svg>
+              <span class="nav-text">Signup Analytics</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="sidebar-label">General</div>
+      <ul class="nav-list">
+        <li>
+          <button class="nav-btn" type="button" id="download-sidebar-pdf">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"></path>
+                <path d="M7 10l5 5 5-5"></path>
+                <path d="M5 21h14"></path>
+              </svg>
+              <span class="nav-text">Download PDF</span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" type="button" id="sign-out-button">
+            <span class="nav-btn-left">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <path d="M16 17l5-5-5-5"></path>
+                <path d="M21 12H9"></path>
+              </svg>
+              <span class="nav-text">Logout</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+    </aside>
+
+    <main class="workspace">
+      <div class="topbar">
+        <label class="search-shell" for="table-search">
+          <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M21 21l-4.3-4.3"></path>
+          </svg>
+          <input id="table-search" type="search" placeholder="Search email, role, page, or entry point" />
+          <span class="shortcut-chip">/</span>
+        </label>
+
+        <div class="topbar-right">
+          <button class="icon-btn" type="button" id="refresh-dashboard" aria-label="Refresh dashboard">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+              <path d="M21 3v6h-6"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" type="button" id="download-topbar-pdf" aria-label="Download PDF">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12"></path>
+              <path d="M7 10l5 5 5-5"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+          </button>
+          <div class="profile-chip">
+            <div class="avatar" aria-hidden="true">🙂</div>
+            <div>
+              <strong id="admin-user-name">Admin User</strong>
+              <span id="admin-user-email">admin@example.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="table-panel" id="table-panel">
+        <div class="table-top">
+          <div class="table-copy">
+            <h2 id="table-heading">All waitlist records</h2>
+            <p id="table-description">This table updates instantly when you switch the sidebar view or search the current list.</p>
+          </div>
+
+          <div class="table-tools">
+            <button class="action-btn secondary" type="button" id="clear-search">Clear Search</button>
+            <span class="pill" id="visible-count-pill">0 visible</span>
+            <span class="pill" id="total-view-pill">0 total</span>
+          </div>
+        </div>
+
+        <div class="status-strip" id="status-strip">Waiting for data...</div>
+
+        <div class="legend">
+          <span class="legend-item"><span class="legend-dot" style="background:#156c43;"></span>Vendors</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#c9903a;"></span>Couples</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#24459f;"></span>Event Planners</span>
+        </div>
+
+        <div class="table-wrap" id="table-wrap"></div>
+      </section>
+
+      <section class="analytics-panel hero-lower" id="analytics-panel" hidden>
+        <article class="insight-card">
+          <div class="card-head">
+            <div>
+              <h3>Signup Analytics</h3>
+              <span>Live distribution by audience</span>
+            </div>
+          </div>
+
+          <div class="bar-chart">
+            <div class="bar-item" id="bar-all">
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-all"></div></div>
+              <div class="bar-label">All</div>
+            </div>
+            <div class="bar-item" id="bar-couple">
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-couple"></div></div>
+              <div class="bar-label">Couples</div>
+            </div>
+            <div class="bar-item" id="bar-vendor">
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-vendor"></div></div>
+              <div class="bar-label">Vendors</div>
+            </div>
+            <div class="bar-item" id="bar-event-planner">
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-event-planner"></div></div>
+              <div class="bar-label">Planners</div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="side-card">
+          <div class="card-head">
+            <div>
+              <h3>Quick Notes</h3>
+              <span>Current view summary</span>
+            </div>
+          </div>
+
+          <div class="stat-stack">
+            <div class="mini-stat">
+              <span class="muted">Active filter</span>
+              <strong id="quick-filter-label">All Signups</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="muted">Visible rows</span>
+              <strong id="quick-visible-count">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="muted">Latest submission</span>
+              <strong id="quick-latest-date">No data yet</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { collection, getDocs, getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB4caE0iaWLiKN8GXCYMWFF4K-bt0kGotQ",
+      authDomain: "saasproject-b922d.firebaseapp.com",
+      projectId: "saasproject-b922d",
+      storageBucket: "saasproject-b922d.firebasestorage.app",
+      messagingSenderId: "192171597664",
+      appId: "1:192171597664:web:b9bec0e1e85959bf7d8805",
+      measurementId: "G-B6T5H09VZY"
+    };
+
+    const firebaseApp = initializeApp(firebaseConfig);
+    const auth = getAuth(firebaseApp);
+    const db = getFirestore(firebaseApp);
+
+    const currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.has("email") || currentUrl.searchParams.has("password")) {
+      currentUrl.searchParams.delete("email");
+      currentUrl.searchParams.delete("password");
+      const cleanedUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+      window.history.replaceState({}, document.title, cleanedUrl);
+    }
+
+    const authShell = document.getElementById("auth-shell");
+    const appShell = document.getElementById("app-shell");
+    const adminLoginForm = document.getElementById("admin-login-form");
+    const adminEmailInput = document.getElementById("admin-email");
+    const adminPasswordInput = document.getElementById("admin-password");
+    const adminLoginButton = document.getElementById("admin-login-button");
+    const authMessage = document.getElementById("auth-message");
+    const signOutButton = document.getElementById("sign-out-button");
+    const adminUserName = document.getElementById("admin-user-name");
+    const adminUserEmail = document.getElementById("admin-user-email");
+    const refreshButton = document.getElementById("refresh-dashboard");
+    const statusStrip = document.getElementById("status-strip");
+    const quickFilterLabel = document.getElementById("quick-filter-label");
+    const quickVisibleCount = document.getElementById("quick-visible-count");
+    const quickLatestDate = document.getElementById("quick-latest-date");
+    const visibleCountPill = document.getElementById("visible-count-pill");
+    const totalViewPill = document.getElementById("total-view-pill");
+    const tableHeading = document.getElementById("table-heading");
+    const tableDescription = document.getElementById("table-description");
+    const tableWrap = document.getElementById("table-wrap");
+    const tablePanel = document.getElementById("table-panel");
+    const analyticsPanel = document.getElementById("analytics-panel");
+    const searchInput = document.getElementById("table-search");
+    const clearSearchButton = document.getElementById("clear-search");
+    const navButtons = Array.from(document.querySelectorAll(".nav-btn[data-view]"));
+    const downloadButtons = [
+      document.getElementById("download-topbar-pdf"),
+      document.getElementById("download-sidebar-pdf")
+    ].filter(Boolean);
+
+    const navCountAll = document.getElementById("nav-count-all");
+    const navCountCouple = document.getElementById("nav-count-couple");
+    const navCountVendor = document.getElementById("nav-count-vendor");
+    const navCountPlanner = document.getElementById("nav-count-event-planner");
+    const barFillAll = document.getElementById("bar-fill-all");
+    const barFillCouple = document.getElementById("bar-fill-couple");
+    const barFillVendor = document.getElementById("bar-fill-vendor");
+    const barFillPlanner = document.getElementById("bar-fill-event-planner");
+    const barAll = document.getElementById("bar-all");
+    const barCouple = document.getElementById("bar-couple");
+    const barVendor = document.getElementById("bar-vendor");
+    const barPlanner = document.getElementById("bar-event-planner");
+
+    const viewMeta = {
+      all: {
+        label: "All Signups",
+        title: "Waitlist Dashboard",
+        description: "Track every signup in one place, switch views from the sidebar, and export the active list whenever you need a shareable copy.",
+        tableHeading: "All waitlist records",
+        tableDescription: "Every captured waitlist submission across couples, vendors, and event planners."
+      },
+      couple: {
+        label: "Couples",
+        title: "Couples Waitlist",
+        description: "Focus on prospective couples interested in planning their weddings through KinKnot.",
+        tableHeading: "Couples list",
+        tableDescription: "Only submissions made by people joining as couples."
+      },
+      vendor: {
+        label: "Vendors",
+        title: "Vendor Applications",
+        description: "Review marketplace professionals and businesses interested in joining the KinKnot network.",
+        tableHeading: "Vendors list",
+        tableDescription: "Only submissions made by vendors and service providers."
+      },
+      "event-planner": {
+        label: "Event Planners",
+        title: "Event Planner Waitlist",
+        description: "See professional event planners who want early access to the planning workflow.",
+        tableHeading: "Event planners list",
+        tableDescription: "Only submissions made by event planners."
+      },
+      analytics: {
+        label: "Signup Analytics",
+        title: "Signup Analytics",
+        description: "See the distribution of waitlist demand across your main audiences, with quick totals and latest activity at a glance.",
+        tableHeading: "",
+        tableDescription: ""
+      },
+     
+    };
+
+    let currentAdminUser = null;
+    let allRows = [];
+    let currentView = "all";
+    let currentSearch = "";
+
+    function normalizeRole(role) {
+      if (role === "event-planner") {
+        return "event-planner";
+      }
+
+      if (role === "vendor") {
+        return "vendor";
+      }
+
+      return "couple";
+    }
+
+    function roleLabel(role) {
+      const labels = {
+        couple: "Couple",
+        vendor: "Vendor",
+        "event-planner": "Event Planner"
+      };
+
+      return labels[role] || "Unknown";
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll("\"", "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function setAuthMessage(message, isError = false) {
+      authMessage.textContent = message;
+      authMessage.classList.toggle("error", isError);
+      authMessage.classList.toggle("is-visible", Boolean(message));
+    }
+
+    function setLoginSubmittingState(isSubmitting) {
+      adminLoginButton.disabled = isSubmitting;
+      adminLoginButton.textContent = isSubmitting ? "Signing In..." : "Sign In";
+    }
+
+    function updateStatus(message, isError = false) {
+      statusStrip.textContent = message;
+      statusStrip.classList.toggle("error", isError);
+    }
+
+    function showDashboardForUser(user) {
+      currentAdminUser = user;
+      authShell.hidden = true;
+      appShell.hidden = false;
+      adminUserName.textContent = user.displayName || "Admin User";
+      adminUserEmail.textContent = user.email || "admin@example.com";
+      setAuthMessage("");
+    }
+
+    function showLoginScreen(message = "") {
+      currentAdminUser = null;
+      appShell.hidden = true;
+      authShell.hidden = false;
+      if (message) {
+        setAuthMessage(message, true);
+      } else {
+        setAuthMessage("");
+      }
+    }
+
+    function getTimestampMillis(data) {
+      if (data.submittedAt && typeof data.submittedAt.toMillis === "function") {
+        return data.submittedAt.toMillis();
+      }
+
+      if (data.submittedAtIso) {
+        const parsed = Date.parse(data.submittedAtIso);
+        return Number.isNaN(parsed) ? 0 : parsed;
+      }
+
+      return 0;
+    }
+
+    function formatDateFromMillis(millis) {
+      if (!millis) {
+        return "Pending timestamp";
+      }
+
+      return new Intl.DateTimeFormat("en-NG", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }).format(new Date(millis));
+    }
+
+    function getRowsForView(view) {
+      if (view === "all" || view === "analytics") {
+        return allRows;
+      }
+
+      return allRows.filter((item) => item.role === view);
+    }
+
+    function getVisibleRows() {
+      const baseRows = getRowsForView(currentView);
+      const query = currentSearch.trim().toLowerCase();
+
+      if (!query) {
+        return baseRows;
+      }
+
+      return baseRows.filter((row) => {
+        return [
+          row.email,
+          row.role,
+          roleLabel(row.role),
+          row.entryPoint,
+          row.pagePath,
+          row.id,
+          formatDateFromMillis(row.submittedAtMillis)
+        ].some((value) => String(value || "").toLowerCase().includes(query));
+      });
+    }
+
+    function buildEmptyState(message) {
+      return `<div class="empty-state">${escapeHtml(message)}</div>`;
+    }
+
+    function buildTable(rows) {
+      if (!rows.length) {
+        return buildEmptyState("No records match this view yet.");
+      }
+
+      return `
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((item) => `
+              <tr>
+                <td><a class="email-link" href="mailto:${escapeHtml(item.email)}">${escapeHtml(item.email || "No email")}</a></td>
+                <td><span class="role-badge role-${escapeHtml(item.role)}">${escapeHtml(roleLabel(item.role))}</span></td>
+                <td>${escapeHtml(formatDateFromMillis(item.submittedAtMillis))}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function updateNavState() {
+      navButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.view === currentView);
+      });
+
+      barAll.classList.toggle("active", currentView === "all");
+      barCouple.classList.toggle("active", currentView === "couple");
+      barVendor.classList.toggle("active", currentView === "vendor");
+      barPlanner.classList.toggle("active", currentView === "event-planner");
+    }
+
+    function updateCounts() {
+      const total = allRows.length;
+      const couples = getRowsForView("couple").length;
+      const vendors = getRowsForView("vendor").length;
+      const planners = getRowsForView("event-planner").length;
+
+      navCountAll.textContent = String(total);
+      navCountCouple.textContent = String(couples);
+      navCountVendor.textContent = String(vendors);
+      navCountPlanner.textContent = String(planners);
+
+      const maxCount = Math.max(total, couples, vendors, planners, 1);
+      barFillAll.style.height = `${Math.max(18, (total / maxCount) * 100)}%`;
+      barFillCouple.style.height = `${Math.max(18, (couples / maxCount) * 100)}%`;
+      barFillVendor.style.height = `${Math.max(18, (vendors / maxCount) * 100)}%`;
+      barFillPlanner.style.height = `${Math.max(18, (planners / maxCount) * 100)}%`;
+    }
+
+    function renderCurrentView() {
+      updateNavState();
+      updateCounts();
+
+      const meta = viewMeta[currentView];
+      const viewRows = getRowsForView(currentView);
+      const visibleRows = getVisibleRows();
+      const isAnalyticsView = currentView === "analytics";
+
+      quickFilterLabel.textContent = meta.label;
+      quickVisibleCount.textContent = String(visibleRows.length);
+      quickLatestDate.textContent = visibleRows[0]
+        ? formatDateFromMillis(visibleRows[0].submittedAtMillis)
+        : "No data yet";
+      visibleCountPill.textContent = `${visibleRows.length} visible`;
+      totalViewPill.textContent = `${viewRows.length} total`;
+      analyticsPanel.hidden = !isAnalyticsView;
+      tablePanel.hidden = isAnalyticsView;
+      searchInput.disabled = isAnalyticsView;
+      clearSearchButton.disabled = isAnalyticsView;
+
+      if (isAnalyticsView) {
+        searchInput.value = "";
+        currentSearch = "";
+        quickVisibleCount.textContent = String(allRows.length);
+        visibleCountPill.textContent = `${allRows.length} total`;
+        totalViewPill.textContent = `${allRows.length} records`;
+        return;
+      }
+
+      tableHeading.textContent = meta.tableHeading;
+      tableDescription.textContent = meta.tableDescription;
+      tableWrap.innerHTML = buildTable(visibleRows);
+    }
+
+    async function loadWaitlistData() {
+      if (!currentAdminUser) {
+        return;
+      }
+
+      updateStatus("Loading waitlist data from Firebase...");
+      refreshButton.disabled = true;
+
+      try {
+        if (window.location.protocol === "file:") {
+          throw new Error("file-preview");
+        }
+
+        const snapshot = await getDocs(collection(db, "waitlist"));
+        allRows = snapshot.docs.map((docSnapshot) => {
+          const data = docSnapshot.data();
+
+          return {
+            id: docSnapshot.id,
+            email: data.email || "",
+            role: normalizeRole(data.role),
+            entryPoint: data.entryPoint || "",
+            pagePath: data.pagePath || "",
+            submittedAtMillis: getTimestampMillis(data)
+          };
+        }).sort((left, right) => right.submittedAtMillis - left.submittedAtMillis);
+
+        renderCurrentView();
+
+        const refreshedAt = new Intl.DateTimeFormat("en-NG", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }).format(new Date());
+
+        updateStatus(`Loaded ${allRows.length} submission${allRows.length === 1 ? "" : "s"} successfully. Last refreshed ${refreshedAt}.`);
+      } catch (error) {
+        console.error("Failed to load waitlist dashboard:", error);
+
+        let message = "Unable to load dashboard data right now.";
+
+        if (error?.message === "file-preview") {
+          message = "This dashboard is running as a local file. Open it through a local web server before testing Firebase reads.";
+        } else if (error?.code === "permission-denied") {
+          message = "Firestore denied read access. Update your rules or admin authentication to allow dashboard reads.";
+        } else if (error?.code === "failed-precondition") {
+          message = "Firestore is not fully created for this project yet. Set up the database in Firebase Console and try again.";
+        } else if (error?.code === "unavailable") {
+          message = "Firebase is temporarily unavailable. Please try refreshing in a moment.";
+        }
+
+        allRows = [];
+        renderCurrentView();
+        updateStatus(message, true);
+      } finally {
+        refreshButton.disabled = false;
+      }
+    }
+
+    function getLoginErrorMessage(error) {
+      if (window.location.protocol === "file:") {
+        return "This page is running as a local file. Open it through a local web server before using Firebase login.";
+      }
+
+      const code = error?.code || "";
+      if (code === "auth/invalid-credential" || code === "auth/wrong-password" || code === "auth/user-not-found" || code === "auth/invalid-login-credentials") {
+        return "The email or password is incorrect.";
+      }
+
+      if (code === "auth/invalid-email") {
+        return "Enter a valid admin email address.";
+      }
+
+      if (code === "auth/too-many-requests") {
+        return "Too many failed attempts. Please wait a bit and try again.";
+      }
+
+      if (code === "auth/network-request-failed") {
+        return "The network request failed. Check your internet connection and try again.";
+      }
+
+      return "Unable to sign in right now. Please try again.";
+    }
+
+    function downloadCurrentViewAsPdf() {
+      const visibleRows = getVisibleRows();
+      const meta = viewMeta[currentView];
+
+      if (!window.jspdf?.jsPDF) {
+        updateStatus("PDF export library failed to load.", true);
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: "landscape",
+        unit: "pt",
+        format: "a4"
+      });
+
+      doc.setFillColor(21, 108, 67);
+      doc.roundedRect(34, 28, 775, 78, 18, 18, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(22);
+      doc.text(`KinKnot ${meta.label} Report`, 54, 62);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      doc.text(`Generated ${new Date().toLocaleString("en-NG")} | Visible rows: ${visibleRows.length}`, 54, 84);
+
+      const body = visibleRows.map((row) => ([
+        row.email || "No email",
+        roleLabel(row.role),
+        formatDateFromMillis(row.submittedAtMillis)
+      ]));
+
+      doc.autoTable({
+        startY: 126,
+        head: [["Email", "Role", "Submitted"]],
+        body: body.length ? body : [["No matching records", "", ""]],
+        styles: {
+          fontSize: 10,
+          cellPadding: 8,
+          lineColor: [225, 229, 226],
+          lineWidth: 0.5
+        },
+        headStyles: {
+          fillColor: [240, 246, 242],
+          textColor: [16, 41, 29],
+          fontStyle: "bold"
+        },
+        alternateRowStyles: {
+          fillColor: [251, 251, 251]
+        },
+        margin: { left: 34, right: 34 }
+      });
+
+      const safeName = meta.label.toLowerCase().replace(/\s+/g, "-");
+      doc.save(`kinknot-${safeName}-waitlist.pdf`);
+    }
+
+    adminLoginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setAuthMessage("");
+      setLoginSubmittingState(true);
+
+      try {
+        if (window.location.protocol === "file:") {
+          throw new Error("file-preview");
+        }
+
+        await signInWithEmailAndPassword(
+          auth,
+          adminEmailInput.value.trim(),
+          adminPasswordInput.value
+        );
+      } catch (error) {
+        const message = error?.message === "file-preview"
+          ? "This page is running as a local file. Open it through a local web server before using Firebase login."
+          : getLoginErrorMessage(error);
+        setAuthMessage(message, true);
+      } finally {
+        setLoginSubmittingState(false);
+      }
+    });
+
+    signOutButton.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error("Failed to sign out admin:", error);
+        updateStatus("Sign-out failed. Please try again.", true);
+      }
+    });
+
+    refreshButton.addEventListener("click", loadWaitlistData);
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        currentView = button.dataset.view;
+        renderCurrentView();
+      });
+    });
+
+    searchInput.addEventListener("input", () => {
+      currentSearch = searchInput.value;
+      renderCurrentView();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "/" && document.activeElement !== searchInput) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    clearSearchButton.addEventListener("click", () => {
+      searchInput.value = "";
+      currentSearch = "";
+      renderCurrentView();
+    });
+
+    downloadButtons.forEach((button) => {
+      button.addEventListener("click", downloadCurrentViewAsPdf);
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        showDashboardForUser(user);
+        await loadWaitlistData();
+        return;
+      }
+
+      showLoginScreen();
+    });
+  </script>
+</body>
+</html>
