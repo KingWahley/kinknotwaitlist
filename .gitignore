@@ -5,7 +5,7 @@
 !.env.example
 
 # Local Firebase/browser config
-firebase-config.js
+# firebase-config.js (Removed from ignore to allow production deployment)
 !firebase-config.example.js
 
 # Logs

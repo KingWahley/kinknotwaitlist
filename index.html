@@ -3156,20 +3156,23 @@
 
     const firebaseConfig = window.__FIREBASE_CONFIG__;
 
-    if (!firebaseConfig) {
-      throw new Error("Missing firebase-config.js. Copy firebase-config.example.js to firebase-config.js and fill in your local values.");
+    if (firebaseConfig) {
+      const firebaseApp = initializeApp(firebaseConfig);
+      const db = getFirestore(firebaseApp);
+
+      isAnalyticsSupported()
+        .then((supported) => {
+          if (supported) {
+            getAnalytics(firebaseApp);
+          }
+        })
+        .catch(() => null);
+      
+      // Make db globally accessible if needed by other scripts
+      window.db = db;
+    } else {
+      console.warn("Missing firebase-config.js. Firebase features will be disabled, but animations will still work.");
     }
-
-    const firebaseApp = initializeApp(firebaseConfig);
-    const db = getFirestore(firebaseApp);
-
-    isAnalyticsSupported()
-      .then((supported) => {
-        if (supported) {
-          getAnalytics(firebaseApp);
-        }
-      })
-      .catch(() => null);
 
     // Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
@@ -3410,12 +3413,18 @@
       clearEarlyAccessMessage();
       setEarlyAccessSubmittingState(true);
 
+      if (!window.db) {
+        setEarlyAccessMessage('Firebase is not configured. Please try again later.', 'error');
+        setEarlyAccessSubmittingState(false);
+        return;
+      }
+
       const email = earlyAccessEmail?.value.trim() || '';
       const emailLowercase = getWaitlistDocumentId(email);
       const role = earlyAccessRole?.value || '';
 
       try {
-        await setDoc(doc(db, 'waitlist', emailLowercase), {
+        await setDoc(doc(window.db, 'waitlist', emailLowercase), {
           email,
           emailLowercase,
           role,
