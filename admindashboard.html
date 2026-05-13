@@ -9,23 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4efe7;
+      --bg: #FBF6EC; /* Ivory Cream */
       --panel: #ffffff;
-      --panel-soft: #f7f5f1;
-      --panel-tint: #eef3ed;
-      --line: rgba(44, 37, 29, 0.08);
-      --text: #1f1a15;
-      --muted: #7f766d;
-      --brand: #156c43;
-      --brand-dark: #0f5232;
-      --brand-soft: #dcefe5;
+      --panel-soft: #fcfaf7;
+      --panel-tint: #f2d7d020; /* Blush Tint */
+      --line: rgba(31, 26, 24, 0.08);
+      --text: #1F1A18; /* Charcoal Ink */
+      --muted: #5C5450;
+      --brand: #6B1F2A; /* Deep Burgundy */
+      --brand-dark: #4A151D;
+      --brand-soft: #F2D7D0; /* Soft Blush */
       --danger: #8d2c2c;
       --danger-soft: #f8e5e5;
-      --shadow: 0 24px 60px rgba(49, 39, 28, 0.08);
+      --shadow: 0 24px 60px rgba(31, 26, 24, 0.08);
       --radius-xl: 30px;
       --radius-lg: 24px;
       --radius-md: 18px;
       --radius-sm: 14px;
+      --accent: #C9A24B; /* Champagne Gold */
     }
 
     * {
@@ -39,9 +40,9 @@
       font-family: "DM Sans", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(21, 108, 67, 0.08), transparent 30%),
-        radial-gradient(circle at right bottom, rgba(201, 144, 58, 0.1), transparent 26%),
-        linear-gradient(180deg, #faf7f3 0%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(107, 31, 42, 0.08), transparent 30%),
+        radial-gradient(circle at right bottom, rgba(201, 162, 75, 0.1), transparent 26%),
+        linear-gradient(180deg, #FBF6EC 0%, var(--bg) 100%);
       padding: 20px;
     }
 
@@ -126,8 +127,8 @@
     }
 
     .field-group input:focus {
-      border-color: rgba(21, 108, 67, 0.45);
-      box-shadow: 0 0 0 4px rgba(21, 108, 67, 0.09);
+      border-color: rgba(107, 31, 42, 0.45);
+      box-shadow: 0 0 0 4px rgba(107, 31, 42, 0.09);
     }
 
     .action-btn {
@@ -146,7 +147,7 @@
     .action-btn.primary {
       background: var(--brand);
       color: #fff;
-      box-shadow: 0 16px 30px rgba(21, 108, 67, 0.16);
+      box-shadow: 0 16px 30px rgba(107, 31, 42, 0.16);
     }
 
     .action-btn.secondary {
@@ -213,7 +214,7 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #e6f3ec, #f7fbf8);
+      background: linear-gradient(135deg, #F2D7D0, #FBF6EC);
       color: var(--brand);
     }
 
@@ -259,15 +260,15 @@
     }
 
     .nav-btn:hover {
-      background: rgba(21, 108, 67, 0.06);
+      background: rgba(107, 31, 42, 0.06);
       color: var(--text);
       transform: translateX(2px);
     }
 
     .nav-btn.active {
-      background: linear-gradient(135deg, #156c43, #1f8656);
+      background: linear-gradient(135deg, #6B1F2A, #8A2A37);
       color: #fff;
-      box-shadow: 0 14px 28px rgba(21, 108, 67, 0.18);
+      box-shadow: 0 14px 28px rgba(107, 31, 42, 0.18);
     }
 
     .nav-btn-left {
@@ -293,7 +294,7 @@
       min-width: 34px;
       padding: 6px 8px;
       border-radius: 999px;
-      background: rgba(21, 108, 67, 0.1);
+      background: rgba(107, 31, 42, 0.1);
       color: var(--brand-dark);
       font-size: 0.84rem;
       font-weight: 800;
@@ -487,11 +488,11 @@
       right: 0;
       bottom: 0;
       border-radius: 999px;
-      background: linear-gradient(180deg, #65c790 0%, #156c43 100%);
+      background: linear-gradient(180deg, #8A2A37 0%, #6B1F2A 100%);
     }
 
     .bar-item.active .bar-fill {
-      background: linear-gradient(180deg, #105535 0%, #083720 100%);
+      background: linear-gradient(180deg, #4A151D 0%, #2A0B10 100%);
     }
 
     .bar-label {
@@ -619,7 +620,7 @@
 
     .pagination-btn:hover:not(:disabled) {
       transform: translateY(-1px);
-      border-color: rgba(21, 108, 67, 0.22);
+      border-color: rgba(107, 31, 42, 0.22);
     }
 
     .pagination-btn:disabled {
@@ -1523,7 +1524,7 @@
         format: "a4"
       });
 
-      doc.setFillColor(21, 108, 67);
+      doc.setFillColor(107, 31, 42); // Deep Burgundy
       doc.roundedRect(34, 28, 775, 78, 18, 18, "F");
       doc.setTextColor(255, 255, 255);
       doc.setFont("helvetica", "bold");
@@ -1550,8 +1551,8 @@
           lineWidth: 0.5
         },
         headStyles: {
-          fillColor: [240, 246, 242],
-          textColor: [16, 41, 29],
+          fillColor: [251, 246, 236], // Ivory tint
+          textColor: [31, 26, 24], // Charcoal
           fontStyle: "bold"
         },
         alternateRowStyles: {
