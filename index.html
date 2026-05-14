@@ -601,9 +601,9 @@
 
     .inline-email-input {
       flex: 1 1 360px;
-      min-width: 260px;
+      min-width: 0;
       padding: 18px 24px;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-md);
       border: 1px solid rgba(251, 246, 236, 0.2);
       background: rgba(251, 246, 236, 0.08);
       color: var(--white);
@@ -626,7 +626,7 @@
     .inline-email-button {
       padding: 18px 30px;
       border: none;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-md);
       background: var(--accent);
       color: var(--primary);
       font-family: inherit;
@@ -991,11 +991,24 @@
 
       .inline-email-form {
         flex-direction: column;
+        width: 100%;
+        margin-top: 32px;
       }
 
       .inline-email-input,
       .inline-email-button {
-        width: 100%;
+        width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important; /* Fix for massive height in column layout */
+        height: auto !important;
+        text-align: center;
+        padding: 14px 20px !important;
+        border-radius: 14px !important;
+      }
+
+      .solution-cta-card {
+        padding: 60px 20px !important;
+        border-radius: 28px !important;
       }
 
       .early-access-dialog {
@@ -1352,6 +1365,84 @@
     padding: 8px 20px; border-radius: 50px;
     font-size: .85rem; font-family: 'DM Sans', sans-serif;
     cursor: pointer; border: none; font-weight: 500;
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 8px;
+    z-index: 2001;
+    transition: var(--transition);
+  }
+
+  /* ── MOBILE NAV OVERLAY ── */
+  .mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-cream);
+    z-index: 2000;
+    padding: 100px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  .mobile-nav-overlay.is-active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 8px;
+    transition: var(--transition);
+  }
+
+  .mobile-nav-close:hover {
+    color: var(--pink);
+    transform: rotate(90deg);
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mobile-nav-links a {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+  }
+
+  .mobile-nav-links a:hover {
+    color: var(--pink);
+    padding-left: 8px;
+  }
+
+  .mobile-nav-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   /* ── HERO TEXT ── */
@@ -1713,6 +1804,111 @@
   .blob-1 { width: 500px; height: 500px; background: rgba(242, 215, 208, 0.4); top: -100px; left: -100px; }
   .blob-2 { width: 400px; height: 400px; background: rgba(201, 162, 75, 0.2); bottom: -80px; right: -80px; }
   .blob-3 { width: 300px; height: 300px; background: rgba(107, 31, 42, 0.15); top: 40%; left: 30%; }
+
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-hamburger {
+      display: block;
+    }
+
+    .nav-right {
+      display: none;
+    }
+
+    nav.scrolled {
+      width: calc(100% - 32px);
+    }
+
+    .stage {
+      display: none !important;
+    }
+
+    .hero-bg {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .how-works-content {
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 40px;
+      height: auto;
+      justify-content: flex-start;
+    }
+
+    .how-works-text-side {
+      width: 100%;
+      text-align: center;
+      height: 220px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .how-works-step-shell {
+      inset: 12px;
+      border-radius: 24px;
+    }
+
+    .walkthrough-title {
+      font-size: 36px;
+      max-width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .walkthrough-text {
+      font-size: 16px;
+      max-width: 100%;
+    }
+
+    .how-works-visual-side {
+      width: 100%;
+      height: 300px;
+      margin-left: 0;
+    }
+
+    .ui-card {
+      padding: 16px;
+    }
+
+    .vendor-card-mock {
+      width: 240px;
+    }
+
+    .payment-hub-mock {
+      width: 100%;
+      padding: 24px !important;
+    }
+
+    .dashboard-mock {
+      width: 100%;
+      height: 240px;
+    }
+
+    .chat-bubble {
+      font-size: 14px;
+      padding: 12px 18px;
+      max-width: 220px;
+    }
+
+    #step-intro-text {
+      left: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      transform: translateY(-50%) !important;
+      padding: 0 24px;
+    }
+
+    #step-intro-text p {
+      font-size: 32px !important;
+      padding: 0;
+      width: 100%;
+    }
+  }
   </style>
 </head>
 <body>
@@ -1727,6 +1923,9 @@
     <li><a href="#vendors">Vendors</a></li>
     <li><a href="#event-planners">Event Planners</a></li>
   </ul>
+  <button class="nav-hamburger" type="button" aria-label="Toggle menu" id="mobile-menu-toggle">
+    <i class="fa-solid fa-bars-staggered"></i>
+  </button>
   <div class="nav-right">
     <button class="btn-fill-sm" type="button" data-open-early-access data-role="couple">Join Early Access</button>
   </div>
@@ -2916,6 +3115,7 @@
       </div>
 
       <div
+        class="solution-cta-card"
         style="
           position: relative;
           text-align: center;
@@ -3203,6 +3403,20 @@
         </a>
         <button class="success-popup-secondary" type="button" data-close-success-popup>Close</button>
       </div>
+    </div>
+  </div>
+
+  <div class="mobile-nav-overlay" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" type="button" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="#join-waitlist">Couples</a></li>
+      <li><a href="#vendors">Vendors</a></li>
+      <li><a href="#event-planners">Event Planners</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <button class="btn-primary" type="button" data-open-early-access data-role="couple" style="width: 100%;">Join Early Access</button>
     </div>
   </div>
 
@@ -3516,6 +3730,33 @@
         setEarlyAccessSubmittingState(false);
       }
     });
+
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (mobileMenuToggle && mobileNav) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isActive = mobileNav.classList.toggle('is-active');
+        const icon = mobileMenuToggle.querySelector('i');
+        if (icon) {
+          icon.className = isActive ? 'fa-solid fa-xmark' : 'fa-solid fa-bars-staggered';
+        }
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isActive ? 'hidden' : '';
+      });
+
+      // Close menu when a link or button is clicked
+      mobileNav.querySelectorAll('a, button').forEach(item => {
+        item.addEventListener('click', () => {
+          mobileNav.classList.remove('is-active');
+          const icon = mobileMenuToggle.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars-staggered';
+          document.body.style.overflow = '';
+        });
+      });
+    }
 
     // Helper for button clicks
     function scrollToWaitlist() {
