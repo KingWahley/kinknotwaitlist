@@ -86,6 +86,12 @@
       text-transform: uppercase;
     }
 
+    .eyebrow img {
+      width: 86px;
+      height: auto;
+      display: block;
+    }
+
     .auth-card h1 {
       margin-top: 18px;
       font-family: "Playfair Display", serif;
@@ -199,6 +205,7 @@
       display: flex;
       flex-direction: column;
       backdrop-filter: blur(18px);
+      min-width: 0;
     }
 
     .brand-lockup {
@@ -209,24 +216,24 @@
     }
 
     .brand-mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #F2D7D0, #FBF6EC);
-      color: var(--brand);
+      width: 92px;
+      height: 92px;
+      flex: 0 0 92px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .brand-lockup h2 {
-      font-size: 1.7rem;
-      font-weight: 800;
+    .brand-mark img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
-    .brand-lockup p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 3px;
+    .brand-lockup.brand-lockup-image-only {
+      justify-content: center;
+      padding-inline: 0;
     }
 
     .sidebar-label {
@@ -315,6 +322,7 @@
       display: grid;
       gap: 16px;
       backdrop-filter: blur(18px);
+      min-width: 0;
     }
 
     .topbar {
@@ -342,6 +350,7 @@
       border-radius: 18px;
       background: var(--panel-soft);
       color: var(--muted);
+      min-width: 0;
     }
 
     .search-shell input {
@@ -350,6 +359,7 @@
       background: transparent;
       outline: none;
       color: var(--text);
+      min-width: 0;
     }
 
     .shortcut-chip {
@@ -368,6 +378,7 @@
       gap: 10px;
       flex-wrap: nowrap;
       flex-shrink: 0;
+      min-width: 0;
     }
 
     .icon-btn {
@@ -391,7 +402,12 @@
       border-radius: 18px;
       background: #fff;
       border: 1px solid rgba(31, 26, 21, 0.08);
-      min-width: 220px;
+      flex: 0 1 220px;
+      min-width: 0;
+    }
+
+    .profile-chip > div:last-child {
+      min-width: 0;
     }
 
     .avatar {
@@ -407,11 +423,18 @@
     .profile-chip strong {
       display: block;
       font-size: 0.98rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .profile-chip span {
       color: var(--muted);
       font-size: 0.86rem;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .status-strip {
@@ -574,7 +597,8 @@
     }
 
     .table-wrap {
-      overflow-x: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border: 1px solid rgba(31, 26, 21, 0.06);
       border-radius: 24px;
       background: var(--panel-soft);
@@ -735,23 +759,76 @@
       display: none;
     }
 
+    .mobile-sidebar-backdrop {
+      display: none;
+    }
+
     @media (max-width: 1220px) {
       .app-shell {
         grid-template-columns: 1fr;
       }
 
-      .sidebar {
-        order: 2;
+      .mobile-nav-toggle {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
       }
 
-      .workspace {
-        order: 1;
+      .sidebar {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        bottom: 12px;
+        width: min(360px, calc(100vw - 24px));
+        max-width: calc(100vw - 24px);
+        z-index: 40;
+        overflow-y: auto;
+        transform: translateX(calc(-100% - 28px));
+        transition: transform 0.28s ease;
+      }
+
+      .app-shell.sidebar-open .sidebar {
+        transform: translateX(0);
+      }
+
+      .mobile-sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        background: rgba(31, 26, 24, 0.28);
+        backdrop-filter: blur(6px);
+      }
+
+      .app-shell.sidebar-open .mobile-sidebar-backdrop {
+        display: block;
       }
     }
 
     @media (max-width: 1080px) {
       .hero-lower {
         grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        height: auto;
+        min-height: 0;
+        padding: 14px;
+        flex-wrap: wrap;
+      }
+
+      .search-shell {
+        flex-basis: 100%;
+      }
+
+      .topbar-right {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .profile-chip {
+        flex: 1 1 240px;
       }
     }
 
@@ -768,15 +845,30 @@
       }
 
       .topbar {
-        height: auto;
-        min-height: 0;
-        padding: 14px;
-        flex-wrap: wrap;
+        padding: 12px;
+      }
+
+      .search-shell {
+        width: 100%;
+        padding: 10px 14px;
+      }
+
+      .shortcut-chip {
+        display: none;
+      }
+
+      .topbar-right {
+        align-items: stretch;
+      }
+
+      .topbar-right .icon-btn {
+        flex: 0 0 auto;
       }
 
       .profile-chip {
-        min-width: 100%;
+        width: 100%;
         height: auto;
+        padding: 10px 12px;
       }
 
       .bar-chart {
@@ -786,13 +878,124 @@
       .bar-track {
         max-width: none;
       }
+
+      .table-panel {
+        padding: 18px;
+      }
+
+      .table-copy h2 {
+        font-size: 1.6rem;
+      }
+
+      .table-wrap {
+        border: none;
+        background: transparent;
+      }
+
+      table,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        display: grid;
+        gap: 14px;
+      }
+
+      tr {
+        border: 1px solid rgba(31, 26, 21, 0.08);
+        border-radius: 22px;
+        background: var(--panel-soft);
+        padding: 8px 0;
+        overflow: hidden;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(0, 112px) minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(31, 26, 21, 0.06);
+        font-size: 0.92rem;
+      }
+
+      td:last-child {
+        border-bottom: none;
+      }
+
+      td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      td > * {
+        min-width: 0;
+      }
+
+      .pagination-bar,
+      .pagination-actions {
+        align-items: stretch;
+      }
+
+      .pagination-btn,
+      .pagination-page {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .auth-card {
+        padding: 26px 20px;
+      }
+
+      .workspace,
+      .sidebar,
+      .table-panel,
+      .topbar {
+        border-radius: 20px;
+      }
+
+      .brand-lockup {
+        padding-bottom: 18px;
+      }
+
+      .icon-btn,
+      .mobile-nav-toggle {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+      }
+
+      .brand-mark {
+        width: 78px;
+        height: 78px;
+        flex-basis: 78px;
+      }
+
+      td {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
   <section class="auth-shell" id="auth-shell">
     <div class="auth-card">
-      <div class="eyebrow">KinKnot Admin Access</div>
+      <div class="eyebrow"><img src="images/logo.png" alt="KinKnot logo" /></div>
       <h1>Sign in to view the waitlist dashboard.</h1>
       
 
@@ -815,19 +1018,11 @@
   </section>
 
   <div class="app-shell" id="app-shell" hidden>
-    <aside class="sidebar">
-      <div class="brand-lockup">
-        <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M9.2 12.2c.7 1.7 2.8 2.4 4.4 1.6 1-.5 1.8-1.3 2-2.4"></path>
-            <path d="M8.5 7.9c.8-.7 2.1-.8 3-.2"></path>
-            <path d="M12.8 7.6c.9-.6 2.2-.5 3 .2"></path>
-          </svg>
-        </div>
-        <div>
-          <h2>KinKnot</h2>
-          <p>Admin dashboard</p>
+    <button class="mobile-sidebar-backdrop" type="button" id="mobile-sidebar-backdrop" aria-label="Close navigation"></button>
+    <aside class="sidebar" id="admin-sidebar">
+      <div class="brand-lockup brand-lockup-image-only">
+        <div class="brand-mark">
+          <img src="images/logo.png" alt="KinKnot logo" />
         </div>
       </div>
 
@@ -932,6 +1127,13 @@
 
     <main class="workspace">
       <div class="topbar">
+        <button class="icon-btn mobile-nav-toggle" type="button" id="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="admin-sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+        </button>
         <label class="search-shell" for="table-search">
           <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="11" cy="11" r="7"></circle>
@@ -1082,6 +1284,7 @@
 
     const authShell = document.getElementById("auth-shell");
     const appShell = document.getElementById("app-shell");
+    const sidebar = document.getElementById("admin-sidebar");
     const adminLoginForm = document.getElementById("admin-login-form");
     const adminEmailInput = document.getElementById("admin-email");
     const adminPasswordInput = document.getElementById("admin-password");
@@ -1109,6 +1312,8 @@
     const paginationPage = document.getElementById("pagination-page");
     const searchInput = document.getElementById("table-search");
     const clearSearchButton = document.getElementById("clear-search");
+    const mobileNavToggle = document.getElementById("mobile-nav-toggle");
+    const mobileSidebarBackdrop = document.getElementById("mobile-sidebar-backdrop");
     const navButtons = Array.from(document.querySelectorAll(".nav-btn[data-view]"));
     const downloadButtons = [
       document.getElementById("download-topbar-pdf"),
@@ -1173,6 +1378,28 @@
     let currentSearch = "";
     let currentPage = 1;
     const ROWS_PER_PAGE = 20;
+
+    function syncSidebarState(isOpen) {
+      appShell.classList.toggle("sidebar-open", isOpen);
+
+      if (mobileNavToggle) {
+        mobileNavToggle.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      if (sidebar && isMobileSidebarMode()) {
+        sidebar.setAttribute("aria-hidden", String(!isOpen));
+      } else if (sidebar) {
+        sidebar.removeAttribute("aria-hidden");
+      }
+    }
+
+    function closeSidebar() {
+      syncSidebarState(false);
+    }
+
+    function isMobileSidebarMode() {
+      return window.matchMedia("(max-width: 1220px)").matches;
+    }
 
     function normalizeRole(role) {
       if (role === "event-planner") {
@@ -1350,7 +1577,7 @@
           <tbody>
             ${rows.map((item) => `
               <tr>
-                <td>
+                <td data-label="Contact Info">
                   <div style="display: flex; align-items: center; gap: 12px;">
                     <div style="width: 32px; height: 32px; border-radius: 50%; background: #6b1f2a; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">
                       ${item.fullName ? item.fullName.charAt(0).toUpperCase() : (item.email.charAt(0).toUpperCase() || "?")}
@@ -1361,9 +1588,9 @@
                     </div>
                   </div>
                 </td>
-                <td><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(item.phoneNumber || "—")}</span></td>
-                <td><span class="role-badge role-${escapeHtml(item.role)}">${escapeHtml(roleLabel(item.role))}</span></td>
-                <td><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(formatDateFromMillis(item.submittedAtMillis))}</span></td>
+                <td data-label="Phone Number"><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(item.phoneNumber || "—")}</span></td>
+                <td data-label="Category"><span class="role-badge role-${escapeHtml(item.role)}">${escapeHtml(roleLabel(item.role))}</span></td>
+                <td data-label="Submitted At"><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(formatDateFromMillis(item.submittedAtMillis))}</span></td>
               </tr>
             `).join("")}
           </tbody>
@@ -1624,8 +1851,23 @@
         currentView = button.dataset.view;
         currentPage = 1;
         renderCurrentView();
+
+        if (isMobileSidebarMode()) {
+          closeSidebar();
+        }
       });
     });
+
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener("click", () => {
+        const isOpen = appShell.classList.contains("sidebar-open");
+        syncSidebarState(!isOpen);
+      });
+    }
+
+    if (mobileSidebarBackdrop) {
+      mobileSidebarBackdrop.addEventListener("click", closeSidebar);
+    }
 
     searchInput.addEventListener("input", () => {
       currentSearch = searchInput.value;
@@ -1634,11 +1876,24 @@
     });
 
     document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && appShell.classList.contains("sidebar-open")) {
+        closeSidebar();
+        return;
+      }
+
       if (event.key === "/" && document.activeElement !== searchInput) {
         event.preventDefault();
         searchInput.focus();
       }
     });
+
+    window.addEventListener("resize", () => {
+      if (!isMobileSidebarMode()) {
+        closeSidebar();
+      }
+    });
+
+    syncSidebarState(false);
 
     clearSearchButton.addEventListener("click", () => {
       searchInput.value = "";

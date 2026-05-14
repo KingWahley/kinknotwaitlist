@@ -1424,7 +1424,19 @@
     padding: 14px 28px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text-dark); letter-spacing: .02em; }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-dark);
+  }
+  .nav-logo img {
+    width: 90px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--text-mid); font-size: .9rem; font-weight: 400; }
   .nav-links a:hover { color: var(--pink); }
@@ -1941,6 +1953,10 @@
       width: calc(100% - 32px);
     }
 
+    .nav-logo img {
+      width: 90px;
+    }
+
     /* .stage {
       display: none !important;
     }
@@ -2036,7 +2052,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">KinKnot</div>
+  <a class="nav-logo" href="#top" aria-label="KinKnot home">
+    <img src="images/logo.png" alt="KinKnot logo" />
+  </a>
   <ul class="nav-links">
     <li><a href="#join-waitlist">Couples</a></li>
     <li><a href="#vendors">Vendors</a></li>
@@ -3520,7 +3538,7 @@
       <div class="success-popup-actions">
         <a
           class="whatsapp-community"
-          href="https://wa.me/?text=Hi%20KinKnot%2C%20I%20would%20love%20to%20join%20the%20community."
+          href="https://chat.whatsapp.com/FlQEAK1iFyVDCDuNeB3EIb"
           target="_blank"
           rel="noopener noreferrer"
         >
