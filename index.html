@@ -944,6 +944,18 @@
       display: flex;
       align-items: flex-end;
       padding: 60px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .editorial-parallax-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 70px rgba(31, 26, 24, 0.22);
+    }
+
+    .editorial-parallax-card:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.9);
+      outline-offset: 6px;
     }
 
     .editorial-parallax-overlay {
@@ -1423,7 +1435,7 @@
     color: var(--text-dark);
   }
   .nav-logo img {
-    width: 90px;
+    width: 120px;
     height: auto;
     display: block;
     object-fit: contain;
@@ -1946,7 +1958,7 @@
     }
 
     .nav-logo img {
-      width: 90px;
+      width: 120px;
     }
 
     /* .stage {
@@ -2597,7 +2609,15 @@
 
   <!-- EDITORIAL SHOWCASE -->
   <section class="editorial-section">
-    <div id="editorial-parallax" class="editorial-parallax-card">
+    <div
+      id="editorial-parallax"
+      class="editorial-parallax-card"
+      data-open-early-access
+      data-role="couple"
+      tabindex="0"
+      role="button"
+      aria-label="Open early access waitlist form"
+    >
       <div class="editorial-parallax-overlay"></div>
       <div class="editorial-parallax-content">
         <div class="editorial-badge"> Early Access Offer</div>
@@ -3812,6 +3832,18 @@
 
       if (earlyAccessModal?.classList.contains('is-open')) {
         closeEarlyAccessModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const openTrigger = event.target.closest?.('[data-open-early-access]');
+      if (!openTrigger) {
+        return;
+      }
+
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openEarlyAccessModal('', openTrigger.dataset.role || '', openTrigger.dataset.role || 'modal');
       }
     });
 
