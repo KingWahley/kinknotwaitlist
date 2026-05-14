@@ -1283,7 +1283,9 @@
 
       return baseRows.filter((row) => {
         return [
+          row.fullName,
           row.email,
+          row.phoneNumber,
           row.role,
           roleLabel(row.role),
           row.entryPoint,
@@ -1339,17 +1341,29 @@
         <table>
           <thead>
             <tr>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Submitted</th>
+              <th>Contact Info</th>
+              <th>Phone Number</th>
+              <th>Category</th>
+              <th>Submitted At</th>
             </tr>
           </thead>
           <tbody>
             ${rows.map((item) => `
               <tr>
-                <td><a class="email-link" href="mailto:${escapeHtml(item.email)}">${escapeHtml(item.email || "No email")}</a></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #6b1f2a; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">
+                      ${item.fullName ? item.fullName.charAt(0).toUpperCase() : (item.email.charAt(0).toUpperCase() || "?")}
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                      <span style="font-weight: 600; color: #1f1a18;">${escapeHtml(item.fullName || "Anonymous")}</span>
+                      <a class="email-link" href="mailto:${escapeHtml(item.email)}" style="font-size: 13px; opacity: 0.8;">${escapeHtml(item.email || "No email")}</a>
+                    </div>
+                  </div>
+                </td>
+                <td><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(item.phoneNumber || "—")}</span></td>
                 <td><span class="role-badge role-${escapeHtml(item.role)}">${escapeHtml(roleLabel(item.role))}</span></td>
-                <td>${escapeHtml(formatDateFromMillis(item.submittedAtMillis))}</td>
+                <td><span style="font-size: 14px; color: #1f1a18;">${escapeHtml(formatDateFromMillis(item.submittedAtMillis))}</span></td>
               </tr>
             `).join("")}
           </tbody>
@@ -1443,7 +1457,9 @@
 
           return {
             id: docSnapshot.id,
+            fullName: data.fullName || "",
             email: data.email || "",
+            phoneNumber: data.phoneNumber || "",
             role: normalizeRole(data.role),
             entryPoint: data.entryPoint || "",
             pagePath: data.pagePath || "",
@@ -1535,15 +1551,17 @@
       doc.text(`Generated ${new Date().toLocaleString("en-NG")} | Visible rows: ${visibleRows.length}`, 54, 84);
 
       const body = visibleRows.map((row) => ([
+        row.fullName || "Anonymous",
         row.email || "No email",
+        row.phoneNumber || "—",
         roleLabel(row.role),
         formatDateFromMillis(row.submittedAtMillis)
       ]));
 
       doc.autoTable({
         startY: 126,
-        head: [["Email", "Role", "Submitted"]],
-        body: body.length ? body : [["No matching records", "", ""]],
+        head: [["Name", "Email", "Phone", "Role", "Submitted"]],
+        body: body.length ? body : [["No matching records", "", "", "", ""]],
         styles: {
           fontSize: 10,
           cellPadding: 8,

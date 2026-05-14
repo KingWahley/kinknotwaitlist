@@ -739,6 +739,22 @@
       gap: 14px;
     }
 
+    .form-row {
+      display: flex;
+      gap: 14px;
+    }
+
+    .form-row > div {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+
     .early-access-form label {
       font-size: 13px;
       font-weight: 800;
@@ -1730,7 +1746,13 @@
   <p>Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, book with confidence, and pay securely with your money protected until your vendor delivers.</p>
   <div class="hero-btns">
     <button class="btn-primary" type="button" data-open-early-access data-role="couple">Get Early Access</button>
-    <button class="btn-secondary">For Vendors</button>
+    <a
+      href="#vendors"
+      class="btn-secondary"
+      style="text-decoration: none; color: inherit;"
+    >
+  For Vendors
+</a>
   </div>
 </div>
 
@@ -2243,9 +2265,9 @@
     <div id="editorial-parallax" style="max-width: 1200px; margin: 0 auto; height: 600px; border-radius: 48px; background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80&fit=crop'); background-size: cover; background-position: center; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 60px;">
       <div style="position: absolute; inset: 0; background: rgba(107, 31, 42, 0.45);"></div>
       <div style="position: relative; z-index: 2; color: white; max-width: 600px;">
-        <div style="display:inline-block; padding: 6px 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(12px); border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);">The KinKnot Standard</div>
-        <h2 style="font-size: 48px; font-weight: 800; line-height: 1.1;">Designed for the most intentional moments of your life.</h2>
-        <p style="margin-top: 20px; font-size: 18px; opacity: 0.9;">KinKnot isn't just a tool; it's the foundation for a celebration built on trust and clarity. We believe your big day deserves a professional backbone.</p>
+        <div style="display:inline-block; padding: 6px 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(12px); border-radius: 8px; font-size: 14px; font-weight: 700; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);"> Early Access Offer</div>
+        <h2 style="font-size: 32px; font-weight: 600; line-height: 1.1;">Join KinKnot before launch and enjoy 3 months free access when we officially launch.</h2>
+        <p style="margin-top: 10px; font-size: 18px; opacity: 0.9;">Be among the first couples, vendors and event planners using a smarter and more trusted way to plan weddings.</p>
       </div>
     </div>
   </section>
@@ -2365,7 +2387,7 @@
                 width: 8px;
                 height: 8px;
                 border-radius: 50%;
-                background: #ffc9a8;
+                background:var(--accent);
               "
             ></div>
             <span
@@ -2373,7 +2395,8 @@
                 font-size: 12px;
                 letter-spacing: 0.14em;
                 text-transform: uppercase;
-                color: rgba(255,255,255,0.65);
+                color: var(--primary);
+                font-weight: 600;
               "
             >
               Mistake 01
@@ -2396,7 +2419,7 @@
             style="
               font-size: 19px;
               line-height: 1.9;
-              color: rgba(255,255,255,0.72);
+              color: rgba(41, 41, 41, 0.72);
               margin-bottom: 34px;
             "
           >
@@ -3097,26 +3120,54 @@
      
 
       <form class="early-access-form" id="early-access-form">
-        <div>
-          <label for="early-access-email">Email Address</label>
-          <input
-            class="early-access-input"
-            id="early-access-email"
-            name="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-          >
+        <div class="form-row">
+          <div>
+            <label for="early-access-name">Full Name</label>
+            <input
+              class="early-access-input"
+              id="early-access-name"
+              name="fullName"
+              type="text"
+              placeholder="Enter your name"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="early-access-role">I am joining as</label>
+            <select class="early-access-select" id="early-access-role" name="role" required>
+              <option value="">Select one option</option>
+              <option value="couple">Couple</option>
+              <option value="vendor">Vendor</option>
+              <option value="event-planner">Event Planner</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label for="early-access-role">I am joining as</label>
-          <select class="early-access-select" id="early-access-role" name="role" required>
-            <option value="">Select one option</option>
-            <option value="couple">Couple</option>
-            <option value="vendor">Vendor</option>
-            <option value="event-planner">Event Planner</option>
-          </select>
+        <div class="form-row">
+          <div>
+            <label for="early-access-email">Email Address</label>
+            <input
+              class="early-access-input"
+              id="early-access-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="early-access-phone">Phone Number</label>
+            <input
+              class="early-access-input"
+              id="early-access-phone"
+              name="phone"
+              type="tel"
+              placeholder="+234 ..."
+              required
+            >
+          </div>
         </div>
 
         <button class="btn-primary early-access-submit" type="submit">Submit</button>
@@ -3238,7 +3289,9 @@
 
     const earlyAccessModal = document.getElementById('early-access-modal');
     const earlyAccessForm = document.getElementById('early-access-form');
+    const earlyAccessName = document.getElementById('early-access-name');
     const earlyAccessEmail = document.getElementById('early-access-email');
+    const earlyAccessPhone = document.getElementById('early-access-phone');
     const earlyAccessRole = document.getElementById('early-access-role');
     const earlyAccessSuccess = document.getElementById('early-access-success');
     const earlyAccessSubmit = earlyAccessForm?.querySelector('.early-access-submit');
@@ -3329,7 +3382,7 @@
           return;
         }
 
-        earlyAccessEmail.focus();
+        earlyAccessName.focus();
       }, 80);
     }
 
@@ -3428,14 +3481,18 @@
         return;
       }
 
+      const fullName = earlyAccessName?.value.trim() || '';
       const email = earlyAccessEmail?.value.trim() || '';
       const emailLowercase = getWaitlistDocumentId(email);
+      const phoneNumber = earlyAccessPhone?.value.trim() || '';
       const role = earlyAccessRole?.value || '';
 
       try {
         await setDoc(doc(window.db, 'waitlist', emailLowercase), {
+          fullName,
           email,
           emailLowercase,
+          phoneNumber,
           role,
           entryPoint: earlyAccessForm.dataset.entryPoint || 'modal',
           pagePath: window.location.pathname,
