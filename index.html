@@ -1553,7 +1553,50 @@
     font-size: .95rem; color: var(--text-mid);
     line-height: 1.65;
   }
-  .hero-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 0; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 0; flex-wrap: wrap; }
+
+  @media (max-width: 600px) {
+    .hero-btns {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+
+    /* Footer CTA — full bleed, no rounded border on mobile */
+    .big-cta {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .cta-inner {
+      border-radius: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Editorial section — full bleed on mobile */
+    .editorial-section {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .editorial-parallax-card {
+      border-radius: 0 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+
+    /* Process cards — always show elevated bg on mobile (no hover) */
+    .process-card {
+      background: var(--white) !important;
+      box-shadow: 0 20px 48px rgba(107, 31, 42, 0.10);
+      border-color: rgba(107, 31, 42, 0.10) !important;
+    }
+  }
   .hero-pill,
   .hero h1,
   .hero p,
@@ -1898,7 +1941,7 @@
       width: calc(100% - 32px);
     }
 
-    .stage {
+    /* .stage {
       display: none !important;
     }
 
@@ -1907,7 +1950,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
+    } */
 
     .how-works-content {
       flex-direction: column;
@@ -2027,6 +2070,13 @@
       style="text-decoration: none; color: inherit;"
     >
   For Vendors
+</a>
+    <a
+      href="#event-planners"
+      class="btn-secondary"
+      style="text-decoration: none; color: inherit;"
+    >
+  Event Planners
 </a>
   </div>
 </div>
@@ -2521,7 +2571,7 @@
         <div class="process-number">03</div>
         <div class="process-icon"><i class="fa-solid fa-shield-heart"></i></div>
         <h3 class="process-card-title">Escrow</h3>
-        <p class="process-card-text">Book with digital contracts and protected payments, with funds released only as work is delivered.</p>
+        <p class="process-card-text">Book with digital contracts and secure milestone based payments that keep both couples and vendors protected throughout the process.</p>
       </div>
       <!-- Step 4 -->
       <div class="process-card">
