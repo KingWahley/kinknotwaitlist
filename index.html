@@ -598,6 +598,109 @@
         color: var(--primary);
       }
 
+      /* Founder Section */
+      .founder-section {
+        padding: 140px 24px;
+        background: var(--white);
+      }
+      .founder-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+      .founder-image-wrapper {
+        flex: 1;
+        position: relative;
+      }
+      .founder-image {
+        width: 100%;
+        border-radius: 24px;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .founder-content {
+        flex: 1.2;
+      }
+      .founder-label {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .founder-title {
+        font-family: Georgia, serif;
+        font-size: clamp(32px, 4vw, 48px);
+        color: var(--text-main);
+        line-height: 1.2;
+        margin-bottom: 32px;
+      }
+      .founder-bio p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: var(--text-light);
+        margin-bottom: 24px;
+      }
+      .founder-signature {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .signature-name {
+        font-family: "Great Vibes", cursive;
+        font-size: 42px;
+        color: var(--primary);
+        margin-bottom: -5px;
+      }
+      .signature-title {
+        font-size: 14px;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .founder-mobile-overlay {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .founder-container {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .founder-section {
+          padding: 80px 24px;
+        }
+        .founder-mobile-overlay {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 40px 24px;
+          background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+          border-radius: 0 0 24px 24px;
+          z-index: 2;
+        }
+        .founder-mobile-overlay .founder-label {
+          color: #f4e7e7;
+          margin-bottom: 8px;
+        }
+        .founder-mobile-overlay .founder-title {
+          color: white;
+          font-size: 28px;
+          margin-bottom: 0;
+        }
+        .founder-content .founder-label,
+        .founder-content .founder-title {
+          display: none;
+        }
+      }
+
       .mistake-title {
         font-size: 28px;
         font-weight: 800;
@@ -1127,6 +1230,13 @@
         }
         .phone-title {
           font-size: 32px;
+        }
+        .phone-mockup {
+          display: none;
+        }
+        .phone-text {
+          text-align: center;
+          margin: 0 auto;
         }
         .navbar {
           padding: 20px;
@@ -2805,7 +2915,7 @@
           />
         </a>
         <ul class="nav-links">
-          <li><a href="#join-waitlist">Couples</a></li>
+          <li><a href="#early-access-offer">Couples</a></li>
           <li><a href="#vendors">Vendors</a></li>
           <li><a href="#event-planners">Event Planners</a></li>
         </ul>
@@ -2962,7 +3072,7 @@
                   font-size: 14px;
                 "
               >
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-shield-halved"></i>
               </div>
               <span style="font-weight: 600"
                 >No more unverified vendors taking risky deposits</span
@@ -2982,7 +3092,7 @@
                   font-size: 14px;
                 "
               >
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
               </div>
               <span style="font-weight: 600"
                 >No more budget chaos across multiple vendors</span
@@ -3002,7 +3112,7 @@
                   font-size: 14px;
                 "
               >
-                ✕
+                <i class="fa-solid fa-comment-slash"></i>
               </div>
               <span style="font-weight: 600"
                 >No more planning across scattered apps and messages</span
@@ -3275,7 +3385,7 @@
     </section>
 
     <!-- EDITORIAL SHOWCASE -->
-    <section class="editorial-section">
+    <section id="early-access-offer" class="editorial-section">
       <div
         id="editorial-parallax"
         class="editorial-parallax-card"
@@ -3299,6 +3409,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- MISTAKES SECTION -->
     <!-- <section
@@ -4902,6 +5013,50 @@
         <div class="footer-visual" style="opacity: 0.05">KinKnot</div>
       </div>
     </section> -->
+
+    <!-- FOUNDER SECTION -->
+    <section class="founder-section" id="founder">
+      <div class="founder-container">
+        <div class="founder-image-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+            alt="KinKnot Founder"
+            class="founder-image"
+          />
+          <div class="founder-mobile-overlay">
+            <div class="founder-label">Founder's Note</div>
+            <h2 class="founder-title">
+              Building the future of Nigerian weddings.
+            </h2>
+          </div>
+        </div>
+        <div class="founder-content">
+          <div class="founder-label">Founder's Note</div>
+          <h2 class="founder-title">
+            Building the future of Nigerian weddings.
+          </h2>
+          <div class="founder-bio">
+            <p>
+              KinKnot was born out of a desire to bring trust, structure, and
+              joy back into Nigerian wedding planning. After seeing countless
+              families navigate the stress of scattered messages and unverified
+              vendors, we built KinKnot to protect the culture while
+              modernizing the process.
+            </p>
+            <p>
+              Our mission is simple: to ensure every Nigerian couple can
+              celebrate their union knowing every detail is tracked, every
+              payment is protected, and every vendor is verified.
+            </p>
+          </div>
+          <div class="founder-signature">
+            <span class="signature-name">Adéola</span>
+            <span class="signature-title">Founder, KinKnot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div
       style="
         width: 100%;
