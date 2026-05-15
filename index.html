@@ -1789,9 +1789,14 @@
       /* ── HERO TEXT ── */
       .hero {
         text-align: center;
-        padding: 10px 20px 120px;
+        padding: 60px 20px;
         position: relative;
         z-index: 2;
+        min-height: calc(100vh - var(--nav-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       .hero-pill {
         display: inline-block;
@@ -1832,7 +1837,8 @@
 
       @media (max-width: 600px) {
         .hero {
-          padding: 40px 20px 40px;
+          padding: 40px 20px;
+          min-height: calc(100vh - var(--nav-height));
         }
         .stage {
           height: 500px;
