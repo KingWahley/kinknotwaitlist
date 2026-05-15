@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KinKnot | Nigeria's First All-In-One Wedding Planning Platform</title>
+    <title>KinKnot | Plan Your Nigerian Wedding with Confidence</title>
     <meta
       name="description"
-      content="KinKnot is Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, manage tasks, and secure payments with digital contracts."
+      content="KinKnot is the smarter way to plan weddings in Nigeria. Find verified vendors, manage tasks, and secure payments with digital contracts—all for FREE."
     />
     <meta
       name="keywords"
@@ -25,7 +25,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.kinknot.com" />
-    <meta property="og:title" content="KinKnot | Nigeria's First All-In-One Wedding Platform" />
+    <meta property="og:title" content="KinKnot | Nigeria's First Wedding Platform with Payment Protection" />
     <meta
       property="og:description"
       content="Plan your Nigerian wedding with confidence. Find verified vendors, use digital contracts, and secure milestone payments—all for FREE."
@@ -33,7 +33,7 @@
     <meta property="og:image" content="https://www.kinknot.com/images/logo.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="KinKnot - Nigeria's First All-In-One Wedding Platform" />
+    <meta property="og:image:alt" content="KinKnot - Nigeria's First Wedding Platform with Payment Protection" />
     <meta property="og:site_name" content="KinKnot" />
     <meta property="og:locale" content="en_NG" />
 
@@ -42,7 +42,7 @@
     <meta name="twitter:site" content="@KinKnot" />
     <meta name="twitter:creator" content="@KinKnot" />
     <meta name="twitter:url" content="https://www.kinknot.com" />
-    <meta name="twitter:title" content="KinKnot | Nigeria's First All-In-One Wedding Platform" />
+    <meta name="twitter:title" content="KinKnot | Nigeria's First Wedding Platform with Payment Protection" />
     <meta
       name="twitter:description"
       content="Plan your Nigerian wedding with confidence. Find verified vendors, use digital contracts, and secure milestone payments—all for FREE."
@@ -64,7 +64,7 @@
           "name": "KinKnot",
           "url": "https://www.kinknot.com",
           "logo": "https://www.kinknot.com/images/logo.png",
-          "description": "KinKnot is Nigeria's first all-in-one wedding platform connecting couples with verified vendors and event planners.",
+          "description": "KinKnot is the smarter way to plan weddings in Nigeria, connecting couples with verified vendors and event planners.",
           "email": "hello@kinknot.com",
           "foundingLocation": "Lagos, Nigeria",
           "areaServed": "Nigeria",
@@ -114,7 +114,7 @@
         --radius-full: 999px;
         --radius-lg: 34px;
         --radius-md: 24px;
-        --nav-height: 88px;
+        --nav-height: 120px;
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --font-serif: "Playfair Display", serif;
         --font-sans: "DM Sans", -apple-system, sans-serif;
@@ -1563,6 +1563,58 @@
         overflow-x: hidden;
       }
 
+      .header-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .pre-launch-banner {
+        background: var(--primary);
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+        position: relative;
+        z-index: 2000;
+        width: 100%;
+        min-height: 32px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+      }
+
+      .pre-launch-banner a {
+        color: white;
+        text-decoration: underline;
+        margin-left: 4px;
+      }
+
+      .hide-mobile {
+        display: inline;
+      }
+
+      @media (max-width: 600px) {
+        .pre-launch-banner {
+          font-size: 11px;
+          padding: 6px 15px;
+          text-align: left;
+          justify-content: flex-start;
+        }
+        .hide-mobile {
+          display: none;
+        }
+      }
+
       .hero-bg {
         background: linear-gradient(
           135deg,
@@ -1578,26 +1630,25 @@
         align-items: center;
         justify-content: space-between;
         padding: 22px 32px;
-        position: fixed;
-        top: 0;
-        left: 50%;
+        position: relative;
+        margin: 12px auto 0;
         width: min(1120px, calc(100% - 32px));
         z-index: 1000;
-        transform: translateX(-50%);
         background: transparent;
         border-radius: 999px;
+        pointer-events: auto;
         transition:
           background-color 0.3s ease,
           box-shadow 0.3s ease,
           backdrop-filter 0.3s ease,
-          top 0.3s ease,
+          margin-top 0.3s ease,
           padding 0.3s ease,
           width 0.3s ease;
       }
       nav.scrolled {
         background: rgba(255, 255, 255, 0.96);
         backdrop-filter: blur(12px);
-        top: 14px;
+        margin-top: 14px;
         width: min(960px, calc(100% - 32px));
         padding: 14px 28px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -1674,8 +1725,8 @@
         position: fixed;
         inset: 0;
         background: var(--bg-cream);
-        z-index: 2000;
-        padding: 100px 32px 40px;
+        z-index: 3000;
+        padding: 120px 32px 40px;
         display: flex;
         flex-direction: column;
         gap: 32px;
@@ -1691,7 +1742,7 @@
 
       .mobile-nav-close {
         position: absolute;
-        top: 32px;
+        top: 48px;
         right: 32px;
         background: none;
         border: none;
@@ -1738,7 +1789,7 @@
       /* ── HERO TEXT ── */
       .hero {
         text-align: center;
-        padding: 10px 20px 0;
+        padding: 10px 20px 120px;
         position: relative;
         z-index: 2;
       }
@@ -1780,6 +1831,13 @@
       }
 
       @media (max-width: 600px) {
+        .hero {
+          padding: 160px 20px 40px;
+        }
+        .stage {
+          height: 500px;
+          padding-bottom: 60px;
+        }
         .hero-btns {
           flex-direction: column;
           align-items: center;
@@ -1819,6 +1877,28 @@
           background: var(--white) !important;
           box-shadow: 0 20px 48px rgba(107, 31, 42, 0.1);
           border-color: rgba(107, 31, 42, 0.1) !important;
+        }
+
+        /* Responsive Walkthrough & Escrow fixes */
+        .how-works-visual-side {
+          width: 100% !important;
+          height: 400px !important;
+          overflow: hidden;
+        }
+        .visual-layer img, .visual-layer div {
+          max-width: 100% !important;
+        }
+        .ui-card {
+          max-width: 85vw !important;
+        }
+        #step-5-visual div {
+          width: 100% !important;
+          height: auto !important;
+          aspect-ratio: 16/10;
+        }
+        .escrow-diagram-container {
+          padding: 24px !important;
+          gap: 20px !important;
         }
       }
       .hero-pill,
@@ -1871,8 +1951,8 @@
       /* ── CARDS STAGE ── */
       .stage {
         position: relative;
-        height: 700px;
-        margin: -10px auto 0;
+        height: 800px;
+        margin: 0 auto;
         max-width: 1200px;
         display: flex;
         align-items: flex-end;
@@ -2656,38 +2736,92 @@
           width: 100%;
         }
       }
+
+      /* Accordion Styles */
+      .details-accordion {
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      .details-accordion summary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 12px 32px;
+        border-radius: var(--radius-full);
+        border: 1px solid rgba(107, 31, 42, 0.15);
+        transition: var(--transition);
+        list-style: none;
+        background: var(--white);
+        margin: 0 auto;
+      }
+      .details-accordion summary::-webkit-details-marker {
+        display: none;
+      }
+      .details-accordion summary:hover {
+        background: rgba(107, 31, 42, 0.05);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(107, 31, 42, 0.08);
+      }
+      .details-accordion summary::after {
+        content: "\f078";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+      .details-accordion[open] summary::after {
+        transform: rotate(180deg);
+      }
+      .details-accordion[open] summary {
+        margin-bottom: 40px;
+      }
     </style>
   </head>
   <body>
-    <!-- NAV -->
-    <nav>
-      <a class="nav-logo" href="#top" aria-label="KinKnot home">
-        <img src="images/logo.png" alt="KinKnot - Nigeria's First All-In-One Wedding Planning Platform Logo" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="#join-waitlist">Couples</a></li>
-        <li><a href="#vendors">Vendors</a></li>
-        <li><a href="#event-planners">Event Planners</a></li>
-      </ul>
-      <button
-        class="nav-hamburger"
-        type="button"
-        aria-label="Toggle menu"
-        id="mobile-menu-toggle"
-      >
-        <i class="fa-solid fa-bars-staggered"></i>
-      </button>
-      <div class="nav-right">
-        <button
-          class="btn-fill-sm"
-          type="button"
-          data-open-early-access
-          data-role="couple"
-        >
-          Join Early Access
-        </button>
+    <header class="header-wrapper">
+      <!-- PRE-LAUNCH BANNER -->
+      <div class="pre-launch-banner">
+        ⚠️ KinKnot is in pre-launch. Features shown are our planned roadmap.
+        <a href="#join-waitlist">Join early access</a>
+        <span class="hide-mobile">to be first when we launch.</span>
       </div>
-    </nav>
+
+      <!-- NAV -->
+      <nav>
+        <a class="nav-logo" href="#top" aria-label="KinKnot home">
+          <img
+            src="images/logo.png"
+            alt="KinKnot - Plan Your Nigerian Wedding with Confidence Logo"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#join-waitlist">Couples</a></li>
+          <li><a href="#vendors">Vendors</a></li>
+          <li><a href="#event-planners">Event Planners</a></li>
+        </ul>
+        <button
+          class="nav-hamburger"
+          type="button"
+          aria-label="Toggle menu"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <div class="nav-right">
+          <button
+            class="btn-fill-sm"
+            type="button"
+            data-open-early-access
+            data-role="couple"
+          >
+            Join Early Access
+          </button>
+        </div>
+      </nav>
+    </header>
 
     <div class="hero-bg">
       <!-- background blobs -->
@@ -2697,11 +2831,12 @@
 
       <!-- HERO TEXT -->
       <div class="hero">
-        <div class="hero-pill">Limited Early Access - Lagos, Nigeria</div>
+        <div class="hero-pill">Launching in Lagos — Q3 2026</div>
+       
         <h1>Where Families Tie The Knot</h1>
         <p>
-          Nigeria's first all-in-one wedding platform. Completely FREE for
-          couples. Find verified vendors, book with digital contracts and secure milestone based payments that keep both couples and vendors protected throughout the process.
+          The smarter way to plan weddings in Nigeria. Completely FREE for
+          couples. Find verified vendors, book with digital contracts, and secure milestone-based payments—all in one trusted place.
         </p>
         <div class="hero-btns">
           <button
@@ -2730,11 +2865,9 @@
       </div>
 
       <!-- CARDS STAGE -->
-      <div class="stage">
-        <!-- floating orbs -->
+      <!-- <div class="stage">
         <div class="orb orb-top-left"></div>
         <div class="orb orb-bottom-right">
-          <!-- heart icon instead of lotus -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -2743,476 +2876,42 @@
           </svg>
         </div>
 
-        <!-- Audio strip -->
         <div class="card card-audio">
-          <div class="audio-thumb">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <polygon points="10,8 16,12 10,16" />
-            </svg>
-          </div>
-          <div class="audio-info">
-            <div class="audio-title">Wedding Vows Draft</div>
-            <div class="audio-time">
-              <svg viewBox="0 0 24 24" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              1:45 mins
-            </div>
-          </div>
-          <button class="play-btn">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" /></svg>
-          </button>
+          <div style="position: absolute; top: 4px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Wedding Vows">
         </div>
 
-        <!-- Mood Stats Card -->
         <div class="card card-mood">
-          <div class="mood-top">
-            <div>
-              <div class="mood-title">RSVP Progress</div>
-              <div class="mood-sub">Real-time guest tracking</div>
-            </div>
-            <div class="mood-dots">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="5" r="1.5" />
-                <circle cx="12" cy="12" r="1.5" />
-                <circle cx="12" cy="19" r="1.5" />
-              </svg>
-            </div>
-          </div>
-          <div class="mood-content">
-            <div class="mood-donut">
-              <svg width="70" height="70" viewBox="0 0 70 70">
-                <circle
-                  cx="35"
-                  cy="35"
-                  r="28"
-                  fill="none"
-                  stroke="var(--bg-blush)"
-                  stroke-width="8"
-                />
-                <!-- Confirmed: Burgundy -->
-                <circle
-                  cx="35"
-                  cy="35"
-                  r="28"
-                  fill="none"
-                  stroke="var(--primary)"
-                  stroke-width="8"
-                  stroke-dasharray="113.8 62"
-                  stroke-linecap="round"
-                />
-                <!-- Maybe: Gold -->
-                <circle
-                  cx="35"
-                  cy="35"
-                  r="28"
-                  fill="none"
-                  stroke="var(--accent)"
-                  stroke-width="8"
-                  stroke-dasharray="35 140.8"
-                  stroke-dashoffset="-113.8"
-                  stroke-linecap="round"
-                />
-                <!-- Declined: Rose -->
-                <circle
-                  cx="35"
-                  cy="35"
-                  r="28"
-                  fill="none"
-                  stroke="var(--bg-rose)"
-                  stroke-width="8"
-                  stroke-dasharray="26.3 149.5"
-                  stroke-dashoffset="-148.8"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <div class="mood-donut-label">
-                <span class="num">156</span>
-                <span class="lbl">Going</span>
-              </div>
-            </div>
-            <div class="mood-legend">
-              <div class="mood-legend-item">
-                <div class="mood-dot" style="background: var(--primary)"></div>
-                Confirmed
-              </div>
-              <div class="mood-legend-item">
-                <div class="mood-dot" style="background: var(--accent)"></div>
-                Pending
-              </div>
-              <div class="mood-legend-item">
-                <div class="mood-dot" style="background: var(--bg-rose)"></div>
-                Declined
-              </div>
-            </div>
-          </div>
-          <div class="mood-bottom">
-            <div class="mood-bottom-text">
-              Manage guest lists<br />and food preferences easily
-            </div>
-            <button class="btn-learn">View Details</button>
-          </div>
+          <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1519225495045-3b8296c2baa7?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="RSVP Tracking">
         </div>
 
-        <!-- Chat Card -->
         <div class="card card-chat">
-          <div class="chat-header">
-            <div class="chat-avatar"><i class="fa-solid fa-camera"></i></div>
-            <div>
-              <div class="chat-name">Lumiere Studios</div>
-              <div class="chat-status">● Online</div>
-            </div>
-          </div>
-          <div class="hero-chat-bubbles">
-            <div class="hero-chat-bubble hero-bubble-vendor">
-              Hi! I've reviewed your mood board. Love the sunset aesthetic! 🌅
-            </div>
-            <div class="hero-chat-bubble hero-bubble-bride">
-              Thank you! Can we schedule an engagement shoot next week?
-            </div>
-            <div class="hero-chat-bubble hero-bubble-vendor">
-              Absolutely. I'll send over a calendar link now.
-            </div>
-          </div>
-          <div class="chat-input-bar">
-            <div class="chat-input">Type a message...</div>
-            <div
-              style="
-                width: 28px;
-                height: 28px;
-                background: var(--primary);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-size: 12px;
-                flex-shrink: 0;
-              "
-            >
-              <i class="fa-solid fa-paper-plane"></i>
-            </div>
-          </div>
+          <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Vendor Messaging">
         </div>
 
-        <!-- Center Phone Card -->
         <div class="card card-phone">
-          <div class="phone-inner">
-            <div class="phone-header">
-              <div class="phone-avatar">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                </svg>
-              </div>
-              <!-- KinKnot Heart logo -->
-              <div class="phone-logo">
-                <svg viewBox="0 0 32 32" width="32" height="32">
-                  <path
-                    d="M16 28 C16 28 4 20 4 10 A6 6 0 0 1 16 7 A6 6 0 0 1 28 10 C28 20 16 28 16 28Z"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="1.5"
-                  />
-                </svg>
-              </div>
-              <div class="phone-menu">
-                <svg viewBox="0 0 24 24">
-                  <line x1="3" y1="6" x2="21" y2="6" stroke-width="2" />
-                  <line x1="3" y1="12" x2="21" y2="12" stroke-width="2" />
-                  <line x1="3" y1="18" x2="21" y2="18" stroke-width="2" />
-                </svg>
-              </div>
-            </div>
-            <div class="phone-date">Wedding: 18 Dec 2026</div>
-            <div class="phone-title">
-              Plan Your<br />Dream Wedding<br />Stress-Free
-            </div>
-            <div class="phone-tabs">
-              <button class="tab active">All</button>
-              <button class="tab inactive">Vendors</button>
-              <button class="tab inactive">Budget</button>
-              <button class="tab inactive">RSVP</button>
-            </div>
-          </div>
-          <div style="padding: 0 20px">
-            <div class="phone-card">
-              <div class="phone-card-person">
-                <div
-                  style="
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(
-                      to top,
-                      rgba(68, 49, 34, 0.75) 0%,
-                      transparent 55%
-                    );
-                  "
-                ></div>
-                <div
-                  style="
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    width: 130px;
-                    height: 185px;
-                    background: linear-gradient(
-                      160deg,
-                      #c090b0 0%,
-                      #8a6c4f 100%
-                    );
-                    border-radius: 14px 0 0 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                  "
-                >
-                  <svg viewBox="0 0 60 100" width="80" height="140">
-                    <ellipse
-                      cx="30"
-                      cy="18"
-                      rx="12"
-                      ry="14"
-                      fill="rgba(220,170,150,.9)"
-                    />
-                    <path
-                      d="M14 35 Q14 28 30 28 Q46 28 46 35 L50 95 Q40 100 30 100 Q20 100 10 95 Z"
-                      fill="rgba(181,151,120,.8)"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div class="phone-card-text">
-                <h3>Finalize Venue<br />Contract</h3>
-                <div class="phone-card-time">
-                  <svg viewBox="0 0 24 24" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  <span>Due Tomorrow</span>
-                </div>
-              </div>
-              <div class="phone-card-play">
-                <svg viewBox="0 0 24 24">
-                  <polygon points="5,3 19,12 5,21" />
-                </svg>
-              </div>
-              <div class="phone-water-drop">✨</div>
-            </div>
-          </div>
+          <div style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Dream Wedding">
         </div>
 
-        <!-- Review Card -->
         <div class="card card-review">
-          <div class="review-avatar">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-          </div>
-          <div class="review-info">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                margin-bottom: 3px;
-              "
-            >
-              <span class="review-rating">5.0</span>
-              <div class="review-stars">
-                <span class="star">★</span><span class="star">★</span
-                ><span class="star">★</span><span class="star">★</span
-                ><span class="star">★</span>
-              </div>
-            </div>
-            <div class="review-name">Adewale & Chioma</div>
-          </div>
+          <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Vendor Review">
         </div>
 
-        <!-- Checklist Progress Card -->
         <div class="card card-checklist">
-          <div
-            style="
-              font-weight: 800;
-              font-size: 1.15rem;
-              color: var(--text-dark);
-              margin-bottom: 6px;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              font-family: &quot;Playfair Display&quot;, serif;
-            "
-          >
-            <span>Checklist</span>
-            <span
-              style="
-                font-size: 10px;
-                padding: 4px 10px;
-                background: #e0f2e9;
-                color: #059669;
-                border-radius: 20px;
-                font-family: &quot;DM Sans&quot;, sans-serif;
-              "
-              >100% Done</span
-            >
-          </div>
-          <div
-            style="
-              font-size: 0.75rem;
-              color: var(--text-mid);
-              margin-bottom: 18px;
-            "
-          >
-            All major tasks completed!
-          </div>
-
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              gap: 14px;
-              font-family: &quot;DM Sans&quot;, sans-serif;
-            "
-          >
-            <div style="display: flex; gap: 10px; align-items: center">
-              <div
-                style="
-                  width: 22px;
-                  height: 22px;
-                  background: #059669;
-                  border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 11px;
-                  flex-shrink: 0;
-                "
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <span
-                style="
-                  font-size: 14px;
-                  color: var(--text-mid);
-                  text-decoration: line-through;
-                  opacity: 0.8;
-                "
-                >Hire Photographer</span
-              >
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center">
-              <div
-                style="
-                  width: 22px;
-                  height: 22px;
-                  background: #059669;
-                  border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 11px;
-                  flex-shrink: 0;
-                "
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <span
-                style="
-                  font-size: 14px;
-                  color: var(--text-mid);
-                  text-decoration: line-through;
-                  opacity: 0.8;
-                "
-                >Book Venue</span
-              >
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center">
-              <div
-                style="
-                  width: 22px;
-                  height: 22px;
-                  background: #059669;
-                  border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 11px;
-                  flex-shrink: 0;
-                "
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <span
-                style="
-                  font-size: 14px;
-                  color: var(--text-mid);
-                  text-decoration: line-through;
-                  opacity: 0.8;
-                "
-                >Hire Florist</span
-              >
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center">
-              <div
-                style="
-                  width: 22px;
-                  height: 22px;
-                  background: #059669;
-                  border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 11px;
-                  flex-shrink: 0;
-                "
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <span
-                style="
-                  font-size: 14px;
-                  color: var(--text-mid);
-                  text-decoration: line-through;
-                  opacity: 0.8;
-                "
-                >Book Caterer</span
-              >
-            </div>
-          </div>
+          <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Checklist Progress">
         </div>
 
-        <!-- Rain Card (Weather) -->
-        <div class="card-rain">
-          <div class="rain-cloud">☀️</div>
-          <div class="rain-info">
-            <div class="rain-title">Sunny Skies<br />Expected for Day</div>
-            <div class="rain-meta">
-              <div class="rain-row">
-                <svg viewBox="0 0 24 24" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                No Rain
-              </div>
-              <div class="rain-row">
-                <div class="rain-dot"></div>
-                Lagos, NG
-              </div>
-            </div>
-          </div>
+        <div class="card card-rain">
+          <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+          <img src="https://images.unsplash.com/photo-1549416878-b9ca35c2d47a?w=400&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Sunny Wedding Day">
         </div>
-      </div>
-      <!-- /stage -->
+      </div> -->
     </div>
-    <!-- /hero-bg -->
 
     <!-- PROBLEM SECTION -->
     <section class="phone-section">
@@ -3308,190 +3007,9 @@
         <div style="position: relative">
           <div class="phone-mockup">
             <div class="phone-notch"></div>
-            <div class="phone-screen" style="background: #fff5f5">
-              <div
-                class="mock-header"
-                style="
-                  width: 80%;
-                  background: #fee2e2;
-                  color: #ef4444;
-                  border: 1px solid #fecaca;
-                "
-              >
-                Planning Chaos
-              </div>
-              <div
-                style="
-                  margin-bottom: 20px;
-                  font-size: 10px;
-                  font-weight: 700;
-                  color: #991b1b;
-                  text-transform: uppercase;
-                  letter-spacing: 0.5px;
-                "
-              >
-                ALERTS & MESSAGES
-              </div>
-
-              <div
-                class="mock-item"
-                style="
-                  display: flex;
-                  align-items: center;
-                  padding: 0 16px;
-                  gap: 12px;
-                  background: #fff;
-                  border: 1px solid #fee2e2;
-                "
-              >
-                <div
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    background: #f1f5f9;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #475569;
-                    font-size: 12px;
-                  "
-                >
-                  <i class="fa-solid fa-comment-dots"></i>
-                </div>
-                <div style="flex: 1">
-                  <div
-                    style="font-weight: 800; font-size: 10px; color: #1e293b"
-                  >
-                    Photographer
-                  </div>
-                  <div style="font-size: 8px; color: #475569">
-                    "I want to renegotiate the price..."
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="mock-item"
-                style="
-                  display: flex;
-                  align-items: center;
-                  padding: 0 16px;
-                  gap: 12px;
-                  background: #fff;
-                  border: 1px solid #fee2e2;
-                "
-              >
-                <div
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    background: #fee2e2;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #ef4444;
-                    font-size: 12px;
-                  "
-                >
-                  <i class="fa-solid fa-circle-xmark"></i>
-                </div>
-                <div style="flex: 1">
-                  <div
-                    style="font-weight: 800; font-size: 10px; color: #ef4444"
-                  >
-                    Payment Failed
-                  </div>
-                  <div style="font-size: 8px; color: #991b1b; opacity: 0.7">
-                    Venue Deposit (N850,000)
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="mock-item"
-                style="
-                  display: flex;
-                  align-items: center;
-                  padding: 0 16px;
-                  gap: 12px;
-                  background: #fff;
-                  border: 1px solid #fee2e2;
-                "
-              >
-                <div
-                  style="
-                    width: 24px;
-                    height: 24px;
-                    background: #dcfce7;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #22c55e;
-                    font-size: 12px;
-                  "
-                >
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div style="flex: 1">
-                  <div
-                    style="
-                      height: 8px;
-                      width: 85%;
-                      background: #22c55e;
-                      border-radius: 4px;
-                      opacity: 0.3;
-                      margin-bottom: 4px;
-                    "
-                  ></div>
-                  <div
-                    style="
-                      height: 6px;
-                      width: 50%;
-                      background: #22c55e;
-                      border-radius: 4px;
-                      opacity: 0.1;
-                    "
-                  ></div>
-                </div>
-                <div
-                  style="
-                    background: #ef4444;
-                    color: white;
-                    font-size: 8px;
-                    padding: 2px 6px;
-                    border-radius: 10px;
-                    font-weight: 900;
-                  "
-                >
-                  42+
-                </div>
-              </div>
-
-              <div
-                class="mock-chart"
-                style="
-                  background: #ef4444;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                  color: white;
-                  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
-                "
-              >
-                <div style="font-size: 32px">
-                  <i class="fa-solid fa-circle-exclamation"></i>
-                </div>
-                <div style="font-weight: 700; margin-top: 8px; font-size: 14px">
-                  Payment Overdue
-                </div>
-                <div style="font-size: 10px; opacity: 0.9">
-                  Vendor: The Floral Studio
-                </div>
-              </div>
+            <div class="phone-screen" style="position: relative; overflow: hidden;">
+              <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+              <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Wedding Planning Logistics">
             </div>
           </div>
 
@@ -3508,11 +3026,10 @@
     </section>
 
     <!-- SOLUTIONS SECTION (CINEMATIC WALKTHROUGH) -->
-    <section class="how-works-outer">
+    <!-- <section class="how-works-outer">
       <div id="how-works-trigger" style="height: 600vh">
         <div class="how-works-sticky">
           <div class="how-works-step-shell"></div>
-          <!-- Intro Step -->
           <div
             class="step-content"
             id="step-intro-text"
@@ -3527,7 +3044,7 @@
               z-index: 100;
             "
           >
-            <!-- <h2 class="section-title" style="font-size: 72px;">The Solution to Planning Stress.</h2> -->
+          
             <p
               style="
                 margin-top: 24px;
@@ -3546,9 +3063,7 @@
             </p>
           </div>
           <div class="how-works-content">
-            <!-- Text Side -->
             <div class="how-works-text-side">
-              <!-- Step 1 Text -->
               <div class="step-content" id="step-1-text">
                 <div
                   class="walkthrough-tag"
@@ -3568,7 +3083,6 @@
                 </p>
               </div>
 
-              <!-- Step 2 Text -->
               <div class="step-content" id="step-2-text">
                 <div
                   class="walkthrough-tag"
@@ -3588,7 +3102,6 @@
                 </p>
               </div>
 
-              <!-- Step 3 Text -->
               <div class="step-content" id="step-3-text">
                 <div
                   class="walkthrough-tag"
@@ -3607,7 +3120,6 @@
                 </p>
               </div>
 
-              <!-- Step 4 Text -->
               <div class="step-content" id="step-4-text">
                 <div
                   class="walkthrough-tag"
@@ -3626,7 +3138,6 @@
                 </p>
               </div>
 
-              <!-- Step 5 Text -->
               <div class="step-content" id="step-5-text">
                 <div
                   class="walkthrough-tag"
@@ -3646,356 +3157,48 @@
               </div>
             </div>
 
-            <!-- Visual Side -->
             <div class="how-works-visual-side">
-              <!-- Layer 1: Discovery -->
               <div class="visual-layer" id="step-1-visual">
-                <div
-                  class="ui-card vendor-card-mock"
-                  style="top: 80px; left: 30px; z-index: 3"
-                >
-                  <div
-                    style="
-                      width: 100%;
-                      height: 180px;
-                      background: #eee;
-                      border-radius: 12px;
-                      margin-bottom: 16px;
-                      background-image: url(&quot;https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&fit=crop&quot;);
-                      background-size: cover;
-                    "
-                  ></div>
-                  <div style="font-weight: 800; font-size: 20px">
-                    The Floral Studio
-                  </div>
-                  <div style="display: flex; gap: 4px; margin-top: 6px">
-                    <span style="color: #fbbf24"
-                      ><i class="fa-solid fa-star"></i></span
-                    ><span style="font-size: 14px; font-weight: 700">4.9</span>
-                  </div>
-                  <div
-                    style="
-                      margin-top: 16px;
-                      font-size: 12px;
-                      font-weight: 700;
-                      color: #059669;
-                      display: flex;
-                      align-items: center;
-                      gap: 6px;
-                    "
-                  >
-                    <div
-                      style="
-                        width: 16px;
-                        height: 16px;
-                        background: #059669;
-                        color: white;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 10px;
-                      "
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </div>
-                    Verified Professional
-                  </div>
-                </div>
-                <div
-                  class="ui-card vendor-card-mock"
-                  style="
-                    bottom: 40px;
-                    right: -20px;
-                    transform: rotate(3deg);
-                    z-index: 2;
-                  "
-                >
-                  <div
-                    style="
-                      width: 100%;
-                      height: 180px;
-                      background: #eee;
-                      border-radius: 12px;
-                      margin-bottom: 16px;
-                      background-image: url(&quot;https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop&quot;);
-                      background-size: cover;
-                    "
-                  ></div>
-                  <div style="font-weight: 800; font-size: 20px">
-                    Cinematic Weddings
-                  </div>
-                  <div
-                    style="
-                      margin-top: 16px;
-                      font-size: 12px;
-                      font-weight: 700;
-                      color: #059669;
-                      display: flex;
-                      align-items: center;
-                      gap: 6px;
-                    "
-                  >
-                    <div
-                      style="
-                        width: 16px;
-                        height: 16px;
-                        background: #059669;
-                        color: white;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 10px;
-                      "
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </div>
-                    Verified Professional
-                  </div>
+                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 100%; padding: 40px;">
+                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 20px; box-shadow: var(--shadow-clay);" alt="Verified Vendor">
+                  <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 20px; box-shadow: var(--shadow-clay);" alt="Verified Vendor">
                 </div>
               </div>
 
-              <!-- Layer 2: Booking -->
               <div class="visual-layer" id="step-2-visual">
-                <div
-                  class="ui-card payment-hub-mock"
-                  style="text-align: center; padding: 40px"
-                >
-                  <div
-                    style="
-                      font-size: 64px;
-                      margin-bottom: 24px;
-                      color: var(--primary);
-                    "
-                  >
-                    <i class="fa-solid fa-shield-halved"></i>
-                  </div>
-                  <h4
-                    style="
-                      font-weight: 800;
-                      font-size: 24px;
-                      margin-bottom: 12px;
-                    "
-                  >
-                    Escrow Protection
-                  </h4>
-                  <p
-                    style="
-                      font-size: 16px;
-                      color: var(--text-muted);
-                      margin-bottom: 32px;
-                    "
-                  >
-                    Your payment of ₦450,000 is safely held.
-                  </p>
-                  <div
-                    style="
-                      height: 12px;
-                      width: 100%;
-                      background: #f0f0f0;
-                      border-radius: 6px;
-                      overflow: hidden;
-                    "
-                  >
-                    <div
-                      style="
-                        height: 100%;
-                        width: 70%;
-                        background: var(--primary);
-                      "
-                    ></div>
-                  </div>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      font-size: 12px;
-                      font-weight: 800;
-                      margin-top: 12px;
-                      color: var(--text-muted);
-                    "
-                  >
-                    <span>BOOKED</span>
-                    <span>SERVICE DELIVERY</span>
-                    <span>PAYOUT</span>
-                  </div>
+                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+                <div style="height: 100%; padding: 40px;">
+                  <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 30px; box-shadow: var(--shadow-clay);" alt="Secure Payment Protection">
                 </div>
               </div>
 
-              <!-- Layer 3: Organization -->
               <div class="visual-layer" id="step-3-visual">
-                <div class="dashboard-mock">
-                  <div
-                    style="
-                      padding: 32px;
-                      display: flex;
-                      gap: 32px;
-                      height: 100%;
-                    "
-                  >
-                    <div
-                      style="
-                        width: 160px;
-                        background: #f8f8f8;
-                        border-radius: 20px;
-                        padding: 16px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 12px;
-                      "
-                    >
-                      <div
-                        style="
-                          height: 12px;
-                          width: 100%;
-                          background: #e0e0e0;
-                          border-radius: 6px;
-                        "
-                      ></div>
-                      <div
-                        style="
-                          height: 12px;
-                          width: 80%;
-                          background: #e0e0e0;
-                          border-radius: 6px;
-                        "
-                      ></div>
-                      <div
-                        style="
-                          height: 12px;
-                          width: 60%;
-                          background: var(--primary);
-                          opacity: 0.2;
-                          border-radius: 6px;
-                          margin-top: 20px;
-                        "
-                      ></div>
-                    </div>
-                    <div
-                      style="
-                        flex: 1;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 16px;
-                      "
-                    >
-                      <div
-                        style="
-                          height: 56px;
-                          width: 100%;
-                          background: #fff;
-                          border: 2px solid #eee;
-                          border-radius: 16px;
-                          display: flex;
-                          align-items: center;
-                          padding: 0 16px;
-                          gap: 16px;
-                        "
-                      >
-                        <div
-                          style="
-                            width: 24px;
-                            height: 24px;
-                            border: 3px solid #ccc;
-                            border-radius: 6px;
-                          "
-                        ></div>
-                        <div
-                          style="
-                            height: 12px;
-                            width: 40%;
-                            background: #f0f0f0;
-                            border-radius: 6px;
-                          "
-                        ></div>
-                      </div>
-                      <div
-                        style="
-                          height: 56px;
-                          width: 100%;
-                          background: #fff;
-                          border: 2px solid #eee;
-                          border-radius: 16px;
-                          display: flex;
-                          align-items: center;
-                          padding: 0 16px;
-                          gap: 16px;
-                        "
-                      >
-                        <div
-                          style="
-                            width: 24px;
-                            height: 24px;
-                            border: 3px solid var(--primary);
-                            border-radius: 6px;
-                            background: var(--primary);
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            font-size: 14px;
-                            color: white;
-                          "
-                        >
-                          <i class="fa-solid fa-check"></i>
-                        </div>
-                        <div
-                          style="
-                            height: 12px;
-                            width: 30%;
-                            background: #f0f0f0;
-                            border-radius: 6px;
-                          "
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
+                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+                <div style="height: 100%; padding: 40px;">
+                  <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 30px; box-shadow: var(--shadow-clay);" alt="Organized Planning">
                 </div>
               </div>
 
-              <!-- Layer 4: Communication -->
               <div class="visual-layer" id="step-4-visual">
-                <div
-                  class="chat-bubble bubble-vendor"
-                  style="top: 150px; left: 40px"
-                >
-                  Hi Tolu! I've updated the floral arrangements for the
-                  reception.
-                </div>
-                <div
-                  class="chat-bubble bubble-couple"
-                  style="top: 230px; right: 40px"
-                >
-                  Looks amazing, thank you! Just approved the contract.
-                </div>
-                <div
-                  class="chat-bubble bubble-vendor"
-                  style="top: 310px; left: 40px"
-                >
-                  Perfect. You'll see the status update in your dashboard now.
+                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10;">Preview</div>
+                <div style="height: 100%; padding: 40px;">
+                  <img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 30px; box-shadow: var(--shadow-clay);" alt="Seamless Communication">
                 </div>
               </div>
 
-              <!-- Layer 5: Relief -->
               <div class="visual-layer" id="step-5-visual">
-                <div style="text-align: center">
+                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10; backdrop-filter: blur(4px);">Preview</div>
+                <div style="text-align: center; height: 100%; padding: 40px;">
                   <div
                     style="
-                      width: 600px;
-                      height: 400px;
-                      border-radius: 40px;
-                      background-image: url(&quot;https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80&fit=crop&quot;);
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 30px;
+                      background-image: url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80&fit=crop');
                       background-size: cover;
                       background-position: center;
                       box-shadow: var(--shadow-clay);
-                    "
-                  ></div>
-                  <div
-                    style="
-                      margin-top: 40px;
-                      font-weight: 800;
-                      font-size: 32px;
-                      font-family: var(--font-serif);
                     "
                   ></div>
                 </div>
@@ -4004,8 +3207,7 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- PROCESS SECTION -->
+    </section> -->
     <section class="process-section">
       <div class="section-header">
         <h2 class="section-title">Your wedding journey, simplified</h2>
@@ -4016,7 +3218,6 @@
       </div>
 
       <div class="process-grid">
-        <!-- Step 1 -->
         <div class="process-card">
           <div class="process-number">01</div>
           <div class="process-icon">
@@ -4094,7 +3295,7 @@
     </section>
 
     <!-- MISTAKES SECTION -->
-    <section
+    <!-- <section
       id="mistakes"
       style="
         position: relative;
@@ -4262,214 +3463,20 @@
             <div
               style="
                 position: relative;
-                padding: 34px;
+                padding: 12px;
                 border-radius: 34px;
                 background: rgba(255, 255, 255, 0.05);
                 border: 1px solid rgba(255, 255, 255, 0.08);
                 backdrop-filter: blur(20px);
                 box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+                aspect-ratio: 4/3;
+                overflow: hidden;
               "
             >
-              <div
-                style="
-                  background: var(--white);
-                  border-radius: 22px;
-                  padding: 24px;
-                  margin-bottom: 20px;
-                  border: 1px solid rgba(107, 31, 42, 0.06);
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 18px;
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        letter-spacing: 0.14em;
-                        text-transform: uppercase;
-                        color: var(--text-muted);
-                        margin-bottom: 8px;
-                      "
-                    >
-                      Vendor check
-                    </div>
-                    <div
-                      style="
-                        font-size: 16px;
-                        font-weight: 600;
-                        color: var(--text-main);
-                      "
-                    >
-                      Unverified inquiry
-                    </div>
-                  </div>
-
-                  <div
-                    style="
-                      display: inline-flex;
-                      align-items: center;
-                      gap: 7px;
-                      padding: 8px 12px;
-                      border-radius: 999px;
-                      background: #fff5f5;
-                      color: #e53e3e;
-                      font-size: 11px;
-                      font-weight: 600;
-                      border: 1px solid #fed7d7;
-                    "
-                  >
-                    <span
-                      style="
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 50%;
-                        background: #e53e3e;
-                      "
-                    ></span>
-                    Pending
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 14px 16px;
-                    border-radius: 18px;
-                    background: var(--bg-cream);
-                    margin-bottom: 12px;
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 12px">
-                    <div
-                      style="
-                        width: 34px;
-                        height: 34px;
-                        border-radius: 12px;
-                        background: var(--bg-blush);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: var(--primary);
-                        font-size: 14px;
-                      "
-                    >
-                      <i class="fa-regular fa-user"></i>
-                    </div>
-                    <div>
-                      <div
-                        style="
-                          font-size: 13px;
-                          color: var(--text-main);
-                          font-weight: 600;
-                          margin-bottom: 4px;
-                        "
-                      >
-                        Profile completion
-                      </div>
-                      <div style="font-size: 11px; color: var(--text-muted)">
-                        No business docs uploaded
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      font-size: 12px;
-                      color: var(--primary);
-                      font-weight: 600;
-                    "
-                  >
-                    48%
-                  </div>
-                </div>
-
-                <div style="margin-bottom: 12px">
-                  <div
-                    style="
-                      height: 7px;
-                      border-radius: 999px;
-                      background: rgba(107, 31, 42, 0.07);
-                      overflow: hidden;
-                      margin-bottom: 12px;
-                    "
-                  >
-                    <div
-                      style="
-                        width: 48%;
-                        height: 100%;
-                        border-radius: inherit;
-                        background: linear-gradient(
-                          90deg,
-                          var(--primary),
-                          var(--bg-rose)
-                        );
-                      "
-                    ></div>
-                  </div>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      gap: 10px;
-                      font-size: 11px;
-                      color: var(--text-muted);
-                    "
-                  >
-                    <span>Response time: 2-3 days</span>
-                    <span>2 reviews</span>
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding-top: 12px;
-                    border-top: 1px solid rgba(107, 31, 42, 0.06);
-                  "
-                >
-                  <div
-                    style="
-                      display: inline-flex;
-                      align-items: center;
-                      gap: 8px;
-                      color: var(--text-muted);
-                      font-size: 11px;
-                    "
-                  >
-                    <i class="fa-regular fa-clock"></i>
-                    Last active 19h ago
-                  </div>
-                  <div
-                    style="
-                      display: inline-flex;
-                      align-items: center;
-                      gap: 7px;
-                      padding: 7px 10px;
-                      border-radius: 999px;
-                      background: var(--bg-cream);
-                      color: var(--text-muted);
-                      font-size: 11px;
-                    "
-                  >
-                    <i class="fa-regular fa-message"></i>
-                    No reply yet
-                  </div>
-                </div>
-              </div>
-
-              <div
-                style="display: flex; justify-content: center; margin: 20px 0"
-              ></div>
+              <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 10px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; z-index: 10; backdrop-filter: blur(4px);">Preview</div>
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 24px;" alt="Verified Vendor Meeting">
             </div>
+          </div>
           </div>
         </div>
 
@@ -4486,262 +3493,21 @@
             <div
               style="
                 position: relative;
-                padding: 34px;
+                padding: 12px;
                 border-radius: 34px;
                 background: rgba(255, 255, 255, 0.05);
                 border: 1px solid rgba(255, 255, 255, 0.08);
                 backdrop-filter: blur(20px);
                 box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+                aspect-ratio: 4/3;
+                overflow: hidden;
               "
             >
-              <div
-                style="
-                  padding: 28px;
-                  border-radius: 28px;
-                  background: linear-gradient(
-                    145deg,
-                    var(--white),
-                    var(--bg-cream)
-                  );
-                  border: 1px solid rgba(107, 31, 42, 0.08);
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 22px;
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        letter-spacing: 0.14em;
-                        text-transform: uppercase;
-                        color: var(--text-muted);
-                        margin-bottom: 7px;
-                      "
-                    >
-                      Planning hub
-                    </div>
-                    <div
-                      style="
-                        font-size: 17px;
-                        color: var(--text-main);
-                        font-weight: 600;
-                      "
-                    >
-                      Everything in one place
-                    </div>
-                  </div>
-
-                  <div
-                    style="
-                      display: inline-flex;
-                      gap: 6px;
-                      padding: 5px;
-                      border-radius: 999px;
-                      background: var(--bg-rose);
-                      border: 1px solid rgba(107, 31, 42, 0.05);
-                    "
-                  >
-                    <span
-                      style="
-                        padding: 7px 12px;
-                        border-radius: 999px;
-                        background: var(--primary);
-                        color: var(--white);
-                        font-size: 11px;
-                        font-weight: 600;
-                      "
-                      >Home</span
-                    >
-                    <span
-                      style="
-                        padding: 7px 12px;
-                        border-radius: 999px;
-                        color: var(--primary);
-                        font-size: 11px;
-                      "
-                      >Vendors</span
-                    >
-                    <span
-                      style="
-                        padding: 7px 12px;
-                        border-radius: 999px;
-                        color: var(--primary);
-                        font-size: 11px;
-                      "
-                      >Budget</span
-                    >
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    display: grid;
-                    grid-template-columns: 1.2fr 0.8fr;
-                    gap: 14px;
-                    padding: 16px 18px;
-                    border-radius: 22px;
-                    background: var(--white);
-                    margin-bottom: 16px;
-                    border: 1px solid rgba(107, 31, 42, 0.05);
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 12px;
-                        color: var(--text-main);
-                        font-weight: 600;
-                        margin-bottom: 8px;
-                      "
-                    >
-                      Today's timeline
-                    </div>
-                    <div
-                      style="display: flex; flex-direction: column; gap: 7px"
-                    >
-                      <div
-                        style="
-                          display: flex;
-                          align-items: center;
-                          gap: 8px;
-                          font-size: 11px;
-                          color: var(--text-muted);
-                        "
-                      >
-                        <span
-                          style="
-                            width: 7px;
-                            height: 7px;
-                            border-radius: 50%;
-                            background: var(--accent);
-                          "
-                        ></span>
-                        Florist call at 4:00 PM
-                      </div>
-                      <div
-                        style="
-                          display: flex;
-                          align-items: center;
-                          gap: 8px;
-                          font-size: 11px;
-                          color: var(--text-muted);
-                        "
-                      >
-                        <span
-                          style="
-                            width: 7px;
-                            height: 7px;
-                            border-radius: 50%;
-                            background: #2d3748;
-                          "
-                        ></span>
-                        Venue payment clears today
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      display: flex;
-                      align-items: flex-end;
-                      justify-content: flex-end;
-                      gap: 4px;
-                    "
-                  >
-                    <span
-                      style="
-                        width: 10px;
-                        height: 24px;
-                        border-radius: 999px;
-                        background: var(--bg-rose);
-                      "
-                    ></span>
-                    <span
-                      style="
-                        width: 10px;
-                        height: 34px;
-                        border-radius: 999px;
-                        background: var(--primary);
-                      "
-                    ></span>
-                    <span
-                      style="
-                        width: 10px;
-                        height: 44px;
-                        border-radius: 999px;
-                        background: var(--accent);
-                      "
-                    ></span>
-                    <span
-                      style="
-                        width: 10px;
-                        height: 30px;
-                        border-radius: 999px;
-                        background: var(--bg-cream);
-                      "
-                    ></span>
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 16px;
-                    padding: 16px 18px;
-                    border-radius: 22px;
-                    background: rgba(255, 255, 255, 0.06);
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 12px;
-                        color: rgba(255, 255, 255, 0.82);
-                        font-weight: 600;
-                        margin-bottom: 6px;
-                      "
-                    >
-                      Centralized notifications
-                    </div>
-                    <div
-                      style="font-size: 11px; color: rgba(255, 255, 255, 0.5)"
-                    >
-                      3 updates, 2 confirmations, 1 payment reminder
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      display: inline-flex;
-                      align-items: center;
-                      gap: 8px;
-                      padding: 10px 12px;
-                      border-radius: 16px;
-                      background: rgba(255, 255, 255, 0.08);
-                      color: rgba(255, 255, 255, 0.78);
-                      font-size: 11px;
-                    "
-                  >
-                    <span
-                      style="
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background: #7ff2b1;
-                      "
-                    ></span>
-                    All synced
-                  </div>
-                </div>
-              </div>
+              <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 10px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; z-index: 10; backdrop-filter: blur(4px);">Preview</div>
+              <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 24px;" alt="Organized Wedding Planning">
             </div>
           </div>
+
 
           <div style="flex: 1; min-width: 320px">
             <div
@@ -4911,245 +3677,21 @@
 
           <div style="flex: 1; min-width: 320px">
             <div
+              class="escrow-diagram-container"
               style="
                 position: relative;
-                padding: 34px;
+                padding: 12px;
                 border-radius: 34px;
                 background: var(--bg-blush);
                 border: 1px solid rgba(107, 31, 42, 0.08);
                 backdrop-filter: blur(20px);
                 box-shadow: 0 30px 80px rgba(107, 31, 42, 0.08);
+                aspect-ratio: 4/3;
+                overflow: hidden;
               "
             >
-              <div
-                style="
-                  background: var(--white);
-                  border-radius: 26px;
-                  padding: 28px;
-                  border: 1px solid rgba(107, 31, 42, 0.06);
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 26px;
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        letter-spacing: 0.14em;
-                        text-transform: uppercase;
-                        color: var(--text-muted);
-                        margin-bottom: 8px;
-                      "
-                    >
-                      Payment center
-                    </div>
-                    <div
-                      style="
-                        font-size: 16px;
-                        color: var(--text-main);
-                        font-weight: 600;
-                      "
-                    >
-                      Booking confirmations
-                    </div>
-                  </div>
-
-                  <div
-                    style="
-                      width: 40px;
-                      height: 40px;
-                      border-radius: 14px;
-                      background: var(--bg-rose);
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      color: var(--primary);
-                      font-size: 15px;
-                    "
-                  >
-                    <i class="fa-solid fa-wallet"></i>
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    padding: 18px;
-                    border-radius: 18px;
-                    background: var(--bg-cream);
-                    margin-bottom: 16px;
-                  "
-                >
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      margin-bottom: 12px;
-                    "
-                  >
-                    <div>
-                      <div
-                        style="
-                          font-size: 12px;
-                          color: var(--text-main);
-                          font-weight: 600;
-                          margin-bottom: 5px;
-                        "
-                      >
-                        Invoice INV-2048
-                      </div>
-                      <div style="font-size: 11px; color: var(--text-muted)">
-                        Decorator booking • Ref BK-71A
-                      </div>
-                    </div>
-                    <div
-                      style="
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 6px;
-                        padding: 7px 10px;
-                        border-radius: 999px;
-                        background: #fff5f5;
-                        color: #e53e3e;
-                        font-size: 11px;
-                        border: 1px solid #fed7d7;
-                      "
-                    >
-                      <i class="fa-regular fa-bell"></i>
-                      Due today
-                    </div>
-                  </div>
-
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    <span style="font-size: 11px; color: var(--text-muted)"
-                      >Transfer protected by escrow</span
-                    >
-                    <span style="font-size: 11px; color: var(--text-muted)"
-                      >11:42 AM</span
-                    >
-                  </div>
-
-                  <div
-                    style="
-                      height: 7px;
-                      border-radius: 999px;
-                      background: rgba(107, 31, 42, 0.05);
-                      overflow: hidden;
-                    "
-                  >
-                    <div
-                      style="
-                        width: 72%;
-                        height: 100%;
-                        border-radius: inherit;
-                        background: linear-gradient(
-                          90deg,
-                          var(--primary),
-                          var(--accent)
-                        );
-                      "
-                    ></div>
-                  </div>
-                </div>
-
-                <div
-                  style="
-                    padding: 18px;
-                    border-radius: 18px;
-                    background: #f0fff4;
-                    border: 1px solid #c6f6d5;
-                  "
-                >
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                    "
-                  >
-                    <div>
-                      <div
-                        style="
-                          font-size: 12px;
-                          color: #22543d;
-                          font-weight: 600;
-                          margin-bottom: 6px;
-                        "
-                      >
-                        Payment confirmed
-                      </div>
-                      <div
-                        style="
-                          font-size: 11px;
-                          color: #276749;
-                          margin-bottom: 9px;
-                        "
-                      >
-                        Receipt issued • May 12, 2026 at 11:47 AM
-                      </div>
-                      <div style="display: flex; gap: 8px; flex-wrap: wrap">
-                        <span
-                          style="
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 6px;
-                            padding: 7px 10px;
-                            border-radius: 999px;
-                            background: var(--white);
-                            color: #276749;
-                            font-size: 10px;
-                            border: 1px solid rgba(0, 0, 0, 0.05);
-                          "
-                          >TXN 8KQ2A9</span
-                        >
-                        <span
-                          style="
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 6px;
-                            padding: 7px 10px;
-                            border-radius: 999px;
-                            background: var(--white);
-                            color: #276749;
-                            font-size: 10px;
-                            border: 1px solid rgba(0, 0, 0, 0.05);
-                          "
-                          ><i class="fa-solid fa-lock"></i> Secure release</span
-                        >
-                      </div>
-                    </div>
-
-                    <div
-                      style="
-                        width: 54px;
-                        height: 54px;
-                        border-radius: 18px;
-                        background: #c6f6d5;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: #22543d;
-                        font-size: 18px;
-                      "
-                    >
-                      ✓
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.4); color: white; font-size: 10px; padding: 4px 10px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; z-index: 10; backdrop-filter: blur(4px);">Preview</div>
+              <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800&q=80&fit=crop" style="width:100%; height:100%; object-fit:cover; border-radius: 24px;" alt="Secure Wedding Payments">
             </div>
           </div>
         </div>
@@ -5239,7 +3781,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- VENDOR SECTION -->
     <section
@@ -5263,50 +3805,53 @@
         better visibility, protected payments, and a more professional booking
         flow.
       </p>
-      <div
-        style="
-          margin-top: 60px;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 40px;
-          max-width: 1000px;
-          margin-left: auto;
-          margin-right: auto;
-        "
-      >
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-chart-line"></i>
+      <details class="details-accordion">
+        <summary>More Details</summary>
+        <div
+          style="
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">Direct Leads</h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Reach couples who are actively planning and specifically looking for
+              verified professionals.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">Direct Leads</h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Reach couples who are actively planning and specifically looking for
-            verified professionals.
-          </p>
-        </div>
-        <div style="text-align: center">
-          <div style="font-size: 40px; margin-bottom: 16px">🛡️</div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">Secure Payouts</h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Stop chasing balances. Deposits are protected and payouts follow a
-            clear delivery flow.
-          </p>
-        </div>
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-gem"></i>
+          <div style="text-align: center">
+            <div style="font-size: 40px; margin-bottom: 16px">🛡️</div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">Secure Payouts</h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Stop chasing balances. Deposits are protected and payouts follow a
+              clear delivery flow.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">Pro Profile</h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Showcase your work, bookings, and credibility on a profile built to
-            convert trust into enquiries.
-          </p>
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">Pro Profile</h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Showcase your work, bookings, and credibility on a profile built to
+              convert trust into enquiries.
+            </p>
+          </div>
         </div>
-      </div>
+      </details>
       <div
         style="
           margin-top: 60px;
@@ -5354,70 +3899,73 @@
         from one place so every celebration feels more organized behind the
         scenes.
       </p>
-      <div
-        style="
-          margin-top: 60px;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 40px;
-          max-width: 1080px;
-          margin-left: auto;
-          margin-right: auto;
-        "
-      >
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-calendar-check"></i>
+      <details class="details-accordion">
+        <summary>More Details</summary>
+        <div
+          style="
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            max-width: 1080px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">Client Timelines</h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Track milestones, due dates, and key planning moments without
+              relying on scattered spreadsheets.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">Client Timelines</h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Track milestones, due dates, and key planning moments without
-            relying on scattered spreadsheets.
-          </p>
-        </div>
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-people-arrows"></i>
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-people-arrows"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">
+              Vendor Coordination
+            </h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Keep every conversation, update, and approval in one place across
+              multiple vendors and couples.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">
-            Vendor Coordination
-          </h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Keep every conversation, update, and approval in one place across
-            multiple vendors and couples.
-          </p>
-        </div>
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-file-signature"></i>
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">Clear Workflows</h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Move from enquiry to contract to delivery with cleaner handoffs and
+              less manual follow-up.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">Clear Workflows</h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Move from enquiry to contract to delivery with cleaner handoffs and
-            less manual follow-up.
-          </p>
-        </div>
-        <div style="text-align: center">
-          <div
-            style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
-          >
-            <i class="fa-solid fa-handshake-angle"></i>
+          <div style="text-align: center">
+            <div
+              style="font-size: 40px; margin-bottom: 16px; color: var(--primary)"
+            >
+              <i class="fa-solid fa-handshake-angle"></i>
+            </div>
+            <h4 style="font-weight: 800; margin-bottom: 8px">
+              Trusted Operations
+            </h4>
+            <p style="font-size: 14px; color: var(--text-muted)">
+              Work with verified professionals and protected payment flows that
+              give clients extra confidence.
+            </p>
           </div>
-          <h4 style="font-weight: 800; margin-bottom: 8px">
-            Trusted Operations
-          </h4>
-          <p style="font-size: 14px; color: var(--text-muted)">
-            Work with verified professionals and protected payment flows that
-            give clients extra confidence.
-          </p>
         </div>
-      </div>
+      </details>
       <div
         style="
           margin-top: 60px;
@@ -6254,7 +4802,7 @@
     </script>
 
     <!-- FOOTER CTA -->
-    <section class="big-cta" style="padding-top: 0" id="join-waitlist">
+    <!-- <section class="big-cta" style="padding-top: 0" id="join-waitlist">
       <div class="cta-inner" style="background: var(--primary)">
         <div class="cta-content">
           <div
@@ -6347,7 +4895,7 @@
         </div>
         <div class="footer-visual" style="opacity: 0.05">KinKnot</div>
       </div>
-    </section>
+    </section> -->
     <div
       style="
         width: 100%;
