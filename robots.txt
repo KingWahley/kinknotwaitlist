@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admindashboard.html
+
+Sitemap: https://www.kinknot.com/sitemap.xml

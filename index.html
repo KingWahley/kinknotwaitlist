@@ -3,69 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      KinKnot | Wedding Planning Platform for Couples, Vendors and Event
-      Planners in Nigeria
-    </title>
+    <title>KinKnot | Nigeria's First All-In-One Wedding Planning Platform</title>
     <meta
       name="description"
-      content="KinKnot helps couples in Nigeria discover verified wedding vendors, manage planning tasks, coordinate event professionals, and enjoy a more trusted wedding planning experience."
+      content="KinKnot is Nigeria's first all-in-one wedding platform. Completely FREE for couples. Find verified vendors, manage tasks, and secure payments with digital contracts."
     />
     <meta
       name="keywords"
-      content="wedding planning Nigeria, wedding vendors Nigeria, wedding planning platform Lagos, verified wedding vendors, Nigerian wedding marketplace, event planners Nigeria, wedding coordination app"
+      content="wedding planning Nigeria, wedding vendors Nigeria, wedding escrow Nigeria, verified wedding vendors Lagos, Nigerian wedding app, wedding budget planner Nigeria, KinKnot"
     />
     <meta name="author" content="KinKnot" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#6B1F2A" />
+    
+    <!-- PWA & Favicons -->
+    <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/png" href="images/logo.png" />
     <link rel="apple-touch-icon" href="images/logo.png" />
     <link rel="canonical" href="https://www.kinknot.com" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.kinknot.com" />
-    <meta
-      property="og:title"
-      content="KinKnot | Wedding Planning Platform for Couples, Vendors and Event Planners in Nigeria"
-    />
+    <meta property="og:title" content="KinKnot | Nigeria's First All-In-One Wedding Platform" />
     <meta
       property="og:description"
-      content="Discover verified wedding vendors, plan with more clarity, and coordinate couples, vendors and event planners in one trusted Nigerian wedding platform."
+      content="Plan your Nigerian wedding with confidence. Find verified vendors, use digital contracts, and secure milestone payments—all for FREE."
     />
-    <meta property="og:image" content="https://www.kinknot.com/og-image.jpg" />
-    <meta
-      property="og:image:alt"
-      content="KinKnot wedding planning platform preview"
-    />
+    <meta property="og:image" content="https://www.kinknot.com/images/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="KinKnot - Nigeria's First All-In-One Wedding Platform" />
     <meta property="og:site_name" content="KinKnot" />
     <meta property="og:locale" content="en_NG" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="KinKnot | Wedding Planning Platform for Couples, Vendors and Event Planners in Nigeria"
-    />
+    <meta name="twitter:site" content="@KinKnot" />
+    <meta name="twitter:creator" content="@KinKnot" />
+    <meta name="twitter:url" content="https://www.kinknot.com" />
+    <meta name="twitter:title" content="KinKnot | Nigeria's First All-In-One Wedding Platform" />
     <meta
       name="twitter:description"
-      content="KinKnot helps couples, vendors and planners in Nigeria enjoy a more organized, trusted and modern wedding planning experience."
+      content="Plan your Nigerian wedding with confidence. Find verified vendors, use digital contracts, and secure milestone payments—all for FREE."
     />
-    <meta name="twitter:image" content="https://www.kinknot.com/og-image.jpg" />
-    <meta
-      name="twitter:image:alt"
-      content="KinKnot wedding planning platform preview"
-    />
+    <meta name="twitter:image" content="https://www.kinknot.com/images/logo.png" />
+    <meta name="twitter:image:alt" content="KinKnot Wedding Platform" />
+
+    <!-- Additional Meta -->
     <meta name="geo.region" content="NG" />
     <meta name="geo.placename" content="Lagos, Nigeria" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "KinKnot",
-        "url": "https://www.kinknot.com",
-        "logo": "https://www.kinknot.com/images/logo.png",
-        "description": "KinKnot is a Nigerian wedding planning platform connecting couples with verified vendors and event planners.",
-        "email": "hello@kinknot.com",
-        "foundingLocation": "Lagos, Nigeria",
-        "areaServed": "Nigeria"
-      }
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "KinKnot",
+          "url": "https://www.kinknot.com",
+          "logo": "https://www.kinknot.com/images/logo.png",
+          "description": "KinKnot is Nigeria's first all-in-one wedding platform connecting couples with verified vendors and event planners.",
+          "email": "hello@kinknot.com",
+          "foundingLocation": "Lagos, Nigeria",
+          "areaServed": "Nigeria",
+          "sameAs": [
+            "https://twitter.com/KinKnot",
+            "https://facebook.com/KinKnot",
+            "https://instagram.com/KinKnot"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "KinKnot",
+          "url": "https://www.kinknot.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.kinknot.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
